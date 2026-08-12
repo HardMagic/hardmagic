@@ -1,0 +1,143 @@
+---
+import type {
+  AtmosphericHeadingLevel,
+  ProjectionStatus,
+  ProjectionTimeline,
+} from './types';
+
+interface Props {
+  id: string;
+  title: string;
+  moments: ProjectionTimeline;
+  asOf: string;
+  caveat: string;
+  eyebrow?: string;
+  introduction?: string;
+  headingLevel?: AtmosphericHeadingLevel;
+}
+
+const {
+  id,
+  title,
+  moments,
+  asOf,
+  caveat,
+  eyebrow = 'Future field map',
+  introduction,
+  headingLevel = 'h2',
+} = Astro.props;
+
+const Heading = headingLevel;
+const titleId = `${id}-title`;
+const statusLabels: Record<ProjectionStatus, string> = {
+  observed: 'Observed',
+  emerging: 'Emerging signal',
+  projected: 'Projection',
+  wildcard: 'Wildcard',
+};
+const isYear = (value: string) => /^\d{4}$/.test(value);
+---
+
+<section class="atm-future" aria-labelledby={titleId}>
+  <header class="atm-future__header">
+    <div>
+      <p class="atm-future__eyebrow">{eyebrow}</p>
+      <Heading id={titleId}>{title}</Heading>
+    </div>
+    <div class="atm-future__frame">
+      {introduction && <p>{introduction}</p>}
+      <p><strong>Evidence horizon:</strong> <time datetime={asOf}>{asOf}</time></p>
+    </div>
+  </header>
+
+  <ol class="atm-future__timeline">
+    {moments.map((moment, index) => (
+      <li id={`${id}-${moment.id}`} data-status={moment.status}>
+        <div class="atm-future__marker" aria-hidden="true"><span>{String(index + 1).padStart(2, '0')}</span></div>
+        <article aria-labelledby={`${id}-${moment.id}-title`}>
+          <div class="atm-future__meta">
+            {isYear(moment.horizon)
+              ? <time datetime={moment.horizon}>{moment.horizon}</time>
+              : <span>{moment.horizon}</span>}
+            <span class="atm-future__status"><i aria-hidden="true"></i>{statusLabels[moment.status]}</span>
+          </div>
+          <h3 id={`${id}-${moment.id}-title`}>{moment.title}</h3>
+          <p>{moment.summary}</p>
+          {moment.implication && <p class="atm-future__implication"><strong>Creative implication:</strong> {moment.implication}</p>}
+          {moment.evidenceIds && moment.evidenceIds.length > 0 && (
+            <p class="atm-future__evidence"><strong>Evidence:</strong> {moment.evidenceIds.join(', ')}</p>
+          )}
+        </article>
+      </li>
+    ))}
+  </ol>
+
+  <footer class="atm-future__caveat">
+    <strong>Projection boundary</strong>
+    <p>{caveat}</p>
+    <slot name="methodology" />
+  </footer>
+</section>
+
+<style>
+  .atm-future {
+    padding: clamp(4rem, 10vw, 9rem) max(1rem, calc((100% - 82rem) / 2));
+    overflow: clip;
+    background: #f1e9e0;
+    color: var(--ink, #100b0d);
+    container-type: inline-size;
+  }
+  .atm-future__header { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(16rem, .65fr); gap: 2rem 6rem; align-items: end; margin-block-end: clamp(3rem, 7vw, 6rem); }
+  .atm-future__eyebrow { margin: 0 0 1.3rem; color: var(--wine, #911234); font-size: .7rem; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; }
+  .atm-future h2,
+  .atm-future > header h3 { margin: 0; font-size: clamp(2.8rem, 7cqi, 6.4rem); line-height: .95; letter-spacing: -.055em; text-wrap: balance; overflow-wrap: anywhere; }
+  .atm-future__frame { padding-block-start: 1.25rem; border-block-start: 3px solid var(--wine, #911234); color: #4e4145; line-height: 1.6; }
+  .atm-future__frame p:last-child { margin-block-end: 0; font-size: .78rem; }
+
+  .atm-future__timeline { position: relative; margin: 0; padding: 0; list-style: none; }
+  .atm-future__timeline::before { content: ''; position: absolute; inset-block: 0; inset-inline-start: clamp(1.6rem, 5cqi, 4.5rem); inline-size: 1px; background: #a89399; }
+  .atm-future__timeline > li { --status: var(--wine, #911234); position: relative; display: grid; grid-template-columns: clamp(3.2rem, 10cqi, 9rem) minmax(0, 1fr); gap: clamp(1rem, 4cqi, 4rem); min-block-size: 16rem; padding-block: 0 clamp(3rem, 8cqi, 7rem); }
+  .atm-future__timeline > li[data-status='observed'] { --status: var(--green, #487d54); }
+  .atm-future__timeline > li[data-status='emerging'] { --status: var(--cyan, #16757b); }
+  .atm-future__timeline > li[data-status='projected'] { --status: var(--violet, #6946be); }
+  .atm-future__timeline > li[data-status='wildcard'] { --status: var(--wine, #911234); }
+  .atm-future__marker { position: relative; display: grid; place-items: start center; }
+  .atm-future__marker::before { content: ''; position: absolute; inset-block-start: 1.1rem; inline-size: clamp(1rem, 2.2cqi, 1.5rem); aspect-ratio: 1; border: .35rem solid #f1e9e0; border-radius: 50%; background: var(--status); box-shadow: 0 0 0 1px var(--status); }
+  .atm-future__marker span { margin-block-start: 3.5rem; color: #7f6e73; font-size: .68rem; font-weight: 800; letter-spacing: .1em; }
+  .atm-future article { max-inline-size: 58rem; padding-block-start: .7rem; }
+  .atm-future__meta { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .7rem 1.5rem; color: var(--status); font-size: .72rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+  .atm-future__status { display: inline-flex; align-items: center; gap: .5rem; }
+  .atm-future__status i { inline-size: .7rem; block-size: .7rem; border: 1px solid currentColor; border-radius: 50%; background: var(--status); }
+  .atm-future article h3 { max-inline-size: 22ch; margin: 1.2rem 0 1rem; font-size: clamp(1.8rem, 4.5cqi, 3.8rem); line-height: 1; letter-spacing: -.045em; text-wrap: balance; overflow-wrap: anywhere; }
+  .atm-future article > p { max-inline-size: 68ch; color: #55484c; font-size: 1rem; line-height: 1.7; }
+  .atm-future__implication { padding: 1rem 1.2rem; border-inline-start: 3px solid var(--status); background: rgb(255 255 255 / .48); }
+  .atm-future__evidence { color: #6b5b60 !important; font-size: .76rem !important; overflow-wrap: anywhere; }
+  .atm-future__caveat { display: grid; grid-template-columns: minmax(10rem, .35fr) minmax(0, 1fr); gap: 1rem 3rem; padding: clamp(1.3rem, 3vw, 2.4rem); border: 1px solid #a8949a; background: #e8ddd3; }
+  .atm-future__caveat > strong { color: var(--wine, #911234); font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; }
+  .atm-future__caveat p { max-inline-size: 72ch; margin: 0; line-height: 1.65; }
+
+  @container (max-width: 44rem) {
+    .atm-future__header { grid-template-columns: 1fr; }
+    .atm-future__timeline > li { grid-template-columns: 3rem minmax(0, 1fr); gap: 1rem; }
+    .atm-future__timeline::before { inset-inline-start: 1.5rem; }
+    .atm-future__marker span { writing-mode: vertical-rl; }
+    .atm-future__meta { align-items: flex-start; flex-direction: column; }
+    .atm-future__caveat { grid-template-columns: 1fr; }
+  }
+  @media (forced-colors: active) {
+    .atm-future { background: Canvas; color: CanvasText; }
+    .atm-future__timeline::before,
+    .atm-future__marker::before { background: CanvasText; }
+    .atm-future__marker::before { border-color: Canvas; box-shadow: 0 0 0 1px CanvasText; }
+    .atm-future h2,
+    .atm-future h3,
+    .atm-future p,
+    .atm-future__meta,
+    .atm-future__eyebrow { color: CanvasText; }
+    .atm-future__caveat,
+    .atm-future__implication { border: 1px solid CanvasText; background: Canvas; }
+  }
+  @media print {
+    .atm-future__timeline > li { min-block-size: 0; break-inside: avoid; padding-block-end: 2rem; }
+  }
+</style>

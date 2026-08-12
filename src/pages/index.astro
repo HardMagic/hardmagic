@@ -5,6 +5,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import ProductCard from '../components/product/ProductCard.astro';
 import Marquee from '../components/sections/Marquee.astro';
 import raptor from '../assets/legacy/raptor.jpg';
+import mediaAlchemy from '../assets/editorial/media-alchemy-ritual.avif';
+import audienceDreamfield from '../assets/editorial/audience-dreamfield-2035.avif';
 const products = (await getCollection('products')).sort((a,b) => a.data.order - b.data.order);
 const featured = products.filter((p) => p.data.featured);
 ---
@@ -25,6 +27,17 @@ const featured = products.filter((p) => p.data.featured);
     <div><p class="eyebrow dark">Independent by design</p><h2>Story is the oldest interface. AI is the newest medium.</h2></div>
     <div class="manifesto-copy"><p>For more than twenty-five years, HardMagic has lived where technology, culture, and imagination collide. We began by helping ambitious brands tell better stories. Today, we build the systems that make new kinds of stories possible.</p><p>Our products connect human taste to generative machines—without losing authorship, evidence, or the magic of making.</p></div>
   </section>
+  <figure class="cinematic-field cinematic-field-left">
+    <Picture src={mediaAlchemy} alt="A creative director shapes a suspended field of crimson light inside a dark soundstage." formats={['avif', 'webp']} fallbackFormat="webp" widths={[720, 1200, 1920]} sizes="100vw" />
+    <div class="cinematic-field-shade"></div>
+    <div class="shell cinematic-field-copy">
+      <p class="eyebrow">Media alchemy / Human authority</p>
+      <h2>Machines can render.<br /><em>Only people can mean.</em></h2>
+      <p>HardMagic builds generative systems around a named human point of view—so abundance becomes direction, and direction becomes a world audiences can enter.</p>
+      <a class="button ghost" href="services/creative-direction/">Enter creative direction</a>
+    </div>
+    <figcaption>AI-generated conceptual artwork, art-directed by HardMagic; an editorial metaphor, not product or client evidence.</figcaption>
+  </figure>
   <section id="products" class="product-feature section-pad">
     <div class="shell section-heading"><div><p class="eyebrow">The HardMagic constellation</p><h2>Products for the<br />creative frontier.</h2></div><p>Separate instruments. One philosophy: make powerful systems legible, directed, and alive.</p></div>
     <div class="shell product-grid">{featured.map((product, index) => <ProductCard id={product.id} data={product.data} index={index} />)}</div>
@@ -34,6 +47,17 @@ const featured = products.filter((p) => p.data.featured);
     <div class="continuum-art" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><span>H</span></div>
     <div class="shell continuum-copy"><p class="eyebrow">The connected system</p><h2>From first intention<br />to finished experience.</h2><ol><li><span>01</span><div><b>Imagine</b><p>Direct image, motion, sound, and form in Studio.</p></div></li><li><span>02</span><div><b>Orchestrate</b><p>Route models and compute through a resilient GPU fabric.</p></div></li><li><span>03</span><div><b>Understand</b><p>See the live product and its source together in WireMark.</p></div></li><li><span>04</span><div><b>Deliver</b><p>Make every public experience earn trust with Web Magic.</p></div></li></ol></div>
   </section>
+  <figure class="cinematic-field cinematic-field-right">
+    <Picture src={audienceDreamfield} alt="An audience gathers at night as moving imagery passes through mist and suspended fabric." formats={['avif', 'webp']} fallbackFormat="webp" widths={[720, 1200, 1920]} sizes="100vw" />
+    <div class="cinematic-field-shade"></div>
+    <div class="shell cinematic-field-copy">
+      <p class="eyebrow">Dispatch from 2035</p>
+      <h2>The next medium<br />will not look like a screen.</h2>
+      <p>Stories become spatial, adaptive, conversational, and persistent. The winning organizations will not publish more content. They will cultivate living narrative systems with memory, consent, provenance, and unmistakable taste.</p>
+      <a class="text-link" href="briefs/generative-media-operating-system/">Read the future brief <b>↗</b></a>
+    </div>
+    <figcaption>AI-generated conceptual artwork imagining participatory media in 2035; scenario illustration, not a forecast.</figcaption>
+  </figure>
   <section class="legacy-band"><div class="shell"><p class="eyebrow">Experience is our unfair advantage</p><blockquote>“Dream in reality.”</blockquote><p>From brand worlds for Disney, ABC, ZICO, Jamba Juice, and others to the next generation of creative infrastructure—we have always made imagination operational.</p><a class="text-link" href="company/">Read our story <b>↗</b></a></div></section>
   <section class="closing-cta shell section-pad"><p class="eyebrow dark">What are you making?</p><h2>Bring us the thing that<br />doesn’t exist yet.</h2><a class="button dark-button" href="contact/">Start a conversation</a></section>
 </BaseLayout>

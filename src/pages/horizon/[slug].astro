@@ -1,0 +1,59 @@
+---
+import { Picture } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { horizon2035Scenarios, type Horizon2035Scenario } from '../../data/horizon2035';
+import mediaAlchemy from '../../assets/editorial/media-alchemy-ritual.avif';
+import archiveCathedral from '../../assets/editorial/archive-cathedral-2035.avif';
+import audienceDreamfield from '../../assets/editorial/audience-dreamfield-2035.avif';
+
+export function getStaticPaths() {
+  return horizon2035Scenarios.map((scenario) => ({ params: { slug: scenario.slug }, props: { scenario } }));
+}
+
+interface Props { scenario: Horizon2035Scenario }
+const { scenario } = Astro.props as Props;
+const images = [mediaAlchemy, archiveCathedral, audienceDreamfield] as const;
+const leadImage = images[(scenario.number - 1) % images.length] ?? mediaAlchemy;
+---
+<BaseLayout title={`${scenario.title} — Horizon 2035`} description={scenario.dek}>
+  <article class="horizon-dispatch">
+    <header class="horizon-dispatch-hero">
+      <Picture src={leadImage} alt="" formats={['avif','webp']} fallbackFormat="webp" widths={[720,1200,1920]} sizes="100vw" loading="eager" fetchpriority="high" />
+      <div class="horizon-veil"></div>
+      <div class="shell horizon-dispatch-copy">
+        <p class="eyebrow">Dispatch {String(scenario.number).padStart(2,'0')} / Written from 2035</p>
+        <p class="horizon-confidence">Scenario confidence: {scenario.confidence} · Evidence cutoff: 12 August 2026</p>
+        <h1>{scenario.title}</h1>
+        <p>{scenario.dek}</p>
+        <div class="horizon-audiences">{scenario.audiences.map((audience) => <span>{audience}</span>)}</div>
+      </div>
+      <p class="horizon-art-note">AI-generated conceptual scenario art, not documentary or forecast evidence.</p>
+    </header>
+
+    <section class="horizon-thesis shell section-pad">
+      <p class="eyebrow dark">The thesis</p>
+      <blockquote>{scenario.thesis}</blockquote>
+    </section>
+
+    <div class="horizon-reading shell">
+      <aside>
+        <p class="eyebrow dark">Reading map</p>
+        <a href="#signals">2026 signals</a><a href="#scenario">The 2035 scene</a><a href="#implications">Implications</a><a href="#moves">Moves now</a><a href="#uncertainty">Uncertainty</a><a href="#sources">Sources</a>
+      </aside>
+      <div class="horizon-argument">
+        <section id="signals" class="horizon-module evidence-module"><p class="module-mark">Evidence / 2026</p><h2>Signals visible from here.</h2>{scenario.signals2026.map((paragraph) => <p>{paragraph}</p>)}</section>
+        <section id="scenario" class="horizon-module scenario-module"><p class="module-mark">Inference / 2035</p><h2>A future history.</h2>{scenario.scenario2035.map((paragraph) => <p>{paragraph}</p>)}</section>
+        <section id="implications" class="horizon-module"><p class="module-mark">Interpretation</p><h2>What changes for leaders and makers.</h2><ul>{scenario.strategicImplications.map((item) => <li>{item}</li>)}</ul></section>
+        <section id="moves" class="horizon-module moves-module"><p class="module-mark">Recommendation / Now</p><h2>Moves to make before the future hardens.</h2><ol>{scenario.movesToMakeNow.map((item, index) => <li><span>{String(index + 1).padStart(2,'0')}</span>{item}</li>)}</ol></section>
+        <section id="uncertainty" class="horizon-module uncertainty-module"><p class="module-mark">Open questions</p><h2>What could change this conclusion.</h2>{scenario.uncertainties.map((paragraph) => <p>{paragraph}</p>)}</section>
+        <section id="sources" class="horizon-module sources-module"><p class="module-mark">Primary sources</p><h2>The evidence beneath the scenario.</h2><ol>{scenario.citations.map((source) => <li><a href={source.url} rel="noreferrer"><b>{source.title}</b><span>{source.publisher} · {source.published}</span><p>{source.supports}</p></a></li>)}</ol></section>
+      </div>
+    </div>
+
+    <nav class="horizon-next shell section-pad" aria-label="Horizon 2035 navigation">
+      <p class="eyebrow dark">Continue reading</p>
+      <a href="horizon/">All twelve future histories <span>↗</span></a>
+      <a href="briefs/">Private technical briefs <span>↗</span></a>
+    </nav>
+  </article>
+</BaseLayout>

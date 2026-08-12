@@ -1,0 +1,37 @@
+---
+import { Picture } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { horizon2035Scenarios } from '../../data/horizon2035';
+import archiveCathedral from '../../assets/editorial/archive-cathedral-2035.avif';
+---
+<BaseLayout title="Horizon 2035" description="Twelve evidence-led future histories for the people directing media, brands, art, infrastructure, and culture toward 2035.">
+  <header class="horizon-index-hero">
+    <Picture src={archiveCathedral} alt="A vast imagined media archive, illuminated like a cathedral in 2035." formats={['avif','webp']} fallbackFormat="webp" widths={[720,1200,1920]} sizes="100vw" loading="eager" fetchpriority="high" />
+    <div class="horizon-veil"></div>
+    <div class="shell horizon-index-copy">
+      <p class="eyebrow">HardMagic future histories / Evidence cutoff 2026</p>
+      <h1>Horizon<br /><em>2035.</em></h1>
+      <p>We write from the future to make the present legible. These are sourced scenarios—not predictions—designed to help creative and technical leaders make durable moves while the medium is still becoming.</p>
+      <a class="button ghost" href="#dispatches">Enter the dispatches</a>
+    </div>
+  </header>
+
+  <section class="horizon-index shell section-pad" id="dispatches">
+    <header>
+      <p class="eyebrow dark">Twelve future histories</p>
+      <h2>Signals now.<br />Consequences later.</h2>
+      <p>Each dispatch separates documented 2026 signals, HardMagic’s 2035 inference, strategic implications, immediate moves, and uncertainty.</p>
+    </header>
+    <ol>
+      {horizon2035Scenarios.map((scenario) => (
+        <li>
+          <a href={`horizon/${scenario.slug}/`}>
+            <span>{String(scenario.number).padStart(2,'0')}</span>
+            <div><h3>{scenario.title}</h3><p>{scenario.dek}</p></div>
+            <em>{scenario.confidence} confidence ↗</em>
+          </a>
+        </li>
+      ))}
+    </ol>
+  </section>
+</BaseLayout>

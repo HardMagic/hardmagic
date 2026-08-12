@@ -13,7 +13,7 @@
     "preview": "astro preview",
     "check": "astro check",
     "typecheck:ts7": "tsc --noEmit --project tsconfig.native.json",
-    "test": "vitest run tests/site.test.ts",
+    "test": "vitest run tests/site.test.ts tests/future2035-atmosphere.test.ts",
     "test:browser": "playwright test",
     "audit:routes": "node scripts/audit-routes.mjs",
     "audit:media": "node scripts/audit-media.mjs",

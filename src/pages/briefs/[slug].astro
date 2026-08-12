@@ -1,13 +1,24 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { Picture } from 'astro:assets';
 import EditorialVisual from '../../components/editorial/EditorialVisual.astro';
 import { briefs, type TechnicalBrief } from '../../data/briefs';
+import archiveCathedral from '../../assets/editorial/archive-cathedral-2035.avif';
+import mediaAlchemy from '../../assets/editorial/media-alchemy-ritual.avif';
+import audienceDreamfield from '../../assets/editorial/audience-dreamfield-2035.avif';
 
 export function getStaticPaths() {
   return briefs.map((brief) => ({ params: { slug: brief.slug }, props: { brief } }));
 }
 interface Props { brief: TechnicalBrief }
-const { brief } = Astro.props;
+const { brief } = Astro.props as Props;
+const coverImages = [archiveCathedral, mediaAlchemy, audienceDreamfield] as const;
+const coverSeed = [...brief.slug].reduce((total, character) => total + character.charCodeAt(0), 0);
+const coverImage = coverImages[coverSeed % coverImages.length] ?? archiveCathedral;
+const briefEvidence = brief.evidenceNeeds.map((item) => {
+  const url = item.match(/https:\/\/\S+$/)?.[0];
+  return { text: url ? item.slice(0, -url.length).trim() : item, url };
+});
 ---
 <BaseLayout title={brief.title} description={brief.squeeze.promise}>
   <article class="brief-page">
@@ -20,6 +31,8 @@ const { brief } = Astro.props;
         <a class="button dark-button" href="#request">Request the brief</a>
       </div>
       <div class="brief-cover" aria-label={`Conceptual cover for ${brief.title}`}>
+        <Picture class="brief-cover-media" src={coverImage} alt="" formats={['avif','webp']} fallbackFormat="webp" widths={[480,720,960]} sizes="(max-width: 900px) 90vw, 38vw" />
+        <div class="brief-cover-veil"></div>
         <span>HM / TECHNICAL BRIEF</span><b>{brief.title}</b><i>{brief.pageCount}</i>
       </div>
     </header>
@@ -47,16 +60,16 @@ const { brief } = Astro.props;
     <section class="brief-standards">
       <div class="shell">
         <div><p class="eyebrow">Evidence standard</p><h2>What this brief will—and will not—claim.</h2></div>
-        <div><h3>Evidence required</h3><ul>{brief.evidenceNeeds.map((item) => <li>{item}</li>)}</ul><h3>Limitations</h3><ul>{brief.limitations.map((item) => <li>{item}</li>)}</ul></div>
+        <div><h3>Evidence required</h3><ul>{briefEvidence.map((item) => <li>{item.text}{item.url && <> <a href={item.url} rel="noreferrer">Inspect the primary source ↗</a></>}</li>)}</ul><h3>Limitations</h3><ul>{brief.limitations.map((item) => <li>{item}</li>)}</ul></div>
       </div>
     </section>
 
     <section class="squeeze" id="request">
-      <form method="post" action="https://briefs.hardmagic.com/api/brief-request" class="shell squeeze-grid">
-        <div><p class="eyebrow">Private delivery</p><h2>{brief.squeeze.headline}</h2><p>{brief.squeeze.promise}</p><p class="privacy-note">We email a time-limited private link. The PDF is never published at a public site path. Do not submit secrets, regulated personal information, or confidential client material.</p></div>
+      <form method="post" action="https://briefs.hardmagic.com/api/brief-request" class="shell squeeze-grid" data-corporate-email-only>
+        <div><p class="eyebrow">Private delivery</p><h2>{brief.squeeze.headline}</h2><p>{brief.squeeze.promise}</p><p class="privacy-note">We email a time-limited private link. The PDF is never published at a public site path. Company email required; Gmail, Yahoo, Hotmail, and Outlook.com accounts are not eligible. Do not submit secrets, regulated personal information, or confidential client material.</p></div>
         <div class="form-grid">
           <label>Name<input required name="name" autocomplete="name" /></label>
-          <label>Work email<input required type="email" name="email" autocomplete="email" /></label>
+          <label>Work email<input required type="email" name="email" autocomplete="email" /><small>Company email required. Gmail, Yahoo, Hotmail, and Outlook.com accounts are not eligible.</small></label>
           <label>Organization<input required name="organization" autocomplete="organization" /></label>
           <label>Role<input required name="role" autocomplete="organization-title" /></label>
           <label>Industry<input required name="industry" /></label>

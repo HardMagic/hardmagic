@@ -54,10 +54,10 @@ export const megaMenus: MegaMenu[] = [
   },
   {
     label: 'Ideas', href: 'insights/',
-    feature: { eyebrow: 'Current field guide', title: 'Creative direction becomes more valuable after the prompt.', href: 'briefs/creative-direction-after-the-prompt/' },
+    feature: { eyebrow: 'HardMagic / Horizon 2035', title: 'Twelve sourced future histories for the people deciding what media becomes.', href: 'horizon/' },
     groups: [
       { title: 'Intelligence', links: [
-        { label: 'Latest insights', href: 'insights/' }, { label: 'Technical briefs', href: 'briefs/' },
+        { label: 'Horizon 2035', href: 'horizon/', note: 'Twelve future histories' }, { label: 'Latest insights', href: 'insights/' }, { label: 'Technical briefs', href: 'briefs/' },
         { label: 'Methods', href: 'methods/' }, { label: 'Editorial policy', href: 'editorial-policy/' },
       ]},
       { title: 'Creative systems', links: [

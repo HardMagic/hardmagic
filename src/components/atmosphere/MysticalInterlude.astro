@@ -1,0 +1,98 @@
+---
+import type { AtmosphericHeadingLevel, AtmosphericTone } from './types';
+
+interface Props {
+  id: string;
+  title: string;
+  eyebrow?: string;
+  headingLevel?: AtmosphericHeadingLevel;
+  tone?: AtmosphericTone;
+  role?: 'section' | 'aside';
+  motif?: 'threshold' | 'oracle' | 'signal';
+}
+
+const {
+  id,
+  title,
+  eyebrow,
+  headingLevel = 'h2',
+  tone = 'nocturne',
+  role = 'section',
+  motif = 'threshold',
+} = Astro.props;
+
+const Heading = headingLevel;
+const Element = role;
+const titleId = `${id}-title`;
+---
+
+<Element class="atm-interlude" data-tone={tone} data-motif={motif} aria-labelledby={titleId}>
+  <div class="atm-interlude__field" aria-hidden="true">
+    <span></span><span></span><span></span>
+  </div>
+  <div class="atm-interlude__content">
+    {eyebrow && <p class="atm-interlude__eyebrow">{eyebrow}</p>}
+    <Heading id={titleId}>{title}</Heading>
+    <div class="atm-interlude__body"><slot /></div>
+    <footer class="atm-interlude__footer"><slot name="footer" /></footer>
+  </div>
+</Element>
+
+<style>
+  .atm-interlude {
+    --atm-glow: var(--coral, #ef5b7d);
+    position: relative;
+    isolation: isolate;
+    overflow: clip;
+    padding: clamp(5rem, 13vw, 12rem) clamp(1rem, 6vw, 6rem);
+    background: #0a070b;
+    color: #fffaf4;
+    container-type: inline-size;
+  }
+  .atm-interlude[data-tone='ember'] { --atm-glow: var(--gold, #f2b84b); background: #12090a; }
+  .atm-interlude[data-tone='spectral'] { --atm-glow: var(--violet, #ad8cff); background: #070914; }
+  .atm-interlude__field { position: absolute; z-index: -1; inset: 0; opacity: .72; }
+  .atm-interlude__field::before,
+  .atm-interlude__field::after,
+  .atm-interlude__field span {
+    content: '';
+    position: absolute;
+    inset: 50% auto auto 50%;
+    inline-size: min(68cqi, 56rem);
+    aspect-ratio: 1;
+    border: 1px solid color-mix(in srgb, var(--atm-glow) 42%, transparent);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .atm-interlude__field::after { inline-size: min(42cqi, 34rem); border-style: dashed; transform: translate(-50%, -50%) rotate(18deg); }
+  .atm-interlude__field span:nth-child(1) { inline-size: min(20cqi, 15rem); box-shadow: 0 0 7rem color-mix(in srgb, var(--atm-glow) 32%, transparent); }
+  .atm-interlude__field span:nth-child(2) { inline-size: 1px; block-size: 100%; border: 0; border-inline-start: 1px solid color-mix(in srgb, var(--atm-glow) 28%, transparent); border-radius: 0; }
+  .atm-interlude__field span:nth-child(3) { inline-size: 100%; block-size: 1px; border: 0; border-block-start: 1px solid color-mix(in srgb, var(--atm-glow) 28%, transparent); border-radius: 0; }
+  .atm-interlude[data-motif='oracle'] .atm-interlude__field { transform: rotate(45deg) scale(.82); }
+  .atm-interlude[data-motif='signal'] .atm-interlude__field::before { border-radius: 12%; transform: translate(-50%, -50%) rotate(45deg); }
+
+  .atm-interlude__content { inline-size: min(100%, 70rem); margin-inline: auto; text-align: center; }
+  .atm-interlude__eyebrow { margin: 0 0 1.5rem; color: var(--atm-glow); font-size: .7rem; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; }
+  .atm-interlude h2,
+  .atm-interlude h3 { margin: 0 auto; max-inline-size: 18ch; font-size: clamp(2.8rem, 8cqi, 7rem); line-height: .98; letter-spacing: -.055em; text-wrap: balance; overflow-wrap: anywhere; }
+  .atm-interlude__body { max-inline-size: 48rem; margin: 2rem auto 0; color: #dfd3d7; font-size: clamp(1rem, 1.8cqi, 1.25rem); line-height: 1.7; }
+  .atm-interlude__body :global(> :last-child) { margin-block-end: 0; }
+  .atm-interlude__footer { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; margin-block-start: 2.2rem; }
+  .atm-interlude__footer:empty { display: none; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .atm-interlude__field::after { animation: atm-orbit 32s linear infinite; }
+    @keyframes atm-orbit { to { transform: translate(-50%, -50%) rotate(378deg); } }
+  }
+  @media (forced-colors: active) {
+    .atm-interlude { border-block: 2px solid CanvasText; background: Canvas; color: CanvasText; }
+    .atm-interlude__field { display: none; }
+    .atm-interlude__eyebrow,
+    .atm-interlude__body { color: CanvasText; }
+  }
+  @media print {
+    .atm-interlude { break-inside: avoid; padding-block: 3rem; background: #fff; color: #000; }
+    .atm-interlude__field { display: none; }
+    .atm-interlude__body { color: #000; }
+  }
+</style>

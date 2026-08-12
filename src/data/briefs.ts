@@ -63,25 +63,73 @@ export const briefs = [
     decision:
       "Whether generative AI should remain a collection of experiments or become a governed production capability spanning creative, media, technology, and operations.",
     thesis:
-      "Generative media creates durable advantage only when an organization designs an operating system around it—joining creative authority, models, media assets, approvals, provenance, infrastructure, and measurement. Buying more tools without redesigning those relationships increases fragmentation.",
+      "[2035 vantage — inference] The decisive shift of 2024–2026 was not that machines learned to make media; it was that media became a continuously generated, evaluated, rights-bearing system. By 2035, the organizations that retained creative distinction treated intent, human authority, models, assets, provenance, infrastructure, distribution, and learning as one operating system. [Recommendation] Build that system now around accountable decisions and portable evidence—not around whichever model is temporarily strongest. [Uncertainty] Model capability, law, energy availability, and audience tolerance remain moving constraints.",
     pageCount: 30,
     chapters: [
       { title: "Cover and publication record", pages: { start: 1, end: 1 } },
-      { title: "How to use the field guide", pages: { start: 2, end: 2 } },
-      { title: "Executive thesis: from experiments to an operating system", pages: { start: 3, end: 4 } },
-      { title: "The generative-media value chain", pages: { start: 5, end: 6 } },
-      { title: "Why disconnected pilots stall", pages: { start: 7, end: 8 } },
-      { title: "Six operating capabilities: intent, generation, curation, rights, delivery, and learning", pages: { start: 9, end: 11 } },
-      { title: "Decision rights across brand, creative, legal, technology, and operations", pages: { start: 12, end: 14 } },
-      { title: "Reference architecture for a governed media factory", pages: { start: 15, end: 17 } },
-      { title: "Human creative authority in an agentic workflow", pages: { start: 18, end: 19 } },
-      { title: "Portfolio economics and scenario construction", pages: { start: 20, end: 21 } },
-      { title: "Maturity diagnostic", pages: { start: 22, end: 23 } },
-      { title: "A 30/60/90-day mobilization", pages: { start: 24, end: 26 } },
-      { title: "Counterarguments and failure modes", pages: { start: 27, end: 27 } },
-      { title: "Security, privacy, rights, and workforce implications", pages: { start: 28, end: 28 } },
-      { title: "Methodology, limitations, and source notes", pages: { start: 29, end: 29 } },
-      { title: "HardMagic engagement paths and contact panel", pages: { start: 30, end: 30 } },
+      {
+        title:
+          "A dispatch from 2035: how to read evidence, inference, recommendation, and uncertainty",
+        pages: { start: 2, end: 2 },
+      },
+      {
+        title: "The 2035 thesis: media became an operating system",
+        pages: { start: 3, end: 4 },
+      },
+      {
+        title:
+          "Evidence from 2024–2026: multimodal generation enters production",
+        pages: { start: 5, end: 6 },
+      },
+      {
+        title:
+          "Retrospective: why tool portfolios failed to become capabilities",
+        pages: { start: 7, end: 8 },
+      },
+      {
+        title:
+          "Seven durable capabilities: intent, generation, curation, rights, provenance, delivery, and learning",
+        pages: { start: 9, end: 11 },
+      },
+      {
+        title:
+          "Decision rights across brand, creative, legal, technology, and operations",
+        pages: { start: 12, end: 14 },
+      },
+      {
+        title: "Reference architecture for a governed media factory",
+        pages: { start: 15, end: 17 },
+      },
+      {
+        title: "Human creative authority when agents can execute",
+        pages: { start: 18, end: 19 },
+      },
+      {
+        title:
+          "Economics without prophecy: scenarios, option value, and reversible bets",
+        pages: { start: 20, end: 21 },
+      },
+      { title: "2035-back maturity diagnostic", pages: { start: 22, end: 23 } },
+      {
+        title: "The first 90 days of a ten-year capability",
+        pages: { start: 24, end: 26 },
+      },
+      {
+        title: "Disconfirming evidence, failure modes, and signals to stop",
+        pages: { start: 27, end: 27 },
+      },
+      {
+        title: "Security, privacy, rights, and workforce implications",
+        pages: { start: 28, end: 28 },
+      },
+      {
+        title: "Methodology, limitations, and source notes",
+        pages: { start: 29, end: 29 },
+      },
+      {
+        title: "HardMagic engagement paths and contact panel",
+        pages: { start: 30, end: 30 },
+      },
     ],
     diagrams: [
       "Generative-media operating-system map",
@@ -100,17 +148,20 @@ export const briefs = [
       "Scenario-cost worksheet using reader-supplied assumptions",
     ],
     evidenceNeeds: [
-      "Current official model-provider and media-tool documentation",
-      "Applicable copyright, privacy, employment, and AI-governance materials reviewed by qualified counsel",
-      "Internal workflow observations supplied with organizational consent",
-      "Auditable production records for any claimed time, cost, or quality result",
-      "Current media-volume, approval-cycle, rework, and vendor-cost baselines supplied by the participating organization",
-      "Dated primary standards and research concerning provenance and AI risk",
+      "[Evidence] Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile — National Institute of Standards and Technology, 26 July 2024 (updated 8 April 2026). NIST frames GenAI risk work across govern, map, measure, and manage over the lifecycle. https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence",
+      "[Evidence] Sora System Card — OpenAI, 9 December 2024. The disclosed production stack combines model controls, product policy, human review, red teaming, and provenance; this supports a systems—not tool-only—view of generative media. https://openai.com/index/sora-system-card/",
+      "[Evidence] 2025 Digital Video Ad Spend & Strategy Full Report — Interactive Advertising Bureau, 15 July 2025. IAB reported that 86% of surveyed buyers were using or planning to use GenAI for video-ad creative; this is adoption evidence, not proof of effectiveness. https://www.iab.com/insights/video-ad-spend-report-2025/",
+      "[Evidence] Copyright and Artificial Intelligence, Part 2: Copyrightability — U.S. Copyright Office, January 2025. The Office concluded that copyright protection depends on sufficient human-authored expressive elements, while mere prompting is insufficient. https://www.copyright.gov/ai/Copyright-and-Artificial-Intelligence-Part-2-Copyrightability-Report.pdf",
+      "[Evidence] State of AI-assisted Software Development 2025 — DORA / Google Cloud, 2025. DORA characterizes AI as an amplifier of an organization’s existing strengths and weaknesses, supporting investment in the operating system around tools. https://dora.dev/research/2025/dora-report/",
+      "[Inference] Taken together, the sources indicate that generation will become ordinary while accountable orchestration becomes differentiating; they do not establish a universal productivity or revenue gain.",
+      "[Recommendation] Before approving investment, collect organization-specific media volume, approval time, rework, rights exceptions, energy use, vendor cost, and audience-response baselines with definitions and audit trails.",
+      "[Uncertainty] Revalidate model documentation, law, labor agreements, platform policies, energy constraints, and provenance interoperability at each major decision gate.",
     ],
     limitations: [
-      "The brief cannot promise return on investment or prescribe one operating model for every organization.",
-      "Legal interpretation, labor arrangements, brand risk, infrastructure, and media economics vary by organization and jurisdiction.",
-      "Scenario exhibits are planning instruments and must not be presented as forecasts.",
+      "[Uncertainty] A 2035 vantage is a disciplined scenario, not a prediction; discontinuities may invalidate its sequence or timing.",
+      "[Uncertainty] The cited adoption findings do not establish causal return on investment, output quality, or audience acceptance.",
+      "[Boundary] Legal interpretation, labor arrangements, brand risk, infrastructure, and media economics vary by organization and jurisdiction.",
+      "[Recommendation] Treat every scenario exhibit as a planning instrument, publish assumptions, and never present it as a forecast.",
     ],
     squeeze: {
       headline: "Your GenAI experiments are not yet an operating system.",
@@ -128,18 +179,69 @@ export const briefs = [
         "Production tools and pilots are fragmented",
       ],
       secondaryRoutes: [
-        { destination: "Creative Direction", when: ["Creative authority is unclear", "Brand coherence is the primary concern"] },
-        { destination: "HardMagic Studio", when: ["Multimodal production workflow is the primary need", "Generation and review need to be operationalized"] },
-        { destination: "GPU Router", when: ["Inference cost is material", "Privacy or deployment placement is the primary constraint"] },
-        { destination: "Media Management", when: ["Asset discovery, approval, rights, or reuse dominates the intake"] },
-        { destination: "Executive advisory", when: ["The decision remains ambiguous", "The request spans several executive functions"] },
+        {
+          destination: "Creative Direction",
+          when: [
+            "Creative authority is unclear",
+            "Brand coherence is the primary concern",
+          ],
+        },
+        {
+          destination: "HardMagic Studio",
+          when: [
+            "Multimodal production workflow is the primary need",
+            "Generation and review need to be operationalized",
+          ],
+        },
+        {
+          destination: "GPU Router",
+          when: [
+            "Inference cost is material",
+            "Privacy or deployment placement is the primary constraint",
+          ],
+        },
+        {
+          destination: "Media Management",
+          when: [
+            "Asset discovery, approval, rights, or reuse dominates the intake",
+          ],
+        },
+        {
+          destination: "Executive advisory",
+          when: [
+            "The decision remains ambiguous",
+            "The request spans several executive functions",
+          ],
+        },
       ],
     },
     followups: [
-      { timing: "delivery", purpose: "Deliver the requested resource and open a useful dialogue.", message: "Which operating capability is currently least owned?", action: "Invite a direct reply without requiring another form." },
-      { timing: "day-3", purpose: "Help the reader apply the brief.", message: "Use the maturity diagnostic to identify the two most ambiguous decision rights.", action: "Link back to the privately delivered worksheet." },
-      { timing: "day-10", purpose: "Add report-specific operating guidance.", message: "A short operating-model note tailored to the challenge selected in the intake.", action: "Offer the most relevant HardMagic capability path." },
-      { timing: "day-21", purpose: "Convert demonstrated intent into a bounded working session.", message: "Map one real campaign or media workflow with HardMagic.", action: "Invite the reader to schedule a working session." },
+      {
+        timing: "delivery",
+        purpose: "Deliver the requested resource and open a useful dialogue.",
+        message: "Which operating capability is currently least owned?",
+        action: "Invite a direct reply without requiring another form.",
+      },
+      {
+        timing: "day-3",
+        purpose: "Help the reader apply the brief.",
+        message:
+          "Use the maturity diagnostic to identify the two most ambiguous decision rights.",
+        action: "Link back to the privately delivered worksheet.",
+      },
+      {
+        timing: "day-10",
+        purpose: "Add report-specific operating guidance.",
+        message:
+          "A short operating-model note tailored to the challenge selected in the intake.",
+        action: "Offer the most relevant HardMagic capability path.",
+      },
+      {
+        timing: "day-21",
+        purpose: "Convert demonstrated intent into a bounded working session.",
+        message: "Map one real campaign or media workflow with HardMagic.",
+        action: "Invite the reader to schedule a working session.",
+      },
     ],
   },
   {
@@ -155,24 +257,72 @@ export const briefs = [
     decision:
       "How creative leadership, approval authority, and brand continuity should change when generative execution becomes abundant.",
     thesis:
-      "Generative AI does not eliminate creative direction; it makes direction the scarce capability. When production accelerates, organizations need stronger intent, taste, continuity, critique, and decision authority—not merely better prompts.",
+      "[2035 vantage — inference] By 2035, synthetic execution is abundant but attention, trust, and coherent worlds are not. The creative director’s work has moved upstream—from selecting executions to defining the premise, canon, ethical boundary, audience contract, and stopping rule that fleets of human and machine makers can honor. [Recommendation] Preserve named human authorship and accountable approval while giving artists wider spaces for divergence. [Uncertainty] No evidence establishes that audiences will accept synthetic expression uniformly across genres, cultures, or contexts.",
     pageCount: 28,
     chapters: [
       { title: "Cover and publication record", pages: { start: 1, end: 1 } },
-      { title: "Reader map", pages: { start: 2, end: 2 } },
-      { title: "Executive thesis: abundance raises the value of direction", pages: { start: 3, end: 4 } },
-      { title: "What creative directors actually control", pages: { start: 5, end: 6 } },
-      { title: "Why prompt fluency is not a creative operating model", pages: { start: 7, end: 8 } },
-      { title: "Translating brand strategy into generative constraints", pages: { start: 9, end: 10 } },
-      { title: "The intent stack: premise, audience, world, system, and execution", pages: { start: 11, end: 13 } },
-      { title: "Critique loops for human and agent teams", pages: { start: 14, end: 16 } },
-      { title: "Continuity across campaigns, formats, and channels", pages: { start: 17, end: 18 } },
-      { title: "Creative quality without false precision", pages: { start: 19, end: 20 } },
-      { title: "Embedded, fractional, campaign, and transformation engagement models", pages: { start: 21, end: 22 } },
-      { title: "Creative-direction workshop and 30-day pilot", pages: { start: 23, end: 25 } },
-      { title: "Failure modes and organizational tensions", pages: { start: 26, end: 26 } },
-      { title: "Methodology, limitations, and evidence requirements", pages: { start: 27, end: 27 } },
-      { title: "HardMagic creative-leadership contact panel", pages: { start: 28, end: 28 } },
+      {
+        title: "A note from 2035: reading a future history responsibly",
+        pages: { start: 2, end: 2 },
+      },
+      {
+        title: "Executive thesis: abundance made direction more valuable",
+        pages: { start: 3, end: 4 },
+      },
+      {
+        title:
+          "The creative director in 2035: premise, canon, consent, and consequence",
+        pages: { start: 5, end: 6 },
+      },
+      {
+        title:
+          "The prompt era in retrospect: a transitional interface, not an operating model",
+        pages: { start: 7, end: 8 },
+      },
+      {
+        title: "Translating brand strategy into generative constraints",
+        pages: { start: 9, end: 10 },
+      },
+      {
+        title:
+          "The intent stack: premise, audience, world, system, and execution",
+        pages: { start: 11, end: 13 },
+      },
+      {
+        title: "Critique loops for human and agent teams",
+        pages: { start: 14, end: 16 },
+      },
+      {
+        title:
+          "Persistent worlds across campaigns, formats, agents, and communities",
+        pages: { start: 17, end: 18 },
+      },
+      {
+        title:
+          "Judgment without false precision: quality, originality, and fitness",
+        pages: { start: 19, end: 20 },
+      },
+      {
+        title:
+          "Embedded, fractional, campaign, and transformation engagement models",
+        pages: { start: 21, end: 22 },
+      },
+      {
+        title: "Creative-direction workshop and 30-day pilot",
+        pages: { start: 23, end: 25 },
+      },
+      {
+        title: "Failure modes and organizational tensions",
+        pages: { start: 26, end: 26 },
+      },
+      {
+        title: "Methodology, limitations, and evidence requirements",
+        pages: { start: 27, end: 27 },
+      },
+      {
+        title: "HardMagic creative-leadership contact panel",
+        pages: { start: 28, end: 28 },
+      },
     ],
     diagrams: [
       "Creative-intent stack",
@@ -191,23 +341,27 @@ export const briefs = [
       "Fractional creative-director readiness diagnostic",
     ],
     evidenceNeeds: [
-      "Approved brand systems and actual briefs supplied by participating organizations",
-      "Documented examples comparing initial intent with approved output",
-      "Consented interviews with working creative leaders under an explicit attribution policy",
-      "Current official model documentation wherever model capabilities are discussed",
-      "Customer-approved case evidence before naming any brand or result",
-      "Organization-specific definitions for quality, novelty, consistency, and fitness for use",
+      "[Evidence] Copyright and Artificial Intelligence, Part 2: Copyrightability — U.S. Copyright Office, January 2025. The Office centers human-determined expressive elements and says prompts alone do not provide sufficient control for copyrightability. https://www.copyright.gov/ai/Copyright-and-Artificial-Intelligence-Part-2-Copyrightability-Report.pdf",
+      "[Evidence] Sora System Card — OpenAI, 9 December 2024. OpenAI reports feedback across more than 500,000 model requests from more than 300 early users in over 60 countries and describes layered safety and provenance controls; the sample is provider-selected and not an industry census. https://openai.com/index/sora-system-card/",
+      "[Evidence] 2025 Creator Economy Ad Spend & Strategy Report — Interactive Advertising Bureau, 20 November 2025. IAB reports 95% of surveyed creator-ad buyers had concerns about AI, led by authenticity or loss of human connection. https://www.iab.com/insights/2025-creator-economy-ad-spend-strategy-report/",
+      "[Evidence] The rise of virtual creators: a new frontier on YouTube — YouTube Culture & Trends, 17 April 2025. YouTube reports that a sample of 300 virtual creators received more than 15 billion views in 2024, while emphasizing the human connection behind their personas. https://blog.youtube/culture-and-trends/youtube-culture-trends-report-virtual-creators/",
+      "[Evidence] YouTube study reveals the rise of ‘creative maximalism’ in content — YouTube Culture & Trends, 4 September 2025. YouTube describes surveyed teen media expectations as participatory, customizable, and borderless; this is platform research, not a universal youth profile. https://blog.youtube/culture-and-trends/next-gen-creativity/",
+      "[Inference] Human authorship, recognizable world-building, and community participation are likely to become stronger differentiators as executable media becomes inexpensive; the evidence does not prove one winning aesthetic.",
+      "[Recommendation] Require approved brand systems, real briefs, consented artist research, decision logs, and paired intent-to-output review before claiming continuity or quality.",
+      "[Uncertainty] Reassess audience disclosure preferences, copyright doctrine, likeness rights, labor terms, and platform norms by market and medium.",
     ],
     limitations: [
-      "Taste cannot be reduced to a universal score.",
-      "A model cannot independently approve brand-sensitive work without accountable human authority.",
-      "Examples must distinguish creative interpretation from objectively verifiable evidence.",
+      "[Boundary] Taste, cultural resonance, originality, and artistic consequence cannot be reduced to a universal score.",
+      "[Recommendation] A model must not independently approve brand-sensitive work; assign an accountable human decision-maker and preserve the decision record.",
+      "[Boundary] Examples must label creative interpretation, reported evidence, commissioned work, and synthetic demonstration separately.",
+      "[Uncertainty] Virtual-creator and creator-advertising findings may not transfer across platforms, countries, genres, or audience ages.",
     ],
     squeeze: {
       headline: "When anyone can generate, who decides what deserves to exist?",
       promise:
         "A field guide for establishing creative authority, useful critique, and brand continuity across human and generative production.",
-      preview: "The intent-stack graphic and a five-question creative-authority audit.",
+      preview:
+        "The intent-stack graphic and a five-question creative-authority audit.",
     },
     routing: {
       primaryDestination: "Creative Director intake",
@@ -219,17 +373,63 @@ export const briefs = [
         "An embedded or fractional creative leader is requested",
       ],
       secondaryRoutes: [
-        { destination: "Marketing Consulting", when: ["Positioning is unresolved", "Portfolio strategy is the primary ambiguity"] },
-        { destination: "HardMagic Studio", when: ["The operating workflow needs implementation", "Multimodal production is the principal need"] },
-        { destination: "Media Management", when: ["Continuity, curation, or asset governance is the primary problem"] },
-        { destination: "Executive principal dialogue", when: ["The work is confidential", "The request is an executive brand transformation"] },
+        {
+          destination: "Marketing Consulting",
+          when: [
+            "Positioning is unresolved",
+            "Portfolio strategy is the primary ambiguity",
+          ],
+        },
+        {
+          destination: "HardMagic Studio",
+          when: [
+            "The operating workflow needs implementation",
+            "Multimodal production is the principal need",
+          ],
+        },
+        {
+          destination: "Media Management",
+          when: [
+            "Continuity, curation, or asset governance is the primary problem",
+          ],
+        },
+        {
+          destination: "Executive principal dialogue",
+          when: [
+            "The work is confidential",
+            "The request is an executive brand transformation",
+          ],
+        },
       ],
     },
     followups: [
-      { timing: "delivery", purpose: "Deliver the brief and identify the authority gap.", message: "Which creative decision currently has no clear owner?", action: "Invite a direct reply." },
-      { timing: "day-3", purpose: "Make the brief operational.", message: "Complete the creative-authority audit against one active initiative.", action: "Return the reader to the relevant worksheet." },
-      { timing: "day-10", purpose: "Deepen the report-specific argument.", message: "A concise note on building critique systems for human and agent teams.", action: "Offer the appropriate creative leadership path." },
-      { timing: "day-21", purpose: "Offer a bounded next step.", message: "Test the operating model against one current campaign or brand decision.", action: "Invite a creative operating-model working session." },
+      {
+        timing: "delivery",
+        purpose: "Deliver the brief and identify the authority gap.",
+        message: "Which creative decision currently has no clear owner?",
+        action: "Invite a direct reply.",
+      },
+      {
+        timing: "day-3",
+        purpose: "Make the brief operational.",
+        message:
+          "Complete the creative-authority audit against one active initiative.",
+        action: "Return the reader to the relevant worksheet.",
+      },
+      {
+        timing: "day-10",
+        purpose: "Deepen the report-specific argument.",
+        message:
+          "A concise note on building critique systems for human and agent teams.",
+        action: "Offer the appropriate creative leadership path.",
+      },
+      {
+        timing: "day-21",
+        purpose: "Offer a bounded next step.",
+        message:
+          "Test the operating model against one current campaign or brand decision.",
+        action: "Invite a creative operating-model working session.",
+      },
     ],
   },
   {
@@ -246,26 +446,74 @@ export const briefs = [
     decision:
       "How to preserve and communicate the origin, transformation history, approval state, and distribution context of media.",
     thesis:
-      "Provenance is not a badge added at publication. It is a supply-chain property that must survive capture, generation, editing, approval, distribution, and reuse.",
+      "[2035 vantage — inference] By 2035, trustworthy media is not defined by whether it is synthetic; it is defined by whether people and machines can inspect a durable chain of claims about origin, ingredients, transformations, authority, and distribution. [Recommendation] Treat provenance as a supply-chain control from capture or generation through reuse, with cryptographic evidence complementing—not replacing—editorial verification. [Uncertainty] Credentials can be removed, platforms can reinterpret labels, keys can be compromised, and provenance cannot establish that a depicted event is true.",
     pageCount: 32,
     chapters: [
       { title: "Cover and publication record", pages: { start: 1, end: 1 } },
-      { title: "Scope and terminology", pages: { start: 2, end: 2 } },
-      { title: "Executive thesis", pages: { start: 3, end: 4 } },
-      { title: "Threat and trust landscape", pages: { start: 5, end: 6 } },
-      { title: "The media lifecycle and where context is lost", pages: { start: 7, end: 9 } },
-      { title: "Credentials, metadata, manifests, and evidence boundaries", pages: { start: 10, end: 12 } },
-      { title: "Reference provenance architecture", pages: { start: 13, end: 15 } },
-      { title: "Capture and ingestion controls", pages: { start: 16, end: 17 } },
+      {
+        title:
+          "A dispatch from 2035: provenance, authenticity, identity, integrity, and truth",
+        pages: { start: 2, end: 2 },
+      },
+      {
+        title: "Executive thesis: trust became inspectable infrastructure",
+        pages: { start: 3, end: 4 },
+      },
+      {
+        title: "Evidence from 2024–2026: the trust stack begins to standardize",
+        pages: { start: 5, end: 6 },
+      },
+      {
+        title:
+          "Future history of the media lifecycle: where context survived and where it vanished",
+        pages: { start: 7, end: 9 },
+      },
+      {
+        title: "Credentials, metadata, manifests, and evidence boundaries",
+        pages: { start: 10, end: 12 },
+      },
+      {
+        title: "Reference provenance architecture",
+        pages: { start: 13, end: 15 },
+      },
+      {
+        title: "Capture and ingestion controls",
+        pages: { start: 16, end: 17 },
+      },
       { title: "Generative and editing events", pages: { start: 18, end: 19 } },
-      { title: "Approval, signing, and publication", pages: { start: 20, end: 21 } },
-      { title: "Distribution, transformation, and platform behavior", pages: { start: 22, end: 23 } },
-      { title: "Verification experiences for people and machines", pages: { start: 24, end: 25 } },
-      { title: "Incident response and disputed media", pages: { start: 26, end: 27 } },
-      { title: "Implementation roadmap and control assessment", pages: { start: 28, end: 29 } },
-      { title: "Counterarguments and residual risks", pages: { start: 30, end: 30 } },
-      { title: "Methodology, standards review, and limitations", pages: { start: 31, end: 31 } },
-      { title: "HardMagic provenance workshop and contact panel", pages: { start: 32, end: 32 } },
+      {
+        title: "Approval, signing, and publication",
+        pages: { start: 20, end: 21 },
+      },
+      {
+        title: "Distribution, transformation, and platform behavior",
+        pages: { start: 22, end: 23 },
+      },
+      {
+        title:
+          "Verification experiences for people, platforms, agents, and archives",
+        pages: { start: 24, end: 25 },
+      },
+      {
+        title: "Incident response and disputed media",
+        pages: { start: 26, end: 27 },
+      },
+      {
+        title: "Implementation roadmap and control assessment",
+        pages: { start: 28, end: 29 },
+      },
+      {
+        title: "Counterarguments and residual risks",
+        pages: { start: 30, end: 30 },
+      },
+      {
+        title: "Methodology, standards review, and limitations",
+        pages: { start: 31, end: 31 },
+      },
+      {
+        title: "HardMagic provenance workshop and contact panel",
+        pages: { start: 32, end: 32 },
+      },
     ],
     diagrams: [
       "End-to-end content-supply-chain sequence",
@@ -284,23 +532,27 @@ export const briefs = [
       "Disputed-media response tabletop",
     ],
     evidenceNeeds: [
-      "Current official provenance specifications and implementation guidance",
-      "Current platform-support documentation verified through direct testing",
-      "Cryptographic and key-management guidance from authoritative standards bodies",
-      "Documented metadata-preservation tests across the intended editing and distribution tools",
-      "Qualified legal review of claims communicated to audiences",
-      "Documented threat scenarios and consented incident history where available",
+      "[Evidence] Content Credentials: C2PA Technical Specification 2.1 — Coalition for Content Provenance and Authenticity, September 2024. The specification defines signed manifests, assertions, ingredients, validation states, and richer ingredient workflows. https://spec.c2pa.org/specifications/specifications/2.1/specs/C2PA_Specification.html",
+      "[Evidence] C2PA Content Credentials Explained: Addressing Common Questions and Updates — C2PA Technical Working Group, September 2025. C2PA describes a Content Credential as a cryptographically bound structure recording an asset’s provenance history and explicitly addresses security, privacy, and human-rights considerations. https://c2pa.org/wp-content/uploads/sites/33/2025/10/content_credentials_wp_0925.pdf",
+      "[Evidence] Sora System Card — OpenAI, 9 December 2024. OpenAI documents a multilayer provenance approach using C2PA metadata, visible watermarks by default, and an internal reverse-video-search capability. https://openai.com/index/sora-system-card/",
+      "[Evidence] Labeling AI-Generated Images on Facebook, Instagram and Threads — Meta, 6 February 2024 (updated 1 April 2025). Meta describes detecting C2PA and IPTC indicators to label content and illustrates that platform presentation is a separate layer from embedded provenance. https://about.fb.com/news/2024/02/labeling-ai-generated-images-on-facebook-instagram-and-threads/",
+      "[Evidence] IPTC Photo Metadata Standard 2025.1 — International Press Telecommunications Council, 26 November 2025. IPTC added AI Prompt Information, AI Prompt Writer Name, AI System Used, and AI System Version Used. https://www.iptc.org/std/photometadata/specification/IPTC-PhotoMetadata-2025.1.html",
+      "[Inference] By 2035, provenance is likely to function as machine-readable chain-of-custody infrastructure, but its value will depend on adoption, preservation, key governance, and understandable interfaces.",
+      "[Recommendation] Test credential survival across every actual editor, transcode, DAM, CDN, social platform, download, screenshot, and re-upload path; record failures by version and date.",
+      "[Uncertainty] Standards support and platform behavior change; re-run interoperability tests and threat models rather than relying on vendor announcements.",
     ],
     limitations: [
-      "Provenance does not prove that depicted events are true.",
-      "Provenance does not prevent all tampering or guarantee that every platform preserves credentials.",
-      "The brief must distinguish origin evidence, identity, integrity, and truth.",
+      "[Boundary] Provenance can support claims about history and integrity; it does not prove that depicted events are true or that a signer is trustworthy.",
+      "[Uncertainty] Credentials may be stripped, become inaccessible, fail validation, or be rendered differently by distribution platforms.",
+      "[Recommendation] Keep origin evidence, identity, integrity, editorial verification, and truth claims separate in both interfaces and policy.",
+      "[Boundary] This report is architecture guidance, not cryptographic, legal, evidentiary, or journalistic certification.",
     ],
     squeeze: {
       headline: "A provenance badge cannot repair a broken media supply chain.",
       promise:
         "An implementation-oriented architecture and assessment for preserving trustworthy context from creation through distribution.",
-      preview: "The media-lifecycle diagram with public labels; the complete control matrix remains in the private brief.",
+      preview:
+        "The media-lifecycle diagram with public labels; the complete control matrix remains in the private brief.",
     },
     routing: {
       primaryDestination: "Media governance and provenance architecture",
@@ -311,17 +563,62 @@ export const briefs = [
         "Media context is lost across editing or distribution systems",
       ],
       secondaryRoutes: [
-        { destination: "Media Management", when: ["Metadata or catalog remediation is the primary need", "Existing media lacks reliable context"] },
-        { destination: "GenAI Consulting", when: ["Generated-content policy is the primary decision", "Model workflow governance is unresolved"] },
-        { destination: "Infrastructure Advisory", when: ["Signing, key custody, or private workflow boundaries dominate"] },
-        { destination: "Executive risk dialogue", when: ["The environment is regulated", "The request is reputation-sensitive or confidential"] },
+        {
+          destination: "Media Management",
+          when: [
+            "Metadata or catalog remediation is the primary need",
+            "Existing media lacks reliable context",
+          ],
+        },
+        {
+          destination: "GenAI Consulting",
+          when: [
+            "Generated-content policy is the primary decision",
+            "Model workflow governance is unresolved",
+          ],
+        },
+        {
+          destination: "Infrastructure Advisory",
+          when: [
+            "Signing, key custody, or private workflow boundaries dominate",
+          ],
+        },
+        {
+          destination: "Executive risk dialogue",
+          when: [
+            "The environment is regulated",
+            "The request is reputation-sensitive or confidential",
+          ],
+        },
       ],
     },
     followups: [
-      { timing: "delivery", purpose: "Locate the most consequential context break.", message: "At which lifecycle stage is media context most often lost?", action: "Invite a direct reply." },
-      { timing: "day-3", purpose: "Support a first internal assessment.", message: "Use the context-loss checklist on one representative media path.", action: "Return the reader to the checklist." },
-      { timing: "day-10", purpose: "Turn the thesis into a testable plan.", message: "A concise note on designing a platform-preservation test.", action: "Offer the relevant governance or architecture path." },
-      { timing: "day-21", purpose: "Offer a bounded technical exercise.", message: "Test a provenance architecture or disputed-media scenario with HardMagic.", action: "Invite an architecture workshop or incident tabletop." },
+      {
+        timing: "delivery",
+        purpose: "Locate the most consequential context break.",
+        message: "At which lifecycle stage is media context most often lost?",
+        action: "Invite a direct reply.",
+      },
+      {
+        timing: "day-3",
+        purpose: "Support a first internal assessment.",
+        message:
+          "Use the context-loss checklist on one representative media path.",
+        action: "Return the reader to the checklist.",
+      },
+      {
+        timing: "day-10",
+        purpose: "Turn the thesis into a testable plan.",
+        message: "A concise note on designing a platform-preservation test.",
+        action: "Offer the relevant governance or architecture path.",
+      },
+      {
+        timing: "day-21",
+        purpose: "Offer a bounded technical exercise.",
+        message:
+          "Test a provenance architecture or disputed-media scenario with HardMagic.",
+        action: "Invite an architecture workshop or incident tabletop.",
+      },
     ],
   },
   {
@@ -338,25 +635,67 @@ export const briefs = [
     decision:
       "Which AI media workloads belong on local infrastructure, private cloud, or managed inference, and how those placement decisions should be governed.",
     thesis:
-      "The correct GenAI infrastructure strategy is workload placement, not ideological commitment to cloud or local compute. Media organizations need policy-driven routing based on sensitivity, model fitness, latency, capacity, cost assumptions, and operational ownership.",
+      "[2035 vantage — inference] Media compute became a programmable production resource, but power, cooling, locality, rights, and latency kept it physical. The durable architecture was neither cloud-first nor on-premises-first: it was policy-directed placement across devices, studios, private clusters, sovereign regions, and managed inference. [Recommendation] Route each workload by sensitivity, model fitness, energy and capacity envelope, latency, provenance obligations, portability, and accountable ownership. [Uncertainty] Hardware efficiency, model architecture, provider pricing, grid access, and regulation can change faster than capital plans.",
     pageCount: 31,
     chapters: [
       { title: "Cover and publication record", pages: { start: 1, end: 1 } },
-      { title: "Decision summary", pages: { start: 2, end: 2 } },
-      { title: "Executive thesis", pages: { start: 3, end: 4 } },
-      { title: "Workload taxonomy for image, video, audio, 3D, and agent tasks", pages: { start: 5, end: 7 } },
-      { title: "Placement criteria and policy boundaries", pages: { start: 8, end: 10 } },
+      {
+        title: "A dispatch from 2035: compute remained physical",
+        pages: { start: 2, end: 2 },
+      },
+      {
+        title:
+          "Executive thesis: placement policy outlived platform preference",
+        pages: { start: 3, end: 4 },
+      },
+      {
+        title:
+          "2035 workload taxonomy for image, video, audio, spatial media, simulation, and agents",
+        pages: { start: 5, end: 7 },
+      },
+      {
+        title: "Placement criteria and policy boundaries",
+        pages: { start: 8, end: 10 },
+      },
       { title: "Hybrid reference architecture", pages: { start: 11, end: 13 } },
-      { title: "GPU routing and capacity orchestration", pages: { start: 14, end: 16 } },
+      {
+        title: "GPU routing and capacity orchestration",
+        pages: { start: 14, end: 16 },
+      },
       { title: "Model and workflow lifecycle", pages: { start: 17, end: 18 } },
-      { title: "Security, isolation, data movement, and logging", pages: { start: 19, end: 20 } },
-      { title: "Reliability and graceful degradation", pages: { start: 21, end: 22 } },
-      { title: "Cost-scenario construction without false certainty", pages: { start: 23, end: 24 } },
-      { title: "Benchmarking and quality gates", pages: { start: 25, end: 26 } },
-      { title: "Build, buy, or blend decision workshop", pages: { start: 27, end: 28 } },
-      { title: "Failure modes and operational ownership", pages: { start: 29, end: 29 } },
-      { title: "Methodology, limitations, and evidence", pages: { start: 30, end: 30 } },
-      { title: "HardMagic infrastructure assessment", pages: { start: 31, end: 31 } },
+      {
+        title: "Security, isolation, data movement, and logging",
+        pages: { start: 19, end: 20 },
+      },
+      {
+        title: "Reliability and graceful degradation",
+        pages: { start: 21, end: 22 },
+      },
+      {
+        title:
+          "Energy, carbon, capacity, and cost scenarios without false certainty",
+        pages: { start: 23, end: 24 },
+      },
+      {
+        title: "Benchmarking and quality gates",
+        pages: { start: 25, end: 26 },
+      },
+      {
+        title: "Build, buy, or blend decision workshop",
+        pages: { start: 27, end: 28 },
+      },
+      {
+        title: "Failure modes and operational ownership",
+        pages: { start: 29, end: 29 },
+      },
+      {
+        title: "Methodology, limitations, and evidence",
+        pages: { start: 30, end: 30 },
+      },
+      {
+        title: "HardMagic infrastructure assessment",
+        pages: { start: 31, end: 31 },
+      },
     ],
     diagrams: [
       "Hybrid inference control plane",
@@ -376,23 +715,27 @@ export const briefs = [
       "Operational responsibility matrix",
     ],
     evidenceNeeds: [
-      "Current official provider, model, accelerator, and orchestration documentation",
-      "Customer-specific utilization, queue, latency, reliability, and cost records",
-      "Applicable security architecture and data-classification policies",
-      "Repeatable benchmark methodology with disclosed hardware and settings",
-      "Current service limits and contractual terms",
-      "Consented incident and failure records where available",
+      "[Evidence] Energy and AI — International Energy Agency, 10 April 2025. The IEA models electricity demand, supply, security, emissions, innovation, and affordability around AI and states that AI deployment depends on data-centre electricity. https://www.iea.org/reports/energy-and-ai/",
+      "[Evidence] Data centre electricity use surged in 2025, even with tightening bottlenecks driving a scramble for solutions — International Energy Agency, 16 April 2026. The IEA reports that capital expenditure by five large technology companies exceeded $400 billion in 2025 and was set to rise further in 2026; this is sector concentration evidence, not a workload cost forecast. https://www.iea.org/news/data-centre-electricity-use-surged-in-2025-even-with-tightening-bottlenecks-driving-a-scramble-for-solutions",
+      "[Evidence] NVIDIA Blackwell Ultra AI Factory Platform Paves Way for Age of AI Reasoning — NVIDIA, 18 March 2025. NVIDIA positions inference as a rack-scale systems problem spanning compute, networking, and orchestration; vendor claims require independent workload testing. https://nvidianews.nvidia.com/news/nvidia-blackwell-ultra-ai-factory-platform-paves-way-for-age-of-ai-reasoning",
+      "[Evidence] Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile — National Institute of Standards and Technology, 26 July 2024 (updated 8 April 2026). NIST recommends lifecycle risk management based on context, risk tolerance, and resources. https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence",
+      "[Evidence] Sora System Card — OpenAI, 9 December 2024. The disclosed video system uses asynchronous generation time for moderation and applies controls to inputs and outputs, illustrating that production inference includes safety workloads beyond generation. https://openai.com/index/sora-system-card/",
+      "[Inference] Media infrastructure will increasingly optimize a portfolio of generation, evaluation, moderation, provenance, storage, and delivery workloads rather than a single model endpoint.",
+      "[Recommendation] Benchmark approved workloads with disclosed hardware, model, precision, settings, queue policy, energy boundary, failure behavior, and acceptance criteria; retain raw results.",
+      "[Uncertainty] Reprice and re-benchmark at every procurement gate because service limits, accelerators, models, energy markets, and contractual terms are volatile.",
     ],
     limitations: [
-      "Hardware, model efficiency, provider pricing, and service limits change rapidly.",
-      "Illustrative architecture is not a capacity or availability guarantee.",
-      "Benchmark findings are not transferable unless hardware, model, settings, workloads, and acceptance criteria are comparable.",
+      "[Uncertainty] Hardware, model efficiency, provider pricing, grid availability, carbon intensity, and service limits change rapidly.",
+      "[Boundary] Illustrative architecture is not a capacity, availability, security, residency, or cost guarantee.",
+      "[Boundary] Benchmark findings are not transferable unless hardware, model, settings, workloads, controls, and acceptance criteria are comparable.",
+      "[Recommendation] Keep exit paths, portable assets, reproducible evaluations, and at least one graceful-degradation mode for every critical workflow.",
     ],
     squeeze: {
       headline: "Cloud versus local is the wrong infrastructure question.",
       promise:
         "A workload-placement method, hybrid reference architecture, and benchmark plan for governed media inference.",
-      preview: "The workload-placement decision tree and an unfilled policy matrix.",
+      preview:
+        "The workload-placement decision tree and an unfilled policy matrix.",
     },
     routing: {
       primaryDestination: "GPU Router and AI infrastructure",
@@ -404,17 +747,63 @@ export const briefs = [
         "The organization is actively procuring or redesigning an AI platform",
       ],
       secondaryRoutes: [
-        { destination: "HardMagic Studio", when: ["Production workflow adoption is the primary need", "Creative teams need a usable generation environment"] },
-        { destination: "GenAI Advisory", when: ["Portfolio and operating-model decisions precede infrastructure selection"] },
-        { destination: "Security Architecture", when: ["Sensitive-data boundaries dominate the decision", "Isolation and data movement require review"] },
-        { destination: "Benchmark and inference tuning", when: ["Evaluation methodology is the primary gap", "Release quality gates need to be established"] },
+        {
+          destination: "HardMagic Studio",
+          when: [
+            "Production workflow adoption is the primary need",
+            "Creative teams need a usable generation environment",
+          ],
+        },
+        {
+          destination: "GenAI Advisory",
+          when: [
+            "Portfolio and operating-model decisions precede infrastructure selection",
+          ],
+        },
+        {
+          destination: "Security Architecture",
+          when: [
+            "Sensitive-data boundaries dominate the decision",
+            "Isolation and data movement require review",
+          ],
+        },
+        {
+          destination: "Benchmark and inference tuning",
+          when: [
+            "Evaluation methodology is the primary gap",
+            "Release quality gates need to be established",
+          ],
+        },
       ],
     },
     followups: [
-      { timing: "delivery", purpose: "Identify the governing placement constraint.", message: "Which constraint dominates: sensitivity, cost, capacity, latency, or model access?", action: "Invite a direct reply." },
-      { timing: "day-3", purpose: "Help classify the workload portfolio.", message: "Apply the workload-classification worksheet to one representative workflow.", action: "Return the reader to the worksheet." },
-      { timing: "day-10", purpose: "Provide constraint-specific guidance.", message: "A placement-policy note tailored to the selected constraint.", action: "Offer the most relevant infrastructure path." },
-      { timing: "day-21", purpose: "Turn interest into a testable architecture decision.", message: "Design one controlled architecture and benchmark plan with HardMagic.", action: "Invite an architecture and benchmark session." },
+      {
+        timing: "delivery",
+        purpose: "Identify the governing placement constraint.",
+        message:
+          "Which constraint dominates: sensitivity, cost, capacity, latency, or model access?",
+        action: "Invite a direct reply.",
+      },
+      {
+        timing: "day-3",
+        purpose: "Help classify the workload portfolio.",
+        message:
+          "Apply the workload-classification worksheet to one representative workflow.",
+        action: "Return the reader to the worksheet.",
+      },
+      {
+        timing: "day-10",
+        purpose: "Provide constraint-specific guidance.",
+        message: "A placement-policy note tailored to the selected constraint.",
+        action: "Offer the most relevant infrastructure path.",
+      },
+      {
+        timing: "day-21",
+        purpose: "Turn interest into a testable architecture decision.",
+        message:
+          "Design one controlled architecture and benchmark plan with HardMagic.",
+        action: "Invite an architecture and benchmark session.",
+      },
     ],
   },
   {
@@ -430,23 +819,63 @@ export const briefs = [
     decision:
       "How visual product review should connect to source code, agent execution, human approval, and verification evidence.",
     thesis:
-      "Screenshots and tickets fragment product intent. A visual product-development environment becomes strategically useful when every observation can retain context, connect to source, become executable work, and return with verification evidence.",
+      "[2035 vantage — inference] By 2035, product interfaces are continuously negotiated among people, agents, code, policy, and live evidence. The artifact that mattered was not the screenshot or ticket but the durable link from a human observation to rendered region, source context, authorized action, evaluation, and approval. [Recommendation] Make visual intent executable only inside bounded permissions and require agents to return proof a reviewer can inspect. [Uncertainty] AI-assisted coding evidence remains context-sensitive and does not show that autonomy improves delivery outcomes by itself.",
     pageCount: 29,
     chapters: [
       { title: "Cover and publication record", pages: { start: 1, end: 1 } },
-      { title: "Reader map", pages: { start: 2, end: 2 } },
-      { title: "Executive thesis", pages: { start: 3, end: 4 } },
-      { title: "The context-loss problem", pages: { start: 5, end: 6 } },
-      { title: "Repository-to-canvas operating model", pages: { start: 7, end: 9 } },
-      { title: "Annotation as structured intent", pages: { start: 10, end: 11 } },
-      { title: "Connecting visual regions to source", pages: { start: 12, end: 14 } },
-      { title: "Agent handoff and bounded execution", pages: { start: 15, end: 17 } },
-      { title: "Evidence, review, and verification", pages: { start: 18, end: 19 } },
-      { title: "Collaboration and decision history", pages: { start: 20, end: 21 } },
-      { title: "Privacy and repository boundaries", pages: { start: 22, end: 23 } },
-      { title: "Pilot design and workflow diagnostic", pages: { start: 24, end: 26 } },
-      { title: "Failure modes and inappropriate use cases", pages: { start: 27, end: 27 } },
-      { title: "Methodology, limitations, and source needs", pages: { start: 28, end: 28 } },
+      {
+        title: "A dispatch from 2035: software became a negotiated medium",
+        pages: { start: 2, end: 2 },
+      },
+      {
+        title: "Executive thesis: preserve the chain from perception to proof",
+        pages: { start: 3, end: 4 },
+      },
+      {
+        title: "Evidence from 2024–2026: acceleration exposed context loss",
+        pages: { start: 5, end: 6 },
+      },
+      {
+        title: "Repository-to-canvas-to-agent operating model",
+        pages: { start: 7, end: 9 },
+      },
+      {
+        title: "Annotation as structured intent",
+        pages: { start: 10, end: 11 },
+      },
+      {
+        title: "Connecting visual regions to source",
+        pages: { start: 12, end: 14 },
+      },
+      {
+        title: "Agent handoff, least authority, and reversible execution",
+        pages: { start: 15, end: 17 },
+      },
+      {
+        title:
+          "Proof-carrying changes: evidence, review, verification, and rollback",
+        pages: { start: 18, end: 19 },
+      },
+      {
+        title: "Collaboration and decision history",
+        pages: { start: 20, end: 21 },
+      },
+      {
+        title: "Privacy and repository boundaries",
+        pages: { start: 22, end: 23 },
+      },
+      {
+        title: "Pilot design and workflow diagnostic",
+        pages: { start: 24, end: 26 },
+      },
+      {
+        title: "Failure modes and inappropriate use cases",
+        pages: { start: 27, end: 27 },
+      },
+      {
+        title: "Methodology, limitations, and source needs",
+        pages: { start: 28, end: 28 },
+      },
       { title: "WireMark evaluation path", pages: { start: 29, end: 29 } },
     ],
     diagrams: [
@@ -466,20 +895,24 @@ export const briefs = [
       "WireMark pilot scorecard",
     ],
     evidenceNeeds: [
-      "Observed product-review workflows supplied with organizational consent",
-      "Current repository and design-tool integration documentation",
-      "Task-cycle and rework records before making any efficiency claim",
-      "Accessibility and usability testing with representative users",
-      "Security review covering source access and agent permissions",
-      "Customer-approved product examples before any public attribution",
+      "[Evidence] Accelerate State of DevOps Report 2024 — DORA / Google Cloud, 2024 (site updated 13 April 2026). DORA found AI adoption associated with individual benefits but also with weaker delivery stability and throughput, reinforcing the need for small batches and robust testing. https://dora.dev/research/2024/dora-report/",
+      "[Evidence] State of AI-assisted Software Development 2025 — DORA / Google Cloud, 2025. DORA describes AI as an amplifier and locates returns in the surrounding organizational system, not in tools alone. https://dora.dev/research/2025/dora-report/",
+      "[Evidence] Anthropic Economic Index: AI’s impact on software development — Anthropic, 28 April 2025. Analysis of 500,000 coding interactions found agent use skewed toward automation and web/UI tasks, while also showing substantial review and iteration. https://www.anthropic.com/research/impact-software-development",
+      "[Evidence] Agentic coding and persistent returns to expertise — Anthropic, 16 June 2026. Analysis of approximately 400,000 Claude Code sessions reports that people made most planning decisions while the agent made most execution decisions, and that domain expertise remained associated with success. https://www.anthropic.com/research/claude-code-expertise",
+      "[Evidence] Web Content Accessibility Guidelines (WCAG) 2.2 — World Wide Web Consortium, Recommendation republished 12 December 2024. W3C requires conformance across complete responsive page variations and combines automated and human evaluation. https://www.w3.org/TR/2024/REC-WCAG22-20241212/",
+      "[Inference] As execution becomes cheaper, preserving intent, authorization, and review context is likely to become more important than maximizing generated code volume.",
+      "[Recommendation] Baseline real review cycles, rework, defects, accessibility outcomes, and rollback frequency; evaluate a bounded workflow against the baseline before making an efficiency claim.",
+      "[Uncertainty] Provider telemetry studies may not generalize to other tools, repositories, organizations, skill levels, or consequential production systems.",
     ],
     limitations: [
-      "Visual context does not replace requirements, architecture, tests, or accountable engineering review.",
-      "Source mapping may be incomplete in complex rendering systems.",
-      "Agent execution requires explicit permissions, review, evidence, and rollback.",
+      "[Boundary] Visual context does not replace requirements, architecture, security analysis, accessibility research, tests, or accountable engineering review.",
+      "[Uncertainty] Source mapping may be incomplete in complex rendering systems and can become stale as code changes.",
+      "[Recommendation] Agent execution requires explicit scope, least privilege, change isolation, evidence, human approval, and tested rollback.",
+      "[Boundary] Product examples and performance claims require customer approval and auditable records; demos are not outcome evidence.",
     ],
     squeeze: {
-      headline: "Your product feedback loses meaning before engineering receives it.",
+      headline:
+        "Your product feedback loses meaning before engineering receives it.",
       promise:
         "A field guide for connecting visual intent, source intelligence, agents, and verification in one review loop.",
       preview: "The context-loss diagram and the opening workflow diagnostic.",
@@ -493,17 +926,64 @@ export const briefs = [
         "Implementation verification is inconsistent",
       ],
       secondaryRoutes: [
-        { destination: "Web Magic", when: ["The scope is primarily a website", "Automated site remediation is the immediate need"] },
-        { destination: "Product and design consulting", when: ["The review workflow itself needs redesign", "Team responsibilities are unresolved"] },
-        { destination: "Agent engineering", when: ["Repository-aware automation is the primary requirement", "Authorization boundaries need implementation"] },
-        { destination: "Creative Direction", when: ["The underlying experience intent is unresolved", "Visual decisions lack accountable leadership"] },
+        {
+          destination: "Web Magic",
+          when: [
+            "The scope is primarily a website",
+            "Automated site remediation is the immediate need",
+          ],
+        },
+        {
+          destination: "Product and design consulting",
+          when: [
+            "The review workflow itself needs redesign",
+            "Team responsibilities are unresolved",
+          ],
+        },
+        {
+          destination: "Agent engineering",
+          when: [
+            "Repository-aware automation is the primary requirement",
+            "Authorization boundaries need implementation",
+          ],
+        },
+        {
+          destination: "Creative Direction",
+          when: [
+            "The underlying experience intent is unresolved",
+            "Visual decisions lack accountable leadership",
+          ],
+        },
       ],
     },
     followups: [
-      { timing: "delivery", purpose: "Locate the context-loss point.", message: "Where is context lost: capture, triage, implementation, or verification?", action: "Invite a direct reply." },
-      { timing: "day-3", purpose: "Help the team observe its current workflow.", message: "Run the context-loss audit against one recent product change.", action: "Return the reader to the audit." },
-      { timing: "day-10", purpose: "Describe an appropriate pilot shape.", message: "A pilot-pattern note based on the team and workflow identified in the intake.", action: "Offer a bounded WireMark evaluation." },
-      { timing: "day-21", purpose: "Move from abstract interest to a real workflow.", message: "Map one approved route or product workflow in WireMark.", action: "Invite a product-workflow session." },
+      {
+        timing: "delivery",
+        purpose: "Locate the context-loss point.",
+        message:
+          "Where is context lost: capture, triage, implementation, or verification?",
+        action: "Invite a direct reply.",
+      },
+      {
+        timing: "day-3",
+        purpose: "Help the team observe its current workflow.",
+        message:
+          "Run the context-loss audit against one recent product change.",
+        action: "Return the reader to the audit.",
+      },
+      {
+        timing: "day-10",
+        purpose: "Describe an appropriate pilot shape.",
+        message:
+          "A pilot-pattern note based on the team and workflow identified in the intake.",
+        action: "Offer a bounded WireMark evaluation.",
+      },
+      {
+        timing: "day-21",
+        purpose: "Move from abstract interest to a real workflow.",
+        message: "Map one approved route or product workflow in WireMark.",
+        action: "Invite a product-workflow session.",
+      },
     ],
   },
   {
@@ -519,23 +999,61 @@ export const briefs = [
     decision:
       "How much website auditing and remediation can safely become agent-assisted, and what evidence and approval controls must govern it.",
     thesis:
-      "Autonomous web optimization is valuable only when it operates inside a control plane that makes standards, evidence, approvals, source changes, rollback, and publishing boundaries explicit.",
+      "[2035 vantage — inference] By 2035, websites are read and operated by people, search systems, personal agents, assistive technology, and publishing agents at once. Autonomy became safe only where a control plane connected each finding to a standard, source location, bounded change, preview, human authority, release record, and rollback. [Recommendation] Optimize for useful, accessible, non-commodity publishing—not page volume—and let agents propose or execute only within explicit risk tiers. [Uncertainty] Discovery interfaces, agent protocols, ranking systems, and browser behavior will continue to change.",
     pageCount: 30,
     chapters: [
       { title: "Cover and publication record", pages: { start: 1, end: 1 } },
-      { title: "Executive decision map", pages: { start: 2, end: 2 } },
-      { title: "Thesis: optimization needs a control plane", pages: { start: 3, end: 4 } },
-      { title: "The modern static-site and publishing surface", pages: { start: 5, end: 7 } },
-      { title: "Audit domains: accessibility, performance, SEO, security, and delivery", pages: { start: 8, end: 10 } },
-      { title: "Finding-to-source architecture", pages: { start: 11, end: 13 } },
-      { title: "Agent remediation and approval boundaries", pages: { start: 14, end: 16 } },
-      { title: "Evidence and regression verification", pages: { start: 17, end: 18 } },
-      { title: "Deployment, rollback, and branch strategy", pages: { start: 19, end: 20 } },
-      { title: "Governance for multi-site portfolios", pages: { start: 21, end: 22 } },
-      { title: "Measures and scenario baselines", pages: { start: 23, end: 24 } },
+      {
+        title: "A dispatch from 2035: the web gained machine audiences",
+        pages: { start: 2, end: 2 },
+      },
+      {
+        title: "Thesis: autonomous publishing requires a control plane",
+        pages: { start: 3, end: 4 },
+      },
+      {
+        title:
+          "The 2035 publishing surface: people, agents, search, feeds, and archives",
+        pages: { start: 5, end: 7 },
+      },
+      {
+        title:
+          "Audit domains: accessibility, performance, SEO, security, and delivery",
+        pages: { start: 8, end: 10 },
+      },
+      {
+        title: "Finding-to-source architecture",
+        pages: { start: 11, end: 13 },
+      },
+      {
+        title: "Agent remediation and approval boundaries",
+        pages: { start: 14, end: 16 },
+      },
+      {
+        title: "Evidence and regression verification",
+        pages: { start: 17, end: 18 },
+      },
+      {
+        title: "Deployment, rollback, and branch strategy",
+        pages: { start: 19, end: 20 },
+      },
+      {
+        title: "Governance for multi-site, multi-agent publishing portfolios",
+        pages: { start: 21, end: 22 },
+      },
+      {
+        title: "Measures and scenario baselines",
+        pages: { start: 23, end: 24 },
+      },
       { title: "30/60/90-day adoption plan", pages: { start: 25, end: 27 } },
-      { title: "Failure modes and unsafe automation", pages: { start: 28, end: 28 } },
-      { title: "Methodology, limitations, and source policy", pages: { start: 29, end: 29 } },
+      {
+        title: "Failure modes and unsafe automation",
+        pages: { start: 28, end: 28 },
+      },
+      {
+        title: "Methodology, limitations, and source policy",
+        pages: { start: 29, end: 29 },
+      },
       { title: "Web Magic assessment path", pages: { start: 30, end: 30 } },
     ],
     diagrams: [
@@ -555,23 +1073,28 @@ export const briefs = [
       "90-day site-quality program",
     ],
     evidenceNeeds: [
-      "Current primary standards for accessibility, performance, security, and search",
-      "Site-specific build and deployment documentation",
-      "Reproducible audit output linked to exact routes and releases",
-      "Source diffs and regression-test evidence for remediation claims",
-      "Field performance data where available, with laboratory results clearly labeled",
-      "Approved baseline measures supplied by the participating organization",
+      "[Evidence] Web Content Accessibility Guidelines (WCAG) 2.2 — World Wide Web Consortium, Recommendation republished 12 December 2024. W3C defines testable accessibility requirements and states that responsive variations are part of full-page conformance. https://www.w3.org/TR/2024/REC-WCAG22-20241212/",
+      "[Evidence] What web creators should know about our March 2024 core update and new spam policies — Google Search Central, 5 March 2024. Google defines scaled content abuse by purpose and lack of user value, regardless of whether content is made by humans or automation. https://developers.google.com/search/blog/2024/03/core-update-spam-policies",
+      "[Evidence] Google Search’s guidance on using generative AI content on your website — Google Search Central, 2025. Google advises accuracy, quality, relevance, creation context, and metadata, and warns against low-value scaled generation. https://developers.google.com/search/docs/fundamentals/using-gen-ai-content",
+      "[Evidence] A new resource for optimizing for generative AI in Google Search — Google Search Central, 15 May 2026. Google emphasizes valuable non-commodity content and says established SEO foundations remain relevant to generative search features. https://developers.google.com/search/blog/2026/05/a-new-resource-for-optimizing",
+      "[Evidence] State of AI-assisted Software Development 2025 — DORA / Google Cloud, 2025. DORA reports that AI amplifies the surrounding organizational system, implying that publishing automation inherits weak testing and governance. https://dora.dev/research/2025/dora-report/",
+      "[Inference] The web of 2035 is likely to reward demonstrable usefulness, machine-legible structure, accessible interaction, and attributable expertise more than undifferentiated publishing volume.",
+      "[Recommendation] Link every automated finding to exact route, release, standard, source diff, preview, regression evidence, approval, and rollback record; distinguish lab from field data.",
+      "[Uncertainty] Search ranking, AI answer interfaces, browser agents, and platform policies are not contractual guarantees and must be revalidated continuously.",
     ],
     limitations: [
-      "Automated audits do not constitute full accessibility, security, search, or performance certification.",
-      "Agents should not publish unrestricted changes.",
-      "Search visibility and field-performance outcomes cannot be guaranteed.",
+      "[Boundary] Automated audits do not constitute full accessibility, security, search, content-quality, or performance certification.",
+      "[Recommendation] Agents must not publish unrestricted changes; risk-tier permissions, preview, human approval, and rollback are mandatory for consequential routes.",
+      "[Uncertainty] Search visibility, generative-answer inclusion, conversion, and field-performance outcomes cannot be guaranteed.",
+      "[Boundary] A large route count is not evidence of usefulness; each page needs a distinct reader decision, original contribution, and maintenance owner.",
     ],
     squeeze: {
-      headline: "Finding website defects is easy. Safely changing the source is the hard part.",
+      headline:
+        "Finding website defects is easy. Safely changing the source is the hard part.",
       promise:
         "A control architecture for turning audits into governed, evidence-backed remediation across a web portfolio.",
-      preview: "The control-loop diagram and a sample automation-boundary matrix.",
+      preview:
+        "The control-loop diagram and a sample automation-boundary matrix.",
     },
     routing: {
       primaryDestination: "Web Magic and web portfolio assessment",
@@ -583,17 +1106,61 @@ export const briefs = [
         "Accessibility remediation needs a governed workflow",
       ],
       secondaryRoutes: [
-        { destination: "Marketing Consulting", when: ["Content and conversion are the primary problems", "The site lacks a clear market argument"] },
-        { destination: "WireMark", when: ["Visual product review is the primary workflow", "Source-linked annotation is needed"] },
-        { destination: "GenAI Engineering", when: ["Agent controls and authorization need implementation", "Automation architecture is the primary scope"] },
-        { destination: "Media Management", when: ["Asset performance, rights, or media governance dominates"] },
+        {
+          destination: "Marketing Consulting",
+          when: [
+            "Content and conversion are the primary problems",
+            "The site lacks a clear market argument",
+          ],
+        },
+        {
+          destination: "WireMark",
+          when: [
+            "Visual product review is the primary workflow",
+            "Source-linked annotation is needed",
+          ],
+        },
+        {
+          destination: "GenAI Engineering",
+          when: [
+            "Agent controls and authorization need implementation",
+            "Automation architecture is the primary scope",
+          ],
+        },
+        {
+          destination: "Media Management",
+          when: ["Asset performance, rights, or media governance dominates"],
+        },
       ],
     },
     followups: [
-      { timing: "delivery", purpose: "Identify the recurring quality backlog.", message: "Which audit domain creates the greatest recurring backlog?", action: "Invite a direct reply." },
-      { timing: "day-3", purpose: "Define safe automation boundaries.", message: "Apply the automation-boundary worksheet to one class of site findings.", action: "Return the reader to the worksheet." },
-      { timing: "day-10", purpose: "Make the control plane concrete.", message: "A report-specific control-loop example for the selected audit domain.", action: "Offer the most relevant Web Magic path." },
-      { timing: "day-21", purpose: "Offer a bounded evaluation.", message: "Review one approved site or route set without granting unrestricted publishing authority.", action: "Invite a controlled site assessment." },
+      {
+        timing: "delivery",
+        purpose: "Identify the recurring quality backlog.",
+        message: "Which audit domain creates the greatest recurring backlog?",
+        action: "Invite a direct reply.",
+      },
+      {
+        timing: "day-3",
+        purpose: "Define safe automation boundaries.",
+        message:
+          "Apply the automation-boundary worksheet to one class of site findings.",
+        action: "Return the reader to the worksheet.",
+      },
+      {
+        timing: "day-10",
+        purpose: "Make the control plane concrete.",
+        message:
+          "A report-specific control-loop example for the selected audit domain.",
+        action: "Offer the most relevant Web Magic path.",
+      },
+      {
+        timing: "day-21",
+        purpose: "Offer a bounded evaluation.",
+        message:
+          "Review one approved site or route set without granting unrestricted publishing authority.",
+        action: "Invite a controlled site assessment.",
+      },
     ],
   },
   {
@@ -610,24 +1177,69 @@ export const briefs = [
     decision:
       "How to make a large media library discoverable, governed, rights-aware, portable, and reusable without discarding human curation.",
     thesis:
-      "A media archive becomes an asset only when organizations preserve human judgment alongside machine-generated understanding. Search alone cannot replace curation, rights context, selection history, duplicate relationships, and portable metadata.",
+      "[2035 vantage — inference] By 2035, the competitive media estate is not the largest archive but the best institutional memory: assets carry interpretable history, rights, consent, provenance, relationships, audience context, and the reasons humans selected or rejected them. [Recommendation] Preserve machine enrichment beside—not over—human judgment, and make both portable across tools. [Uncertainty] Semantic models can misdescribe people and cultures; metadata can be incomplete; similarity never establishes ownership or permission.",
     pageCount: 28,
     chapters: [
       { title: "Cover and publication record", pages: { start: 1, end: 1 } },
-      { title: "Reader and decision map", pages: { start: 2, end: 2 } },
-      { title: "Executive thesis: storage is not memory", pages: { start: 3, end: 4 } },
-      { title: "The media-estate lifecycle", pages: { start: 5, end: 7 } },
-      { title: "Metadata, taxonomy, and semantic enrichment", pages: { start: 8, end: 9 } },
-      { title: "Human curation and review signals", pages: { start: 10, end: 12 } },
-      { title: "Duplicate and near-duplicate relationships", pages: { start: 13, end: 14 } },
-      { title: "Rights, restrictions, consent, and provenance", pages: { start: 15, end: 16 } },
-      { title: "Connector and portability architecture", pages: { start: 17, end: 18 } },
-      { title: "Search, collections, and reuse experiences", pages: { start: 19, end: 20 } },
-      { title: "Governance and stewardship model", pages: { start: 21, end: 22 } },
-      { title: "Estate diagnostic and remediation roadmap", pages: { start: 23, end: 25 } },
-      { title: "Failure modes and migration risk", pages: { start: 26, end: 26 } },
-      { title: "Methodology, limitations, and evidence", pages: { start: 27, end: 27 } },
-      { title: "Photo Curator and media-management engagement", pages: { start: 28, end: 28 } },
+      {
+        title:
+          "A dispatch from 2035: the archive became an active collaborator",
+        pages: { start: 2, end: 2 },
+      },
+      {
+        title: "Executive thesis: storage was never memory",
+        pages: { start: 3, end: 4 },
+      },
+      {
+        title:
+          "The 2035 media-estate lifecycle: capture, generation, meaning, use, and remembrance",
+        pages: { start: 5, end: 7 },
+      },
+      {
+        title: "Metadata, taxonomy, and semantic enrichment",
+        pages: { start: 8, end: 9 },
+      },
+      {
+        title: "Human curation and review signals",
+        pages: { start: 10, end: 12 },
+      },
+      {
+        title: "Duplicate and near-duplicate relationships",
+        pages: { start: 13, end: 14 },
+      },
+      {
+        title: "Rights, restrictions, consent, and provenance",
+        pages: { start: 15, end: 16 },
+      },
+      {
+        title: "Connector and portability architecture",
+        pages: { start: 17, end: 18 },
+      },
+      {
+        title:
+          "Search, agent retrieval, living collections, and responsible reuse",
+        pages: { start: 19, end: 20 },
+      },
+      {
+        title: "Governance and stewardship model",
+        pages: { start: 21, end: 22 },
+      },
+      {
+        title: "Estate diagnostic and remediation roadmap",
+        pages: { start: 23, end: 25 },
+      },
+      {
+        title: "Failure modes and migration risk",
+        pages: { start: 26, end: 26 },
+      },
+      {
+        title: "Methodology, limitations, and evidence",
+        pages: { start: 27, end: 27 },
+      },
+      {
+        title: "Photo Curator and media-management engagement",
+        pages: { start: 28, end: 28 },
+      },
     ],
     diagrams: [
       "Intelligent media-estate architecture",
@@ -647,21 +1259,25 @@ export const briefs = [
       "Stewardship responsibility matrix",
     ],
     evidenceNeeds: [
-      "Actual asset inventories and representative metadata samples supplied with authorization",
-      "Existing taxonomy, asset-management, rights, retention, and consent policies",
-      "Current connector and platform documentation",
-      "Human relevance evaluations before making retrieval-quality claims",
-      "Measured duplicate-analysis tests on approved datasets",
-      "Qualified legal and records-management review for retention and rights assertions",
+      "[Evidence] IPTC Photo Metadata Standard 2025.1 — International Press Telecommunications Council, 26 November 2025. IPTC added fields for AI prompt information, prompt writer, AI system, and system version while retaining descriptive, administrative, and rights metadata. https://www.iptc.org/std/photometadata/specification/IPTC-PhotoMetadata-2025.1.html",
+      "[Evidence] IPTC Photo Metadata User Guide — International Press Telecommunications Council, 2025. The guide distinguishes trained algorithmic media, composite synthetic media, and other digital source types and recommends recording AI-system details without treating a prompt writer as the image creator. https://www.iptc.org/std/photometadata/documentation/userguide/",
+      "[Evidence] IPTC Generative AI Opt-Out Best Practices — International Press Telecommunications Council, May 2025. IPTC documents ways content owners can express data-mining preferences in embedded metadata and related mechanisms. https://iptc.org/wp-content/uploads/2025/05/IPTC-Generative-AI-Opt-Out-Best-Practices.pdf",
+      "[Evidence] Content Credentials: C2PA Technical Specification 2.1 — Coalition for Content Provenance and Authenticity, September 2024. C2PA ingredients and assertions provide a model for recording asset relationships and transformations beyond flat descriptive metadata. https://spec.c2pa.org/specifications/specifications/2.1/specs/C2PA_Specification.html",
+      "[Evidence] Copyright and Artificial Intelligence, Part 2: Copyrightability — U.S. Copyright Office, January 2025. The Office’s human-authorship analysis makes creation history and human contribution operationally relevant to asset governance. https://www.copyright.gov/ai/Copyright-and-Artificial-Intelligence-Part-2-Copyrightability-Report.pdf",
+      "[Inference] By 2035, asset value is likely to depend on portable relationships among rights, provenance, creative decisions, performance context, and machine-readable representations—not semantic search alone.",
+      "[Recommendation] Evaluate retrieval and duplicate detection with authorized representative collections and human relevance judgments; separately audit rights, consent, retention, and cultural-description errors.",
+      "[Uncertainty] Metadata fields and provenance records can conflict, disappear during transformation, or encode biased description; designate stewards and preserve corrections as history.",
     ],
     limitations: [
-      "Automated enrichment can be wrong or culturally biased.",
-      "Similarity is not legal equivalence and does not establish duplicate ownership.",
-      "Metadata completeness does not prove usage rights.",
-      "Migration plans depend on source-system access and export quality.",
+      "[Uncertainty] Automated enrichment can be wrong, culturally biased, temporally stale, or falsely confident.",
+      "[Boundary] Similarity is not legal equivalence and does not establish duplicate ownership, authorship, or permission.",
+      "[Boundary] Metadata completeness and a valid credential do not by themselves prove usage rights or factual truth.",
+      "[Uncertainty] Migration outcomes depend on source access, export fidelity, identifier continuity, and preservation of relationships.",
+      "[Recommendation] Retain human correction, dissent, and selection history instead of silently replacing prior descriptions.",
     ],
     squeeze: {
-      headline: "Your archive remembers files. Does it remember why they mattered?",
+      headline:
+        "Your archive remembers files. Does it remember why they mattered?",
       promise:
         "A practical model for joining curation, metadata, rights, similarity, and portable media operations.",
       preview: "The media-estate lifecycle and a short metadata diagnostic.",
@@ -676,17 +1292,65 @@ export const briefs = [
         "Media connectors or portable curation are required",
       ],
       secondaryRoutes: [
-        { destination: "Provenance Advisory", when: ["Authenticity and lineage are the primary concerns", "Publishing context must survive transformation"] },
-        { destination: "Creative Direction", when: ["Editorial selection systems are the primary need", "Curation lacks accountable creative judgment"] },
-        { destination: "HardMagic Studio", when: ["Generated media must flow into governed libraries", "Production-to-library workflow is the primary scope"] },
-        { destination: "Marketing Consulting", when: ["Content reuse and channel activation drive the decision", "The estate must support a broader content strategy"] },
+        {
+          destination: "Provenance Advisory",
+          when: [
+            "Authenticity and lineage are the primary concerns",
+            "Publishing context must survive transformation",
+          ],
+        },
+        {
+          destination: "Creative Direction",
+          when: [
+            "Editorial selection systems are the primary need",
+            "Curation lacks accountable creative judgment",
+          ],
+        },
+        {
+          destination: "HardMagic Studio",
+          when: [
+            "Generated media must flow into governed libraries",
+            "Production-to-library workflow is the primary scope",
+          ],
+        },
+        {
+          destination: "Marketing Consulting",
+          when: [
+            "Content reuse and channel activation drive the decision",
+            "The estate must support a broader content strategy",
+          ],
+        },
       ],
     },
     followups: [
-      { timing: "delivery", purpose: "Identify the immediate estate problem.", message: "Is the immediate problem discovery, rights, duplication, migration, or curation?", action: "Invite a direct reply." },
-      { timing: "day-3", purpose: "Establish the current-state inventory.", message: "Use the media-estate inventory on one representative collection.", action: "Return the reader to the worksheet." },
-      { timing: "day-10", purpose: "Provide problem-specific guidance.", message: "A concise report-specific note on the challenge selected in the intake.", action: "Offer the relevant media-management path." },
-      { timing: "day-21", purpose: "Offer a controlled technical evaluation.", message: "Assess an approved, non-sensitive sample of the media estate with HardMagic.", action: "Invite a sample assessment." },
+      {
+        timing: "delivery",
+        purpose: "Identify the immediate estate problem.",
+        message:
+          "Is the immediate problem discovery, rights, duplication, migration, or curation?",
+        action: "Invite a direct reply.",
+      },
+      {
+        timing: "day-3",
+        purpose: "Establish the current-state inventory.",
+        message:
+          "Use the media-estate inventory on one representative collection.",
+        action: "Return the reader to the worksheet.",
+      },
+      {
+        timing: "day-10",
+        purpose: "Provide problem-specific guidance.",
+        message:
+          "A concise report-specific note on the challenge selected in the intake.",
+        action: "Offer the relevant media-management path.",
+      },
+      {
+        timing: "day-21",
+        purpose: "Offer a controlled technical evaluation.",
+        message:
+          "Assess an approved, non-sensitive sample of the media estate with HardMagic.",
+        action: "Invite a sample assessment.",
+      },
     ],
   },
   {
@@ -703,25 +1367,73 @@ export const briefs = [
     decision:
       "Whether to hire an agency, assemble specialists, embed creative leadership, or build an internal GenAI and media capability.",
     thesis:
-      "The strongest modern media model is neither a traditional agency retainer nor an unmanaged collection of AI tools. It is a deliberately composed capability system that aligns executive intent, creative authority, specialist production, technology, media stewardship, and measurable market learning.",
+      "[2035 vantage — inference] The agency transformation of 2024–2035 did not end agencies; it dissolved the old boundary between client, studio, creator, platform, model, and audience. The enduring firms became capability systems that could compose executive intent, human creative authority, specialist craft, agentic production, creator communities, governed infrastructure, media memory, provenance, and market learning. [Recommendation] Own the decisions and institutional memory that differentiate the brand; procure modular execution where it creates advantage. [Uncertainty] The right ownership model remains contingent on category, geography, regulation, talent, scale, and leadership capacity.",
     pageCount: 35,
     chapters: [
       { title: "Cover and publication record", pages: { start: 1, end: 1 } },
-      { title: "How to use the playbook", pages: { start: 2, end: 2 } },
-      { title: "Executive thesis and market tension", pages: { start: 3, end: 5 } },
-      { title: "Why conventional agency boundaries are breaking", pages: { start: 6, end: 8 } },
-      { title: "The capability-system model", pages: { start: 9, end: 11 } },
-      { title: "Brand strategy and executive intent", pages: { start: 12, end: 14 } },
-      { title: "Creative direction and campaign systems", pages: { start: 15, end: 17 } },
-      { title: "GenAI production and studio operations", pages: { start: 18, end: 20 } },
-      { title: "Media management, provenance, and reuse", pages: { start: 21, end: 22 } },
-      { title: "Web, product, and distribution operations", pages: { start: 23, end: 24 } },
-      { title: "Engagement-model comparison", pages: { start: 25, end: 27 } },
-      { title: "Governance, procurement, and commercial alignment", pages: { start: 28, end: 29 } },
-      { title: "Transformation diagnostic and 90-day sequence", pages: { start: 30, end: 32 } },
-      { title: "Counterarguments and conditions for traditional models", pages: { start: 33, end: 33 } },
-      { title: "Methodology, limitations, and evidence policy", pages: { start: 34, end: 34 } },
-      { title: "HardMagic principal dialogue and service pathways", pages: { start: 35, end: 35 } },
+      {
+        title: "A dispatch from 2035: how to use a future history",
+        pages: { start: 2, end: 2 },
+      },
+      {
+        title:
+          "Executive thesis: from agency roster to adaptive capability system",
+        pages: { start: 3, end: 5 },
+      },
+      {
+        title:
+          "Evidence from 2024–2026: creator, video, AI, and consumption boundaries converge",
+        pages: { start: 6, end: 8 },
+      },
+      {
+        title: "The 2035 capability-system model",
+        pages: { start: 9, end: 11 },
+      },
+      {
+        title: "Brand strategy and executive intent",
+        pages: { start: 12, end: 14 },
+      },
+      {
+        title: "Creative direction and campaign systems",
+        pages: { start: 15, end: 17 },
+      },
+      {
+        title: "GenAI production and studio operations",
+        pages: { start: 18, end: 20 },
+      },
+      {
+        title: "Media management, provenance, and reuse",
+        pages: { start: 21, end: 22 },
+      },
+      {
+        title: "Web, product, and distribution operations",
+        pages: { start: 23, end: 24 },
+      },
+      {
+        title:
+          "Owned, embedded, networked, creator-led, and managed engagement models",
+        pages: { start: 25, end: 27 },
+      },
+      {
+        title: "Governance, procurement, and commercial alignment",
+        pages: { start: 28, end: 29 },
+      },
+      {
+        title: "Transformation diagnostic and 90-day sequence",
+        pages: { start: 30, end: 32 },
+      },
+      {
+        title: "Counterarguments and conditions for traditional models",
+        pages: { start: 33, end: 33 },
+      },
+      {
+        title: "Methodology, limitations, and evidence policy",
+        pages: { start: 34, end: 34 },
+      },
+      {
+        title: "HardMagic principal dialogue and service pathways",
+        pages: { start: 35, end: 35 },
+      },
     ],
     diagrams: [
       "Modern media capability system",
@@ -741,23 +1453,29 @@ export const briefs = [
       "90-day executive action plan",
     ],
     evidenceNeeds: [
-      "Current attributable agency-market research from primary or reputable research sources",
-      "Organization-specific spend, cycle-time, channel, and performance baselines",
-      "Approved contracts and statements of work for operating-model analysis",
-      "Customer-approved cases with auditable support for any outcome presented",
-      "Consented interviews with marketing, creative, procurement, technology, and media operations",
-      "An explicit methodology for comparisons among engagement models",
+      "[Evidence] 2025 Creator Economy Ad Spend & Strategy Report — Interactive Advertising Bureau, 20 November 2025. IAB projected U.S. creator ad spend at $37 billion in 2025 and reported that 48% of surveyed creator buyers considered creators a must-buy; projections are not realized results. https://www.iab.com/insights/2025-creator-economy-ad-spend-strategy-report/",
+      "[Evidence] 2025 Digital Video Ad Spend & Strategy Full Report — Interactive Advertising Bureau, 15 July 2025. IAB reported $64 billion in U.S. digital-video ad spend for 2024 and projected $72 billion for 2025, alongside broad planned use of GenAI creative. https://www.iab.com/insights/video-ad-spend-report-2025/",
+      "[Evidence] Streaming Cranks Up the Heat in July, Accounts For Nearly Half of All TV Viewing in Nielsen’s The Gauge — Nielsen, 19 August 2025. Nielsen measured streaming at 47.3% of U.S. television viewing in July 2025; the measure covers viewing through a television screen and is not total media consumption. https://www.nielsen.com/news-center/2025/streaming-cranks-up-the-heat-in-july-accounts-for-nearly-half-of-all-tv-viewing-in-nielsens-the-gauge/",
+      "[Evidence] An entertainment revolution 20 years in the making — YouTube Culture & Trends, 20 June 2025. YouTube reports operation in more than 100 countries and 80 languages and more than one billion hours watched daily, framing entertainment as creator-community collaboration; these are platform-reported figures. https://blog.youtube/culture-and-trends/trends-report-20th/",
+      "[Evidence] Copyright and Artificial Intelligence, Part 2: Copyrightability — U.S. Copyright Office, January 2025. The Office’s emphasis on human-determined expression supports retaining accountable creative authorship inside AI-enabled operating models. https://www.copyright.gov/ai/Copyright-and-Artificial-Intelligence-Part-2-Copyrightability-Report.pdf",
+      "[Evidence] State of AI-assisted Software Development 2025 — DORA / Google Cloud, 2025. DORA’s finding that AI amplifies organizational conditions cautions against treating tool procurement as transformation. https://dora.dev/research/2025/dora-report/",
+      "[Inference] The 2035 media firm is likely to be judged less by headcount or network breadth than by its ability to compose trusted talent, systems, rights, learning, and distinctive creative authority around each decision.",
+      "[Recommendation] Compare engagement models using approved contracts plus organization-specific spend, cycle, quality, reuse, rights, workforce, channel, and outcome baselines; disclose definitions and attribution limits.",
+      "[Uncertainty] Market projections, platform statistics, and U.S.-centric surveys may not transfer to a specific brand, geography, medium, or economic cycle.",
     ],
     limitations: [
-      "The traditional agency model is not universally obsolete.",
-      "Some organizations benefit from specialist agencies, global networks, internal teams, or mixed arrangements.",
-      "Recommendations depend on strategy, leadership capacity, procurement, geography, regulation, and operating maturity.",
+      "[Boundary] Evidence does not establish that the traditional agency model is universally obsolete or that internalization is always superior.",
+      "[Uncertainty] Specialist agencies, global networks, internal teams, creator partnerships, and mixed arrangements can each be optimal under different conditions.",
+      "[Recommendation] Base ownership decisions on strategy, creative leadership, procurement, geography, regulation, talent access, and operating maturity—not fashion.",
+      "[Boundary] Spend and adoption metrics describe markets or surveyed intentions; they do not prove campaign effectiveness, incrementality, or return on investment.",
     ],
     squeeze: {
-      headline: "You do not need another agency roster. You need a coherent media capability.",
+      headline:
+        "You do not need another agency roster. You need a coherent media capability.",
       promise:
         "A decision guide for choosing among embedded creative leadership, managed media operations, GenAI production, consulting, and internal capability building.",
-      preview: "The capability-system map and an abbreviated engagement-model comparison.",
+      preview:
+        "The capability-system map and an abbreviated engagement-model comparison.",
     },
     routing: {
       primaryDestination: "Executive media transformation intake",
@@ -768,21 +1486,83 @@ export const briefs = [
         "The request spans creative, technology, media, and operating-model decisions",
       ],
       secondaryRoutes: [
-        { destination: "Creative Director", when: ["Brand reinvention or campaign leadership is primary", "Creative inconsistency lacks accountable ownership"] },
-        { destination: "GenAI Transformation", when: ["Tool fragmentation, workflow redesign, or governance dominates"] },
-        { destination: "Media Management", when: ["Asset curation, provenance, or production operations dominate"] },
-        { destination: "Marketing Consulting", when: ["Positioning, portfolio, go-to-market, or channel strategy dominates"] },
-        { destination: "HardMagic Studio", when: ["Multimodal production and studio workflow are the immediate need"] },
-        { destination: "WireMark", when: ["Digital-product review and agent-assisted development are primary"] },
-        { destination: "Web Magic", when: ["Website portfolio quality and remediation are primary"] },
-        { destination: "Principal dialogue", when: ["The request is confidential, cross-functional, or still ambiguous"] },
+        {
+          destination: "Creative Director",
+          when: [
+            "Brand reinvention or campaign leadership is primary",
+            "Creative inconsistency lacks accountable ownership",
+          ],
+        },
+        {
+          destination: "GenAI Transformation",
+          when: [
+            "Tool fragmentation, workflow redesign, or governance dominates",
+          ],
+        },
+        {
+          destination: "Media Management",
+          when: [
+            "Asset curation, provenance, or production operations dominate",
+          ],
+        },
+        {
+          destination: "Marketing Consulting",
+          when: [
+            "Positioning, portfolio, go-to-market, or channel strategy dominates",
+          ],
+        },
+        {
+          destination: "HardMagic Studio",
+          when: [
+            "Multimodal production and studio workflow are the immediate need",
+          ],
+        },
+        {
+          destination: "WireMark",
+          when: [
+            "Digital-product review and agent-assisted development are primary",
+          ],
+        },
+        {
+          destination: "Web Magic",
+          when: ["Website portfolio quality and remediation are primary"],
+        },
+        {
+          destination: "Principal dialogue",
+          when: [
+            "The request is confidential, cross-functional, or still ambiguous",
+          ],
+        },
       ],
     },
     followups: [
-      { timing: "delivery", purpose: "Identify the ownership gap.", message: "Which media capability currently lacks accountable ownership?", action: "Invite a direct reply." },
-      { timing: "day-3", purpose: "Help compare engagement models.", message: "Complete the agency-model fit assessment against the current partner portfolio.", action: "Return the reader to the worksheet." },
-      { timing: "day-10", purpose: "Provide intake-specific interpretation.", message: "One tailored operating-model observation based on the declared need.", action: "Offer the most relevant HardMagic service or product path." },
-      { timing: "day-21", purpose: "Offer a principal-level next step.", message: "Map capability ownership and decision rights with HardMagic.", action: "Invite a principal-level capability-mapping discussion." },
+      {
+        timing: "delivery",
+        purpose: "Identify the ownership gap.",
+        message:
+          "Which media capability currently lacks accountable ownership?",
+        action: "Invite a direct reply.",
+      },
+      {
+        timing: "day-3",
+        purpose: "Help compare engagement models.",
+        message:
+          "Complete the agency-model fit assessment against the current partner portfolio.",
+        action: "Return the reader to the worksheet.",
+      },
+      {
+        timing: "day-10",
+        purpose: "Provide intake-specific interpretation.",
+        message:
+          "One tailored operating-model observation based on the declared need.",
+        action: "Offer the most relevant HardMagic service or product path.",
+      },
+      {
+        timing: "day-21",
+        purpose: "Offer a principal-level next step.",
+        message: "Map capability ownership and decision rights with HardMagic.",
+        action: "Invite a principal-level capability-mapping discussion.",
+      },
     ],
   },
 ] as const satisfies readonly TechnicalBrief[];

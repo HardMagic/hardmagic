@@ -1,0 +1,147 @@
+---
+import type { AtmosphericHeadingLevel, EvidenceKind, EvidenceSet } from './types';
+
+interface Props {
+  id: string;
+  title: string;
+  sources: EvidenceSet;
+  eyebrow?: string;
+  introduction?: string;
+  headingLevel?: AtmosphericHeadingLevel;
+}
+
+const {
+  id,
+  title,
+  sources,
+  eyebrow = 'Evidence constellation',
+  introduction,
+  headingLevel = 'h2',
+} = Astro.props;
+
+const Heading = headingLevel;
+const titleId = `${id}-title`;
+const introId = introduction ? `${id}-intro` : undefined;
+const kindLabels: Record<EvidenceKind, string> = {
+  fact: 'Fact',
+  interpretation: 'Interpretation',
+  projection: 'Projection',
+  'open-question': 'Open question',
+};
+const presentKinds = [...new Set(sources.map((source) => source.kind))];
+---
+
+<section class="atm-evidence" aria-labelledby={titleId} aria-describedby={introId}>
+  <header class="atm-evidence__header">
+    <p class="atm-evidence__eyebrow">{eyebrow}</p>
+    <Heading id={titleId}>{title}</Heading>
+    {introduction && <p class="atm-evidence__intro" id={introId}>{introduction}</p>}
+  </header>
+
+  <ul class="atm-evidence__legend" aria-label="Evidence classifications">
+    {presentKinds.map((kind) => <li data-kind={kind}><span aria-hidden="true"></span>{kindLabels[kind]}</li>)}
+  </ul>
+
+  <ol class="atm-evidence__map">
+    {sources.map((source, index) => (
+      <li id={`${id}-${source.id}`} data-kind={source.kind} style={`--node:${index + 1}`}>
+        <article aria-labelledby={`${id}-${source.id}-label`}>
+          <p class="atm-evidence__kind"><span aria-hidden="true"></span>{kindLabels[source.kind]}</p>
+          <h3 id={`${id}-${source.id}-label`}>
+            {source.href ? <a href={source.href}>{source.label}</a> : source.label}
+          </h3>
+          <p>{source.summary}</p>
+          {(source.publisher || source.publishedAt) && (
+            <p class="atm-evidence__source">
+              {source.publisher}
+              {source.publisher && source.publishedAt && <span aria-hidden="true"> · </span>}
+              {source.publishedAt && <time datetime={source.publishedAt}>{source.publishedAt}</time>}
+            </p>
+          )}
+          {source.relationship && <p class="atm-evidence__relationship"><strong>Connection:</strong> {source.relationship}</p>}
+        </article>
+      </li>
+    ))}
+  </ol>
+
+  <footer class="atm-evidence__notes"><slot name="notes" /></footer>
+</section>
+
+<style>
+  .atm-evidence {
+    --atm-evidence-accent: var(--coral, #ef5b7d);
+    padding: clamp(4rem, 10vw, 9rem) max(1rem, calc((100% - 84rem) / 2));
+    overflow: clip;
+    background: #0a070b;
+    color: #fffaf4;
+    container-type: inline-size;
+  }
+  .atm-evidence__header { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(16rem, .65fr); gap: 1.5rem 5rem; align-items: end; }
+  .atm-evidence__eyebrow { grid-column: 1 / -1; margin: 0; color: var(--atm-evidence-accent); font-size: .7rem; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; }
+  .atm-evidence h2,
+  .atm-evidence > header h3 { margin: 0; font-size: clamp(2.8rem, 7cqi, 6.6rem); line-height: .96; letter-spacing: -.05em; text-wrap: balance; overflow-wrap: anywhere; }
+  .atm-evidence__intro { margin: 0; color: #d6c8cc; font-size: 1.05rem; line-height: 1.65; }
+  .atm-evidence__legend { display: flex; flex-wrap: wrap; gap: .8rem 1.5rem; margin: 2.5rem 0; padding: 1rem 0; border-block: 1px solid #46383d; list-style: none; }
+  .atm-evidence__legend li,
+  .atm-evidence__kind { display: flex; align-items: center; gap: .5rem; margin: 0; color: #d8cbd0; font-size: .68rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+  .atm-evidence__legend span,
+  .atm-evidence__kind span { inline-size: .7rem; block-size: .7rem; border: 1px solid currentColor; border-radius: 50%; }
+  [data-kind='fact'] { --kind: var(--green, #71b981); }
+  [data-kind='interpretation'] { --kind: var(--cyan, #43c6cc); }
+  [data-kind='projection'] { --kind: var(--violet, #ad8cff); }
+  [data-kind='open-question'] { --kind: var(--gold, #f2b84b); }
+  .atm-evidence__legend [data-kind] span,
+  .atm-evidence__kind span { background: var(--kind); color: var(--kind); }
+
+  .atm-evidence__map { position: relative; display: grid; grid-template-columns: repeat(12, 1fr); gap: 1px; margin: 0; padding: 0; background: #46383d; list-style: none; }
+  .atm-evidence__map::before { content: ''; position: absolute; inset: 12% 8%; z-index: 0; border: 1px solid #ffffff18; border-radius: 50%; transform: rotate(-8deg); pointer-events: none; }
+  .atm-evidence__map > li { position: relative; z-index: 1; grid-column: span 4; min-inline-size: 0; background: #0f0b10; }
+  .atm-evidence__map > li:nth-child(5n + 1),
+  .atm-evidence__map > li:nth-child(5n + 4) { grid-column: span 5; }
+  .atm-evidence__map > li:nth-child(5n + 2),
+  .atm-evidence__map > li:nth-child(5n + 5) { grid-column: span 3; }
+  .atm-evidence article { block-size: 100%; padding: clamp(1.25rem, 3cqi, 2.4rem); border-block-start: 3px solid var(--kind); }
+  .atm-evidence article h3 { margin: 1.7rem 0 .8rem; color: #fff; font-size: clamp(1.2rem, 2.2cqi, 1.8rem); line-height: 1.08; letter-spacing: -.025em; overflow-wrap: anywhere; }
+  .atm-evidence article h3 a { color: inherit; text-decoration-thickness: .08em; text-underline-offset: .18em; }
+  .atm-evidence article > p:not(.atm-evidence__kind, .atm-evidence__source, .atm-evidence__relationship) { color: #d6c9cd; line-height: 1.62; }
+  .atm-evidence__source { margin-block: 1.2rem 0; color: #a99ba0; font-size: .74rem; overflow-wrap: anywhere; }
+  .atm-evidence__relationship { padding-block-start: .9rem; border-block-start: 1px solid #40343a; color: #c6b8bd; font-size: .78rem; line-height: 1.5; }
+  .atm-evidence__notes { max-inline-size: 70ch; margin-block-start: 2rem; color: #b8aab0; font-size: .82rem; line-height: 1.6; }
+  .atm-evidence__notes:empty { display: none; }
+
+  @container (max-width: 56rem) {
+    .atm-evidence__header { grid-template-columns: 1fr; }
+    .atm-evidence__map > li,
+    .atm-evidence__map > li:nth-child(n) { grid-column: span 6; }
+  }
+  @container (max-width: 35rem) {
+    .atm-evidence__map { grid-template-columns: 1fr; }
+    .atm-evidence__map > li,
+    .atm-evidence__map > li:nth-child(n) { grid-column: auto; }
+    .atm-evidence__map::before { display: none; }
+  }
+  @media (forced-colors: active) {
+    .atm-evidence { background: Canvas; color: CanvasText; }
+    .atm-evidence__map { gap: .75rem; background: Canvas; }
+    .atm-evidence__map::before { display: none; }
+    .atm-evidence__map > li,
+    .atm-evidence article { border: 1px solid CanvasText; background: Canvas; }
+    .atm-evidence h2,
+    .atm-evidence h3,
+    .atm-evidence p,
+    .atm-evidence__eyebrow,
+    .atm-evidence__intro { color: CanvasText; }
+    .atm-evidence__legend span,
+    .atm-evidence__kind span { background: CanvasText; }
+  }
+  @media print {
+    .atm-evidence { background: #fff; color: #000; }
+    .atm-evidence__map { display: block; background: #fff; }
+    .atm-evidence__map::before { display: none; }
+    .atm-evidence__map > li { break-inside: avoid; border-block-end: 1px solid #777; background: #fff; }
+    .atm-evidence h2,
+    .atm-evidence h3,
+    .atm-evidence article > p,
+    .atm-evidence__intro { color: #000; }
+  }
+</style>

@@ -1,0 +1,217 @@
+---
+import { Picture } from 'astro:assets';
+import type {
+  AtmosphericHeadingLevel,
+  AtmosphericImage,
+  AtmosphericTone,
+} from './types';
+
+interface Props {
+  id: string;
+  title: string;
+  image: AtmosphericImage;
+  eyebrow?: string;
+  deck?: string;
+  caption?: string;
+  credit?: string;
+  headingLevel?: AtmosphericHeadingLevel;
+  tone?: AtmosphericTone;
+  composition?: 'left' | 'right' | 'center';
+  focalPoint?: 'center' | 'top' | 'bottom' | 'left' | 'right';
+  loading?: 'eager' | 'lazy';
+}
+
+const {
+  id,
+  title,
+  image,
+  eyebrow,
+  deck,
+  caption,
+  credit,
+  headingLevel = 'h2',
+  tone = 'nocturne',
+  composition = 'left',
+  focalPoint = 'center',
+  loading = 'lazy',
+} = Astro.props;
+
+const Heading = headingLevel;
+const titleId = `${id}-title`;
+const deckId = deck ? `${id}-deck` : undefined;
+const captionText = [caption, credit].filter(Boolean).join(' — ');
+---
+
+<section
+  class="atm-overlay"
+  data-tone={tone}
+  data-composition={composition}
+  data-focus={focalPoint}
+  aria-labelledby={titleId}
+  aria-describedby={deckId}
+>
+  <figure class="atm-overlay__media" aria-hidden={image.decorative && !captionText ? 'true' : undefined}>
+    <Picture
+      class="atm-overlay__image"
+      src={image.src}
+      alt={image.decorative ? '' : image.alt}
+      formats={['avif', 'webp']}
+      fallbackFormat="webp"
+      fallbackFormat="webp"
+      widths={[480, 768, 1200, 1600, 2200]}
+      sizes="100vw"
+      loading={loading}
+      fetchpriority={loading === 'eager' ? 'high' : 'auto'}
+      decoding="async"
+    />
+    {captionText && <figcaption>{captionText}</figcaption>}
+  </figure>
+
+  <div class="atm-overlay__veil" aria-hidden="true"></div>
+  <div class="atm-overlay__content">
+    {eyebrow && <p class="atm-overlay__eyebrow">{eyebrow}</p>}
+    <Heading id={titleId}>{title}</Heading>
+    {deck && <p class="atm-overlay__deck" id={deckId}>{deck}</p>}
+    <div class="atm-overlay__body"><slot /></div>
+    <div class="atm-overlay__actions"><slot name="actions" /></div>
+  </div>
+</section>
+
+<style>
+  .atm-overlay {
+    --atm-accent: var(--coral, #ef5b7d);
+    --atm-field: #09070b;
+    position: relative;
+    isolation: isolate;
+    display: grid;
+    min-block-size: clamp(34rem, 78svh, 58rem);
+    overflow: clip;
+    background: var(--atm-field);
+    color: #fffaf4;
+    container-type: inline-size;
+  }
+
+  .atm-overlay[data-tone='ember'] { --atm-accent: var(--gold, #f2b84b); --atm-field: #13080a; }
+  .atm-overlay[data-tone='spectral'] { --atm-accent: var(--violet, #ad8cff); --atm-field: #080a14; }
+
+  .atm-overlay__media,
+  .atm-overlay__veil,
+  .atm-overlay__content { grid-area: 1 / 1; }
+
+  .atm-overlay__media { position: relative; z-index: -2; min-inline-size: 0; margin: 0; }
+  .atm-overlay__media :global(picture) { display: block; inline-size: 100%; block-size: 100%; }
+  .atm-overlay__media :global(.atm-overlay__image) {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+    filter: saturate(.76) contrast(1.12) brightness(.72);
+  }
+  .atm-overlay[data-focus='top'] .atm-overlay__media :global(.atm-overlay__image) { object-position: center top; }
+  .atm-overlay[data-focus='bottom'] .atm-overlay__media :global(.atm-overlay__image) { object-position: center bottom; }
+  .atm-overlay[data-focus='left'] .atm-overlay__media :global(.atm-overlay__image) { object-position: left center; }
+  .atm-overlay[data-focus='right'] .atm-overlay__media :global(.atm-overlay__image) { object-position: right center; }
+
+  .atm-overlay__media figcaption {
+    position: absolute;
+    inset-inline-end: clamp(1rem, 3vw, 3rem);
+    inset-block-end: clamp(1rem, 2vw, 2rem);
+    z-index: 3;
+    max-inline-size: min(42rem, 75%);
+    padding: .45rem .7rem;
+    background: rgb(5 4 7 / .78);
+    color: #f4e9e9;
+    font-size: clamp(.68rem, 1vw, .78rem);
+    line-height: 1.45;
+  }
+
+  .atm-overlay__veil {
+    z-index: -1;
+    background:
+      linear-gradient(90deg, rgb(6 4 8 / .96) 0 18%, rgb(6 4 8 / .76) 48%, rgb(6 4 8 / .2) 78%),
+      linear-gradient(0deg, rgb(4 3 6 / .82), transparent 58%),
+      radial-gradient(circle at 72% 30%, color-mix(in srgb, var(--atm-accent) 28%, transparent), transparent 36%);
+  }
+  .atm-overlay[data-composition='right'] .atm-overlay__veil { transform: scaleX(-1); }
+  .atm-overlay[data-composition='center'] .atm-overlay__veil {
+    background: linear-gradient(0deg, rgb(4 3 6 / .9), rgb(4 3 6 / .3) 68%, rgb(4 3 6 / .68));
+  }
+
+  .atm-overlay__content {
+    align-self: center;
+    inline-size: min(100% - clamp(2rem, 8vw, 9rem), 86rem);
+    margin-inline: auto;
+    padding-block: clamp(5rem, 12vw, 10rem);
+  }
+  .atm-overlay[data-composition='right'] .atm-overlay__content { justify-self: end; }
+  .atm-overlay[data-composition='center'] .atm-overlay__content { text-align: center; }
+  .atm-overlay__content > * { max-inline-size: min(48rem, 72%); }
+  .atm-overlay[data-composition='right'] .atm-overlay__content > * { margin-inline-start: auto; }
+  .atm-overlay[data-composition='center'] .atm-overlay__content > * { margin-inline: auto; }
+
+  .atm-overlay__eyebrow {
+    margin: 0 0 1.4rem;
+    color: color-mix(in srgb, var(--atm-accent) 84%, white);
+    font-size: .72rem;
+    font-weight: 800;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+  }
+  .atm-overlay h2,
+  .atm-overlay h3 {
+    margin: 0;
+    max-inline-size: 14ch;
+    color: #fff;
+    font-size: clamp(3rem, 8cqi, 7.6rem);
+    line-height: .92;
+    letter-spacing: -.055em;
+    text-wrap: balance;
+    overflow-wrap: anywhere;
+  }
+  .atm-overlay__deck {
+    margin-block: 1.8rem 0;
+    max-inline-size: 42rem;
+    color: #eee1e5;
+    font-size: clamp(1.05rem, 2cqi, 1.4rem);
+    line-height: 1.55;
+  }
+  .atm-overlay__body { margin-block-start: 1.4rem; color: #e7dce0; line-height: 1.7; }
+  .atm-overlay__body :global(> :last-child) { margin-block-end: 0; }
+  .atm-overlay__actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-block-start: 2rem; }
+  .atm-overlay__actions:empty { display: none; }
+
+  @container (max-width: 46rem) {
+    .atm-overlay { min-block-size: 42rem; }
+    .atm-overlay__content { align-self: end; inline-size: calc(100% - 2rem); padding-block: 5rem 7rem; }
+    .atm-overlay__content > *,
+    .atm-overlay[data-composition] .atm-overlay__content > * { max-inline-size: 100%; margin-inline: 0; text-align: start; }
+    .atm-overlay h2,
+    .atm-overlay h3 { font-size: clamp(2.7rem, 14cqi, 4.7rem); }
+    .atm-overlay__veil,
+    .atm-overlay[data-composition] .atm-overlay__veil {
+      transform: none;
+      background: linear-gradient(0deg, rgb(4 3 6 / .97) 0 22%, rgb(4 3 6 / .72) 62%, rgb(4 3 6 / .28));
+    }
+    .atm-overlay__media figcaption { inset-inline: 1rem; max-inline-size: none; }
+  }
+
+  @media (forced-colors: active) {
+    .atm-overlay { border-block: 2px solid CanvasText; background: Canvas; color: CanvasText; }
+    .atm-overlay__media,
+    .atm-overlay__veil { display: none; }
+    .atm-overlay h2,
+    .atm-overlay h3,
+    .atm-overlay__deck,
+    .atm-overlay__body,
+    .atm-overlay__eyebrow { color: CanvasText; }
+  }
+
+  @media print {
+    .atm-overlay { min-block-size: auto; break-inside: avoid; background: #fff; color: #000; }
+    .atm-overlay__media { opacity: .22; }
+    .atm-overlay__veil { background: #fff9; }
+    .atm-overlay h2,
+    .atm-overlay h3,
+    .atm-overlay__deck,
+    .atm-overlay__body { color: #000; }
+  }
+</style>
