@@ -304,7 +304,7 @@ resource functionApp 'Microsoft.Web/sites@2024-11-01' = {
         { name: 'REPLY_TO', value: serviceConfig.replyTo }
         { name: 'ALLOWED_ORIGINS', value: join(serviceConfig.allowedOrigins, ',') }
         { name: 'EXPECTED_FRONT_DOOR_ID', value: frontDoorId }
-        { name: 'KEY_VAULT_URI', value: 'https://${keyVault.name}.${keyVaultSuffix}' }
+        { name: 'KEY_VAULT_URI', value: 'https://${keyVault.name}${keyVaultSuffix}' }
         { name: 'ACS_ENDPOINT', value: 'https://${communicationService.name}.communication.azure.com' }
         { name: 'ACS_SENDER_ADDRESS_SECRET_NAME', value: secretNames.acsSenderAddress }
         { name: 'TURNSTILE_SECRET_NAME', value: secretNames.turnstileSecret }
@@ -316,7 +316,7 @@ resource functionApp 'Microsoft.Web/sites@2024-11-01' = {
         { name: 'DATAVERSE_ENTITY_SET', value: serviceConfig.dataverseEntitySet }
         { name: 'DATAVERSE_ENTITY_LOGICAL_NAME', value: serviceConfig.dataverseEntityLogicalName }
         { name: 'DATAVERSE_REQUEST_ID_COLUMN', value: serviceConfig.dataverseRequestIdColumn }
-        { name: 'TURNSTILE_REQUIRED', value: string(policyConfig.turnstileRequired) }
+        { name: 'TURNSTILE_REQUIRED', value: policyConfig.turnstileRequired ? 'true' : 'false' }
         { name: 'SAS_HOURS', value: string(policyConfig.signedUrlHours) }
         { name: 'RATE_LIMIT_PER_HOUR', value: string(policyConfig.rateLimitPerHour) }
       ]
