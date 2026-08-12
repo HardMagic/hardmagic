@@ -1,12 +1,13 @@
-include:
-  - project: "DroidOpsInc/launch-sequence"
-    ref: main
-    file: "/jobs/pages-publish.yml"
-
 pages:
-  extends: .pages:publish
-  variables:
-    PAGES_SOURCE_DIR: "site"
+  stage: deploy
+  image: harbor.focuscell.org/dockerhub-proxy/library/alpine:3.21
+  script:
+    - mkdir -p public
+    - cp -a site/. public/
+    - echo "Pages artifact ready — $(find public -type f | wc -l) files"
+  artifacts:
+    paths:
+      - public
   allow_failure: false
   rules:
     - if: '$CI_COMMIT_BRANCH == "master"'
