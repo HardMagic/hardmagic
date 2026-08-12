@@ -43,13 +43,11 @@ brief_lock_package:
   rules:
     - <<: *brief_delivery_changes
   script:
-    - apt-get update -qq
-    - apt-get install -y -qq --no-install-recommends zip
     - cd infra/brief-delivery/function
     - npm ci --ignore-scripts
     - npm run build
     - npm prune --omit=dev --ignore-scripts
-    - zip -q -r "$CI_PROJECT_DIR/hardmagic-brief-lock.zip" dist host.json package.json package-lock.json node_modules
+    - npx --yes bestzip@2.2.1 --force node "$CI_PROJECT_DIR/hardmagic-brief-lock.zip" dist host.json package.json package-lock.json node_modules
   artifacts:
     name: hardmagic-brief-lock-$CI_COMMIT_SHA
     expire_in: 7 days
