@@ -4,7 +4,7 @@ interface Props { id: string; data: any; index: number }
 const { id, data, index } = Astro.props;
 ---
 <article class:list={['product-card', `accent-${data.accent}`]}>
-  <a href={`/products/${id}/`} aria-label={`Explore ${data.name}`}>
+  <a href={`products/${id}/`} aria-label={`Explore ${data.name}`}>
     <div class="card-top"><span>0{index + 1}</span><span>{data.category}</span></div>
     <ProductVisual id={id} compact />
     <div class="card-copy"><p class="status"><i></i>{data.status}</p><h2>{data.name}</h2><p>{data.summary}</p><span class="text-link">Explore product <b>↗</b></span></div>

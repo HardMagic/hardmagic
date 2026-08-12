@@ -7,5 +7,5 @@ const products = (await getCollection('products')).sort((a,b) => a.data.order - 
 <BaseLayout title="Products" description="Explore HardMagic products for generative media, visual product intelligence, developer workflows, and AI infrastructure.">
   <section class="page-hero shell"><p class="eyebrow dark">The HardMagic constellation</p><h1>Tools for making<br /><em>what comes next.</em></h1><p>We build opinionated products that join creative instinct with trustworthy systems—from the first prompt to the final public experience.</p></section>
   <section class="all-products"><div class="shell product-grid">{products.map((product,index) => <ProductCard id={product.id} data={product.data} index={index} />)}</div></section>
-  <section class="closing-cta shell section-pad"><p class="eyebrow dark">One connected practice</p><h2>Use one instrument.<br />Or compose the whole system.</h2><a class="button dark-button" href="/contact/">Talk to HardMagic</a></section>
+  <section class="closing-cta shell section-pad"><p class="eyebrow dark">One connected practice</p><h2>Use one instrument.<br />Or compose the whole system.</h2><a class="button dark-button" href="contact/">Talk to HardMagic</a></section>
 </BaseLayout>
