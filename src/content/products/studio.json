@@ -1,0 +1,15 @@
+{
+  "name": "HardMagic Studio",
+  "kicker": "One creative surface. Any medium.",
+  "category": "Generative media studio",
+  "status": "Active development",
+  "summary": "A creative studio for directing image, video, audio, and 3D generation through natural-language intent and a hybrid local-and-cloud compute fabric.",
+  "thesis": "Generative media becomes useful when models disappear behind a coherent creative practice.",
+  "capabilities": ["Image, video, audio, and 3D workflows", "Natural-language creative direction", "Reusable assets and generation history", "Hybrid local and cloud GPU execution"],
+  "workflow": ["Describe the creative intent", "Choose or let Studio route the workflow", "Generate and compare variations", "Refine, organize, and deliver"],
+  "proof": ["A unified multi-medium product architecture", "Connected to HardMagic's GPU routing and asset systems"],
+  "limitation": "Model availability, latency, and output rights vary by selected provider and workflow.",
+  "order": 2,
+  "featured": true,
+  "accent": "violet"
+}

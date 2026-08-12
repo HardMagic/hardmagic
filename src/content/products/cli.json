@@ -1,0 +1,15 @@
+{
+  "name": "HardMagic CLI",
+  "kicker": "Creative infrastructure, without leaving the terminal.",
+  "category": "Developer tooling",
+  "status": "Available",
+  "summary": "The `hm` command gives people and agents a dependable interface to HardMagic generation, assets, authentication, settings, and machine-readable workflows.",
+  "thesis": "The best creative system should be equally at home in a human workflow, a script, or an agent harness.",
+  "capabilities": ["Image and media generation commands", "Asset and session management", "Structured machine-readable output", "Agent skills and automation-friendly APIs"],
+  "workflow": ["Authenticate once", "Express an intent or select a workflow", "Stream or await the result", "Reuse the asset in any toolchain"],
+  "proof": ["A real `hm` binary with generation and asset surfaces", "Purpose-built interfaces for both humans and agents"],
+  "limitation": "Some commands require access to HardMagic services or configured third-party providers.",
+  "order": 3,
+  "featured": true,
+  "accent": "cyan"
+}

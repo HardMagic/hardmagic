@@ -1,0 +1,15 @@
+{
+  "name": "WireMark",
+  "kicker": "See the work. Mark the work. Move the work.",
+  "category": "Visual product intelligence",
+  "status": "Active development",
+  "summary": "A visual-first environment for understanding a running product, connecting what you see to the source that made it, and directing agents with precise evidence.",
+  "thesis": "Software work should begin with the product itself—not a scavenger hunt through files, tickets, and screenshots.",
+  "capabilities": ["Repository-to-canvas navigation", "Spatial annotations tied to source", "Agent-ready evidence and verification", "Private, reviewable product context"],
+  "workflow": ["Open the running experience", "Mark an interface or behavior", "Trace it into source and context", "Hand verified intent to people or agents"],
+  "proof": ["Built as a working repository-to-canvas environment", "Designed around privacy, provenance, and review"],
+  "limitation": "WireMark is in active development; interface details and integrations will continue to evolve.",
+  "order": 1,
+  "featured": true,
+  "accent": "coral"
+}

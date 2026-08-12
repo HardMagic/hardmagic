@@ -1,0 +1,15 @@
+{
+  "name": "GPU Router",
+  "kicker": "The right compute for every creative act.",
+  "category": "AI infrastructure",
+  "status": "Active development",
+  "summary": "A hybrid inference fabric that routes generation work across local and cloud GPU capacity according to capability, policy, availability, and cost.",
+  "thesis": "Creative AI should remain resilient when a provider, model, network, or machine changes.",
+  "capabilities": ["Local and cloud workload routing", "Capability-aware model selection", "Policy and availability controls", "Observable job lifecycle"],
+  "workflow": ["Receive a generation intent", "Resolve policy and model needs", "Select healthy compute", "Return and record the result"],
+  "proof": ["Powers the compute layer beneath HardMagic Studio", "Designed as an independent, observable service"],
+  "limitation": "Routing quality depends on configured providers, available hardware, and workload-specific benchmarks.",
+  "order": 6,
+  "featured": false,
+  "accent": "wine"
+}

@@ -1,10 +1,23 @@
 pages:
   stage: deploy
-  image: harbor.focuscell.org/dockerhub-proxy/library/alpine:3.21
+  image: harbor.focuscell.org/dockerhub-proxy/library/node:25-alpine
+  cache:
+    key:
+      files:
+        - package-lock.json
+    paths:
+      - .npm/
   script:
-    - mkdir -p public
-    - cp -a site/. public/
-    - echo "Pages artifact ready — $(find public -type f | wc -l) files"
+    - npm ci --cache .npm --prefer-offline
+    - npm run check
+    - npm run typecheck:ts7
+    - npm run test
+    - npm run build
+    - npm run audit:routes
+    - npm run audit:media
+    - mv dist .pages
+    - rm -rf public
+    - mv .pages public
   artifacts:
     paths:
       - public

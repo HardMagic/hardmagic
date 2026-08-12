@@ -1,0 +1,20 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProductVisual from '../../components/product/ProductVisual.astro';
+export const getStaticPaths = (async () => (await getCollection('products')).map((product) => ({ params: { id: product.id }, props: { product } }))) satisfies GetStaticPaths;
+interface Props { product: CollectionEntry<'products'> }
+const { product } = Astro.props;
+const d = product.data;
+---
+<BaseLayout title={d.name} description={d.summary}>
+  <article class:list={['product-detail', `accent-${d.accent}`]}>
+    <header class="product-hero shell"><div class="product-hero-copy"><p class="eyebrow dark">{d.category} · {d.status}</p><h1>{d.name}</h1><p class="product-kicker">{d.kicker}</p><p class="product-summary">{d.summary}</p><a class="button dark-button" href="/contact/">Talk with us</a></div><ProductVisual id={product.id} /></header>
+    <section class="product-thesis"><div class="shell"><span>THE IDEA</span><blockquote>{d.thesis}</blockquote></div></section>
+    <section class="shell product-columns section-pad"><div><p class="eyebrow dark">What it does</p><h2>Capability with a point of view.</h2></div><ul>{d.capabilities.map((item,i) => <li><span>0{i+1}</span>{item}</li>)}</ul></section>
+    <section class="workflow"><div class="shell"><p class="eyebrow">The movement</p><h2>From intent to outcome.</h2><ol>{d.workflow.map((item,i) => <li><span>0{i+1}</span><p>{item}</p></li>)}</ol></div></section>
+    <section class="shell evidence section-pad"><div><p class="eyebrow dark">What is real now</p><h2>Built in public spirit.<br />Developed in private.</h2></div><div>{d.proof.map((item) => <p class="proof">{item}</p>)}<p class="limitation"><b>A clear edge:</b> {d.limitation}</p></div></section>
+    <nav class="product-back" aria-label="Product navigation"><a href="/products/">← All HardMagic products</a><a href="/contact/">Build with us →</a></nav>
+  </article>
+</BaseLayout>

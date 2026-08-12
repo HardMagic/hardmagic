@@ -1,0 +1,14 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import disney from '../assets/legacy/disney.png';
+import zico from '../assets/legacy/zico.png';
+import jamba from '../assets/legacy/jamba-juice.png';
+---
+<BaseLayout title="Company" description="HardMagic Corporation is an independent Delaware company with more than 25 years at the intersection of story, media, design, and technology.">
+  <section class="page-hero company-hero shell"><p class="eyebrow dark">HardMagic Corporation · Delaware, USA</p><h1>Twenty-five years<br />of making <em>possibility.</em></h1><p>Privately owned. Founder-led. Built for the long horizon.</p></section>
+  <section class="company-story"><div class="shell split"><div><p class="eyebrow">Our origin</p><h2>Before generative media had a name, we were choreographing stories from people, pictures, technology, and place.</h2></div><div><p>HardMagic was founded by Matt Hackney around a simple conviction: a brand is not a logo or a campaign. It is a living system of experiences.</p><p>That practice carried us through work touching entertainment, health, culture, and consumer brands. It taught us how to make complicated systems feel coherent—and how to recognize the emotional truth inside a technical possibility.</p><p>Today, that same conviction drives a family of GenAI and media products. The medium changed. The standard did not.</p></div></div></section>
+  <section class="principles shell section-pad"><p class="eyebrow dark">What endures</p><h2>Independent thinking.<br />Durable craft.</h2><div class="principle-grid"><article><span>01</span><h3>Human direction</h3><p>AI should extend taste and intention, never flatten them.</p></article><article><span>02</span><h3>Real evidence</h3><p>Products earn trust by showing their work and naming their edges.</p></article><article><span>03</span><h3>Connected systems</h3><p>The strongest experience joins story, interface, infrastructure, and delivery.</p></article><article><span>04</span><h3>Private stewardship</h3><p>We build patiently, own our direction, and protect the work entrusted to us.</p></article></div></section>
+  <section class="brand-history"><div class="shell"><p class="eyebrow">Selected history</p><h2>Our founder’s work has crossed some of the world’s most recognized stages and brands.</h2><div class="logo-row"><Image src={disney} alt="Disney" /><span class="abc-mark">ABC</span><Image src={zico} alt="Zico" /><Image src={jamba} alt="Jamba Juice" /></div><p class="quiet">Selected historical relationships and project experience. Marks belong to their respective owners and do not imply current endorsement.</p></div></section>
+  <section class="closing-cta shell section-pad"><p class="eyebrow dark">The next twenty-five</p><h2>We are just getting<br />to the interesting part.</h2><a class="button dark-button" href="/products/">See what we are building</a></section>
+</BaseLayout>

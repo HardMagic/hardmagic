@@ -1,0 +1,17 @@
+---
+interface Props { id: string; compact?: boolean }
+const { id, compact = false } = Astro.props;
+---
+<div class:list={['product-visual', `visual-${id}`, { compact }]} aria-hidden="true">
+  {id === 'wiremark' && <><div class="browser-chrome"><i></i><i></i><i></i></div><div class="wire-canvas"><span class="node n1">NAV</span><span class="node n2">HERO</span><span class="node n3">SOURCE</span><span class="wire w1"></span><span class="wire w2"></span><b>03</b><em>spacing / evidence attached</em></div></>}
+  {id === 'studio' && <><div class="studio-orb"></div><div class="timeline"><i></i><i></i><i></i><i></i><i></i></div><span class="mode">IMAGE · MOTION · SOUND · FORM</span></>}
+  {id === 'cli' && <pre><code><span>$</span> hm generate image \
+  --intent "impossible, precise"
+
+<b>✓</b> routed  z-image-turbo
+<b>✓</b> asset   hm://a/7f3c
+<i>ready in 2.8s</i></code></pre>}
+  {id === 'web-magic' && <><div class="score">98<small>/100</small></div><ul><li><b>A11Y</b><i>PASS</i></li><li><b>PERF</b><i>+24</i></li><li><b>SEO</b><i>PASS</i></li><li><b>TRUST</b><i>PASS</i></li></ul></>}
+  {id === 'photo-curator' && <><div class="contact-sheet">{Array.from({length: 9}).map((_,i) => <i style={`--i:${i}`}></i>)}</div><span class="selection">SELECTS · 14 / 268</span></>}
+  {id === 'gpu-router' && <><div class="router-core">HM</div><span class="route local">LOCAL GPU</span><span class="route cloud">CLOUD</span><span class="route edge">EDGE</span><i class="beam b1"></i><i class="beam b2"></i><i class="beam b3"></i></>}
+</div>

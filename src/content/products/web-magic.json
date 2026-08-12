@@ -1,0 +1,15 @@
+{
+  "name": "Web Magic",
+  "kicker": "Make the web earn its name.",
+  "category": "Autonomous web quality",
+  "status": "Available",
+  "summary": "An AI-powered auditor and remediation system for static sites and GitHub Pages, spanning accessibility, performance, search, and delivery quality.",
+  "thesis": "A website is not finished when it renders. It is finished when people can find it, use it, trust it, and enjoy it.",
+  "capabilities": ["Accessibility and semantic audits", "Performance and delivery analysis", "SEO and metadata remediation", "Repeatable evidence for every fix"],
+  "workflow": ["Inspect a deployed site or repository", "Prioritize defects by impact", "Apply reviewable remediations", "Re-run the evidence suite"],
+  "proof": ["Maintained as a production-oriented website optimizer", "Combines diagnostic findings with actionable remediation"],
+  "limitation": "Automated remediation still benefits from human review for brand, editorial, and business intent.",
+  "order": 4,
+  "featured": true,
+  "accent": "gold"
+}

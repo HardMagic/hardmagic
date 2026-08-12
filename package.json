@@ -1,0 +1,36 @@
+{
+  "name": "hardmagic-corporate-site",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.12.0",
+    "npm": ">=11.0.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "typecheck:ts7": "tsc --noEmit --project tsconfig.native.json",
+    "test": "vitest run tests/site.test.ts",
+    "test:browser": "playwright test",
+    "audit:routes": "node scripts/audit-routes.mjs",
+    "audit:media": "node scripts/audit-media.mjs",
+    "verify": "npm run check && npm run typecheck:ts7 && npm run test && npm run build && npm run audit:routes && npm run audit:media && npm run test:browser"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "3.7.3",
+    "astro": "7.2.1",
+    "sharp": "0.35.3"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.10",
+    "@astrojs/markdown-remark": "7.2.2",
+    "@axe-core/playwright": "4.13.0",
+    "@playwright/test": "1.62.1",
+    "@typescript/native": "npm:typescript@7.0.2",
+    "typescript": "npm:@typescript/typescript6@6.0.2",
+    "vitest": "4.1.10"
+  }
+}

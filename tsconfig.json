@@ -1,0 +1,9 @@
+{
+  "extends": "astro/tsconfigs/strictest",
+  "compilerOptions": {
+    "rootDir": ".",
+    "types": ["astro/client", "vitest/globals"]
+  },
+  "include": [".astro/types.d.ts", "**/*"],
+  "exclude": ["dist", "public", "site"]
+}

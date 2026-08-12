@@ -9,9 +9,21 @@ This repository is the internal source repository for HardMagic.
 - Public deployment: GitHub `HardMagic/hardmagic`, `gh-pages` branch, kept in
   sync by `git-mirror-sync`
 - Official domain: [hardmagic.com](https://hardmagic.com)
-- Published files: [`site/`](site/)
+- Source application: [`src/`](src/)
+- Static build output: `dist/` (generated, not committed)
 
-The website was recovered from the last successful GitHub Pages deployment and
-preserved with its original commit history. GitLab remains authoritative for
-all branches. GitLab Pages serves only the internal-public `demo` preview;
-GitHub Pages serves the public domain from the mirrored `gh-pages` branch.
+The original WordPress export remains recoverable from repository history. The
+current site is a static Astro 7 application with schema-validated product
+content, self-hosted media, and no browser JavaScript or third-party requests.
+
+## Development
+
+```sh
+npm install
+npm run dev
+npm run verify
+```
+
+GitLab remains authoritative for all branches. GitLab Pages serves only the
+internal-public `demo` preview; GitHub Pages serves the public domain from the
+mirrored `gh-pages` branch.
