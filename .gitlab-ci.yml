@@ -1,0 +1,12 @@
+include:
+  - project: "DroidOpsInc/launch-sequence"
+    ref: main
+    file: "/jobs/pages-publish.yml"
+
+pages:
+  extends: .pages:publish
+  variables:
+    PAGES_SOURCE_DIR: "site"
+  allow_failure: false
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
