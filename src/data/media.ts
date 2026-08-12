@@ -1,0 +1,1207 @@
+export type MediaType =
+  | 'photography'
+  | 'product-capture'
+  | 'archival-scan'
+  | 'brand-mark'
+  | 'generated-concept'
+  | 'code-native-illustration'
+  | 'technical-diagram'
+  | 'data-graphic'
+  | 'editorial-composite'
+  | 'icon'
+  | 'social-card';
+
+export type MediaRole =
+  | 'hero'
+  | 'lead-evidence'
+  | 'supporting-evidence'
+  | 'observation'
+  | 'archive-proof'
+  | 'product-mechanism'
+  | 'technical-explanation'
+  | 'editorial-interlude'
+  | 'campaign-art'
+  | 'navigation'
+  | 'identity'
+  | 'social-preview';
+
+export type TruthStatus =
+  | 'owned-existing'
+  | 'third-party-mark'
+  | 'code-native-concept'
+  | 'generated-concept'
+  | 'planned-uncaptured';
+
+export type ReviewStatus =
+  | 'approved'
+  | 'approved-with-restrictions'
+  | 'needs-editorial-review'
+  | 'requires-replacement'
+  | 'planned';
+
+export interface FocalPoint {
+  readonly x: number;
+  readonly y: number;
+  readonly unit: 'percent';
+}
+
+export interface CropDirection {
+  readonly preferredAspect: string;
+  readonly desktop: string;
+  readonly narrow: string;
+  readonly focalPoint: FocalPoint | null;
+  readonly safeArea?: string;
+}
+
+export interface AltDecision {
+  readonly kind: 'descriptive' | 'empty' | 'logo-label' | 'pending';
+  readonly text: string | null;
+  readonly rationale: string;
+}
+
+export interface CaptionDecision {
+  readonly kind: 'required' | 'none' | 'pending';
+  readonly text: string | null;
+  readonly rationale: string;
+}
+
+export interface Provenance {
+  readonly truthStatus: TruthStatus;
+  readonly source: string;
+  readonly owner: string;
+  readonly license: string;
+  readonly restrictions: string;
+  readonly parentAssetId?: string;
+}
+
+export interface GeneratedDisclosure {
+  readonly isGenerated: boolean;
+  readonly disclosure: string;
+  readonly promptIntent: string | null;
+  readonly workflow: string | null;
+}
+
+export interface MediaAsset {
+  readonly id: string;
+  readonly title: string;
+  readonly filename: string | null;
+  readonly type: MediaType;
+  readonly roles: readonly MediaRole[];
+  readonly routes: readonly string[];
+  readonly alt: AltDecision;
+  readonly caption: CaptionDecision;
+  readonly crop: CropDirection;
+  readonly provenance: Provenance;
+  readonly generated: GeneratedDisclosure;
+  readonly reviewStatus: ReviewStatus;
+  readonly reuseRule: string;
+}
+
+const HARDMAGIC = 'HardMagic Corporation';
+
+const notGenerated: GeneratedDisclosure = {
+  isGenerated: false,
+  disclosure: 'Not generated.',
+  promptIntent: null,
+  workflow: null,
+};
+
+const plannedGeneration: GeneratedDisclosure = {
+  isGenerated: false,
+  disclosure: 'Planned and uncaptured. Do not publish or represent as completed work.',
+  promptIntent: null,
+  workflow: null,
+};
+
+export const mediaManifest = [
+  {
+    id: 'legacy-raptor',
+    title: 'Original HardMagic raptor photograph',
+    filename: 'src/assets/legacy/raptor.jpg',
+    type: 'photography',
+    roles: ['hero', 'archive-proof'],
+    routes: ['/'],
+    alt: {
+      kind: 'descriptive',
+      text: 'A bird of prey in flight, the enduring image of HardMagic.',
+      rationale: 'The photograph establishes both atmosphere and continuity with the earlier site.',
+    },
+    caption: {
+      kind: 'none',
+      text: null,
+      rationale: 'The home opening identifies its archival role in adjacent copy.',
+    },
+    crop: {
+      preferredAspect: '16:9',
+      desktop: 'Full-bleed cinematic crop; preserve the bird and its direction of travel.',
+      narrow: 'Use an authored 4:5 crop with the bird fully visible.',
+      focalPoint: { x: 60, y: 50, unit: 'percent' },
+      safeArea: 'Keep the left half quiet enough for the home thesis.',
+    },
+    provenance: {
+      truthStatus: 'owned-existing',
+      source: 'Recovered from the 2015 HardMagic website archive.',
+      owner: HARDMAGIC,
+      license: 'Owned HardMagic archival asset.',
+      restrictions: 'Home lead only; a small company-history reference requires an explicit archival caption.',
+    },
+    generated: notGenerated,
+    reviewStatus: 'approved',
+    reuseRule: 'May lead the home page only; one captioned company-history thumbnail is the sole permitted secondary use.',
+  },
+  {
+    id: 'legacy-wordmark',
+    title: 'Legacy royal HardMagic wordmark',
+    filename: 'src/assets/legacy/hardmagic-logo.png',
+    type: 'brand-mark',
+    roles: ['identity', 'archive-proof'],
+    routes: ['/company/', '/company/history/'],
+    alt: {
+      kind: 'logo-label',
+      text: 'HardMagic',
+      rationale: 'Logo alternatives name the organization rather than describing ornament.',
+    },
+    caption: {
+      kind: 'required',
+      text: 'An earlier HardMagic wordmark, preserved as part of the company archive.',
+      rationale: 'The caption distinguishes this archival mark from the current identity.',
+    },
+    crop: {
+      preferredAspect: '11:2',
+      desktop: 'Contain without cropping.',
+      narrow: 'Contain without cropping.',
+      focalPoint: { x: 50, y: 50, unit: 'percent' },
+    },
+    provenance: {
+      truthStatus: 'owned-existing',
+      source: 'Recovered from the 2015 HardMagic website archive.',
+      owner: HARDMAGIC,
+      license: 'Owned HardMagic brand asset.',
+      restrictions: 'Use as archival evidence, not as the primary current navigation mark.',
+    },
+    generated: notGenerated,
+    reviewStatus: 'approved-with-restrictions',
+    reuseRule: 'May recur only in identity-history contexts where its archival status is visible.',
+  },
+  {
+    id: 'client-mark-disney',
+    title: 'Disney historical experience mark',
+    filename: 'src/assets/legacy/disney.png',
+    type: 'brand-mark',
+    roles: ['archive-proof'],
+    routes: ['/company/', '/company/experience/'],
+    alt: {
+      kind: 'logo-label',
+      text: 'Disney',
+      rationale: 'The mark identifies the historical brand relationship.',
+    },
+    caption: {
+      kind: 'required',
+      text: null,
+      rationale: 'Publication requires substantiated project-role copy and a non-endorsement note.',
+    },
+    crop: {
+      preferredAspect: '12:5',
+      desktop: 'Contain with clear space around the mark.',
+      narrow: 'Contain with clear space around the mark.',
+      focalPoint: { x: 50, y: 50, unit: 'percent' },
+    },
+    provenance: {
+      truthStatus: 'third-party-mark',
+      source: 'Recovered from the HardMagic website archive.',
+      owner: 'The Walt Disney Company or its applicable affiliate.',
+      license: 'Third-party trademark used only to identify substantiated historical experience.',
+      restrictions: 'No current affiliation, endorsement, decorative hero use, or unsupported project claim.',
+    },
+    generated: notGenerated,
+    reviewStatus: 'approved-with-restrictions',
+    reuseRule: 'Company proof contexts only; never use as decoration or imply a current engagement.',
+  },
+  {
+    id: 'client-mark-zico',
+    title: 'ZICO historical experience mark',
+    filename: 'src/assets/legacy/zico.png',
+    type: 'brand-mark',
+    roles: ['archive-proof'],
+    routes: ['/company/', '/company/experience/'],
+    alt: {
+      kind: 'logo-label',
+      text: 'ZICO',
+      rationale: 'The mark identifies the historical brand relationship.',
+    },
+    caption: {
+      kind: 'required',
+      text: null,
+      rationale: 'Publication requires substantiated project-role copy and a non-endorsement note.',
+    },
+    crop: {
+      preferredAspect: '3:1',
+      desktop: 'Contain with clear space around the mark.',
+      narrow: 'Contain with clear space around the mark.',
+      focalPoint: { x: 50, y: 50, unit: 'percent' },
+    },
+    provenance: {
+      truthStatus: 'third-party-mark',
+      source: 'Recovered from the HardMagic website archive.',
+      owner: 'The applicable ZICO trademark owner.',
+      license: 'Third-party trademark used only to identify substantiated historical experience.',
+      restrictions: 'No current affiliation, endorsement, decorative hero use, or unsupported project claim.',
+    },
+    generated: notGenerated,
+    reviewStatus: 'approved-with-restrictions',
+    reuseRule: 'Company proof contexts only; never use as decoration or imply a current engagement.',
+  },
+  {
+    id: 'client-mark-jamba-juice',
+    title: 'Jamba Juice historical experience mark',
+    filename: 'src/assets/legacy/jamba-juice.png',
+    type: 'brand-mark',
+    roles: ['archive-proof'],
+    routes: ['/company/', '/company/experience/'],
+    alt: {
+      kind: 'logo-label',
+      text: 'Jamba Juice',
+      rationale: 'The mark identifies the historical brand relationship.',
+    },
+    caption: {
+      kind: 'required',
+      text: null,
+      rationale: 'Publication requires substantiated project-role copy and a non-endorsement note.',
+    },
+    crop: {
+      preferredAspect: '53:20',
+      desktop: 'Contain with clear space around the mark.',
+      narrow: 'Contain with clear space around the mark.',
+      focalPoint: { x: 50, y: 50, unit: 'percent' },
+    },
+    provenance: {
+      truthStatus: 'third-party-mark',
+      source: 'Recovered from the HardMagic website archive.',
+      owner: 'Jamba Juice Franchisor SPV LLC or its applicable affiliate.',
+      license: 'Third-party trademark used only to identify substantiated historical experience.',
+      restrictions: 'No current affiliation, endorsement, decorative hero use, or unsupported project claim.',
+    },
+    generated: notGenerated,
+    reviewStatus: 'approved-with-restrictions',
+    reuseRule: 'Company proof contexts only; never use as decoration or imply a current engagement.',
+  },
+  {
+    id: 'client-mark-abc',
+    title: 'ABC historical experience mark',
+    filename: null,
+    type: 'brand-mark',
+    roles: ['archive-proof'],
+    routes: ['/company/', '/company/experience/'],
+    alt: {
+      kind: 'logo-label',
+      text: 'ABC',
+      rationale: 'The code-native text treatment identifies the historical brand relationship.',
+    },
+    caption: {
+      kind: 'required',
+      text: null,
+      rationale: 'Publication requires substantiated project-role copy and a non-endorsement note.',
+    },
+    crop: {
+      preferredAspect: '1:1',
+      desktop: 'Render as a contained text mark; do not imitate protected artwork beyond identification.',
+      narrow: 'Render as a contained text mark.',
+      focalPoint: { x: 50, y: 50, unit: 'percent' },
+    },
+    provenance: {
+      truthStatus: 'third-party-mark',
+      source: 'Code-native identifying mark in src/pages/company.astro.',
+      owner: 'American Broadcasting Companies, Inc. or its applicable affiliate.',
+      license: 'Third-party name used only to identify substantiated historical experience.',
+      restrictions: 'No current affiliation, endorsement, decorative hero use, or unsupported project claim.',
+    },
+    generated: notGenerated,
+    reviewStatus: 'approved-with-restrictions',
+    reuseRule: 'Company proof contexts only; never use as decoration or imply a current engagement.',
+  },
+  {
+    id: 'wiremark-canvas',
+    title: 'WireMark canvas concept',
+    filename: null,
+    type: 'code-native-illustration',
+    roles: ['product-mechanism'],
+    routes: ['/products/', '/products/wiremark/'],
+    alt: {
+      kind: 'empty',
+      text: '',
+      rationale: 'The current illustration is decorative and adjacent product copy carries the meaning.',
+    },
+    caption: {
+      kind: 'none',
+      text: null,
+      rationale: 'Do not caption a conceptual illustration as product evidence.',
+    },
+    crop: {
+      preferredAspect: 'responsive component',
+      desktop: 'Use the full component frame.',
+      narrow: 'Reflow labels; do not scale text below legibility.',
+      focalPoint: null,
+    },
+    provenance: {
+      truthStatus: 'code-native-concept',
+      source: 'src/components/product/ProductVisual.astro',
+      owner: HARDMAGIC,
+      license: 'Owned site-source illustration.',
+      restrictions: 'Concept only; must not be described as a product screenshot.',
+    },
+    generated: notGenerated,
+    reviewStatus: 'approved-with-restrictions',
+    reuseRule: 'WireMark directory preview and product mechanism only; replace lead use when an approved real capture exists.',
+  },
+  {
+    id: 'studio-spectrum',
+    title: 'HardMagic Studio media-spectrum concept',
+    filename: null,
+    type: 'code-native-illustration',
+    roles: ['product-mechanism'],
+    routes: ['/products/', '/products/studio/'],
+    alt: {
+      kind: 'empty',
+      text: '',
+      rationale: 'The current illustration is atmospheric and adjacent product copy carries the meaning.',
+    },
+    caption: {
+      kind: 'none',
+      text: null,
+      rationale: 'Do not caption the abstract spectrum as captured product output.',
+    },
+    crop: {
+      preferredAspect: 'responsive component',
+      desktop: 'Use the full orb and timeline field.',
+      narrow: 'Preserve the modality label and reduce motion when requested.',
+      focalPoint: null,
+    },
+    provenance: {
+      truthStatus: 'code-native-concept',
+      source: 'src/components/product/ProductVisual.astro',
+      owner: HARDMAGIC,
+      license: 'Owned site-source illustration.',
+      restrictions: 'Concept only; must not be described as a Studio screenshot or generated result.',
+    },
+    generated: notGenerated,
+    reviewStatus: 'approved-with-restrictions',
+    reuseRule: 'Studio directory preview and product mechanism only; do not reuse as generic GenAI decoration.',
+  },
+  {
+    id: 'cli-terminal',
+    title: 'HardMagic CLI terminal concept',
+    filename: null,
+    type: 'code-native-illustration',
+    roles: ['product-mechanism'],
+    routes: ['/products/', '/products/cli/'],
+    alt: {
+      kind: 'empty',
+      text: '',
+      rationale: 'The current terminal text is illustrative rather than verified output.',
+    },
+    caption: {
+      kind: 'none',
+      text: null,
+      rationale: 'The illustrative latency and asset identifier cannot be presented as evidence.',
+    },
+    crop: {
+      preferredAspect: 'responsive component',
+      desktop: 'Preserve the complete command block.',
+      narrow: 'Wrap only at semantic command boundaries; never clip output.',
+      focalPoint: null,
+    },
+    provenance: {
+      truthStatus: 'code-native-concept',
+      source: 'src/components/product/ProductVisual.astro',
+      owner: HARDMAGIC,
+      license: 'Owned site-source illustration.',
+      restrictions: 'Contains illustrative values; replace with a sanitized real capture before using as proof.',
+    },
+    generated: notGenerated,
+    reviewStatus: 'requires-replacement',
+    reuseRule: 'Temporary CLI preview only; may not appear in a technical brief or evidence section.',
+  },
+  {
+    id: 'webmagic-score',
+    title: 'Web Magic quality-score concept',
+    filename: null,
+    type: 'data-graphic',
+    roles: ['product-mechanism'],
+    routes: ['/products/', '/products/web-magic/'],
+    alt: {
+      kind: 'empty',
+      text: '',
+      rationale: 'The score is illustrative and therefore must not be announced as measured data.',
+    },
+    caption: {
+      kind: 'none',
+      text: null,
+      rationale: 'An unsupported score cannot receive an evidentiary caption.',
+    },
+    crop: {
+      preferredAspect: 'responsive component',
+      desktop: 'Use only as a clearly conceptual directory motif.',
+      narrow: 'Stack score and dimensions without reducing label legibility.',
+      focalPoint: null,
+    },
+    provenance: {
+      truthStatus: 'code-native-concept',
+      source: 'src/components/product/ProductVisual.astro',
+      owner: HARDMAGIC,
+      license: 'Owned site-source illustration.',
+      restrictions: 'The 98/100 and change values are not verified measurements; replace before evidence use.',
+    },
+    generated: notGenerated,
+    reviewStatus: 'requires-replacement',
+    reuseRule: 'Temporary directory motif only; never publish in a brief, case study, benchmark, or proof module.',
+  },
+  {
+    id: 'curator-sheet',
+    title: 'Photo Curator contact-sheet concept',
+    filename: null,
+    type: 'code-native-illustration',
+    roles: ['product-mechanism'],
+    routes: ['/products/', '/products/photo-curator/'],
+    alt: {
+      kind: 'empty',
+      text: '',
+      rationale: 'The abstract frames are decorative and not an authentic archive or interface.',
+    },
+    caption: {
+      kind: 'none',
+      text: null,
+      rationale: 'Do not imply that the abstract sheet is product evidence.',
+    },
+    crop: {
+      preferredAspect: 'responsive component',
+      desktop: 'Preserve the complete nine-cell field.',
+      narrow: 'Keep the selected frame and selection label visible.',
+      focalPoint: null,
+    },
+    provenance: {
+      truthStatus: 'code-native-concept',
+      source: 'src/components/product/ProductVisual.astro',
+      owner: HARDMAGIC,
+      license: 'Owned site-source illustration.',
+      restrictions: 'Concept only; replace lead use with owned real media and a sanitized product capture.',
+    },
+    generated: notGenerated,
+    reviewStatus: 'requires-replacement',
+    reuseRule: 'Temporary directory preview only; not valid for workflow or evidence routes.',
+  },
+  {
+    id: 'router-topology',
+    title: 'GPU Router topology concept',
+    filename: null,
+    type: 'technical-diagram',
+    roles: ['product-mechanism', 'technical-explanation'],
+    routes: ['/products/', '/products/gpu-router/'],
+    alt: {
+      kind: 'empty',
+      text: '',
+      rationale: 'The adjacent text explains the high-level concept; this version lacks sufficient detail for a complex-image alternative.',
+    },
+    caption: {
+      kind: 'none',
+      text: null,
+      rationale: 'The topology is conceptual and is not an implementation architecture.',
+    },
+    crop: {
+      preferredAspect: 'responsive component',
+      desktop: 'Show all three conceptual routes and the central HardMagic node.',
+      narrow: 'Stack local, cloud, and edge labels beneath the central node.',
+      focalPoint: null,
+    },
+    provenance: {
+      truthStatus: 'code-native-concept',
+      source: 'src/components/product/ProductVisual.astro',
+      owner: HARDMAGIC,
+      license: 'Owned site-source illustration.',
+      restrictions: 'Concept only; do not infer protocols, providers, boundaries, or production topology.',
+    },
+    generated: notGenerated,
+    reviewStatus: 'approved-with-restrictions',
+    reuseRule: 'May recur only as the canonical high-level Router motif; technical briefs require a sourced architecture diagram.',
+  },
+  {
+    id: 'site-favicon',
+    title: 'HardMagic favicon',
+    filename: 'public/favicon.svg',
+    type: 'icon',
+    roles: ['identity'],
+    routes: ['*'],
+    alt: { kind: 'empty', text: '', rationale: 'Browser chrome supplies the site identity context.' },
+    caption: { kind: 'none', text: null, rationale: 'A favicon does not require an editorial caption.' },
+    crop: {
+      preferredAspect: '1:1',
+      desktop: 'Render without cropping.',
+      narrow: 'Render without cropping.',
+      focalPoint: { x: 50, y: 50, unit: 'percent' },
+    },
+    provenance: {
+      truthStatus: 'owned-existing',
+      source: 'Current HardMagic site source.',
+      owner: HARDMAGIC,
+      license: 'Owned HardMagic identity asset.',
+      restrictions: 'Structural identity use only.',
+    },
+    generated: notGenerated,
+    reviewStatus: 'approved',
+    reuseRule: 'Structural identity asset; exempt from creative-media duplication counts.',
+  },
+  {
+    id: 'site-social-card',
+    title: 'HardMagic default social card',
+    filename: 'public/og-hardmagic.svg',
+    type: 'social-card',
+    roles: ['social-preview', 'identity'],
+    routes: ['*'],
+    alt: { kind: 'empty', text: '', rationale: 'Social metadata provides the title and description independently.' },
+    caption: { kind: 'none', text: null, rationale: 'Metadata artwork has no on-page caption.' },
+    crop: {
+      preferredAspect: '1200:630',
+      desktop: 'Use at its authored social-card ratio.',
+      narrow: 'Use at its authored social-card ratio.',
+      focalPoint: { x: 50, y: 50, unit: 'percent' },
+      safeArea: 'Keep identity and text within common social-platform safe areas.',
+    },
+    provenance: {
+      truthStatus: 'owned-existing',
+      source: 'Current HardMagic site source.',
+      owner: HARDMAGIC,
+      license: 'Owned HardMagic identity asset.',
+      restrictions: 'Default social preview only; substantial routes should receive specific social media when available.',
+    },
+    generated: notGenerated,
+    reviewStatus: 'approved-with-restrictions',
+    reuseRule: 'May serve as the fallback social image; do not use as in-page editorial art.',
+  },
+  {
+    id: 'generative-operations',
+    title: 'Generative operations conceptual slot',
+    filename: 'src/assets/editorial/generative-operations.png',
+    type: 'generated-concept',
+    roles: ['editorial-interlude', 'campaign-art'],
+    routes: ['/insights/generative-operations/', '/capabilities/genai-operations/'],
+    alt: {
+      kind: 'pending',
+      text: null,
+      rationale: 'Final contextual alt text must be authored after editorial placement review.',
+    },
+    caption: {
+      kind: 'required',
+      text: 'Conceptual artwork; not a photograph of HardMagic infrastructure or product output.',
+      rationale: 'The disclosure prevents conceptual art from being read as operational evidence.',
+    },
+    crop: {
+      preferredAspect: '3:2',
+      desktop: 'Use as a wide editorial interlude without overprinting evidence claims.',
+      narrow: 'Author a 4:5 crop after focal-point review.',
+      focalPoint: { x: 50, y: 50, unit: 'percent' },
+    },
+    provenance: {
+      truthStatus: 'generated-concept',
+      source: 'HardMagic generated editorial asset; 1536 × 1024 source file.',
+      owner: HARDMAGIC,
+      license: 'Owned HardMagic generated editorial asset, subject to workflow and reference-rights verification.',
+      restrictions: 'Conceptual use only; never infrastructure, product, client, or performance evidence.',
+    },
+    generated: {
+      isGenerated: true,
+      disclosure: 'AI-generated conceptual artwork. Model, workflow, references, seed, and human edits must be recorded before publication.',
+      promptIntent: 'Express generative media operations as an authored cultural and technical system without depicting a fake interface.',
+      workflow: 'OpenAI ImageGen, August 12, 2026; direct generation with no reference image; human-selected and placed by HardMagic.',
+    },
+    reviewStatus: 'needs-editorial-review',
+    reuseRule: 'One lead or interlude assignment only; any second use must belong to the same named editorial series.',
+  },
+  {
+    id: 'creative-direction',
+    title: 'Creative direction conceptual slot',
+    filename: 'src/assets/editorial/creative-direction.png',
+    type: 'generated-concept',
+    roles: ['editorial-interlude', 'campaign-art'],
+    routes: ['/capabilities/creative-direction/', '/insights/human-authorship/'],
+    alt: {
+      kind: 'pending',
+      text: null,
+      rationale: 'Final contextual alt text must be authored after editorial placement review.',
+    },
+    caption: {
+      kind: 'required',
+      text: 'Conceptual artwork about creative direction; not documentary photography or client work.',
+      rationale: 'The disclosure separates an editorial metaphor from evidence.',
+    },
+    crop: {
+      preferredAspect: '16:9',
+      desktop: 'Use as a cinematic field with an authored text-safe region.',
+      narrow: 'Author a 4:5 crop; preserve the decisive gesture or focal object.',
+      focalPoint: { x: 50, y: 48, unit: 'percent' },
+    },
+    provenance: {
+      truthStatus: 'generated-concept',
+      source: 'HardMagic generated editorial asset; 1672 × 941 source file.',
+      owner: HARDMAGIC,
+      license: 'Owned HardMagic generated editorial asset, subject to workflow and reference-rights verification.',
+      restrictions: 'Conceptual use only; never founder, staff, client, or project evidence.',
+    },
+    generated: {
+      isGenerated: true,
+      disclosure: 'AI-generated conceptual artwork. Model, workflow, references, seed, and human edits must be recorded before publication.',
+      promptIntent: 'Express human judgment and direction through materials and gesture, without staging a fake meeting or interface.',
+      workflow: 'OpenAI ImageGen, August 12, 2026; direct generation with no reference image; human-selected and placed by HardMagic.',
+    },
+    reviewStatus: 'needs-editorial-review',
+    reuseRule: 'One lead or interlude assignment only; any second use must belong to the same named editorial series.',
+  },
+  {
+    id: 'hybrid-infrastructure',
+    title: 'Hybrid infrastructure conceptual slot',
+    filename: 'src/assets/editorial/hybrid-infrastructure.png',
+    type: 'generated-concept',
+    roles: ['editorial-interlude', 'campaign-art'],
+    routes: ['/products/gpu-router/', '/insights/hybrid-inference/'],
+    alt: {
+      kind: 'pending',
+      text: null,
+      rationale: 'Final contextual alt text must be authored after editorial placement review.',
+    },
+    caption: {
+      kind: 'required',
+      text: 'Conceptual artwork; it does not depict HardMagic production infrastructure or a network topology.',
+      rationale: 'The disclosure prevents a metaphor from being read as architecture evidence.',
+    },
+    crop: {
+      preferredAspect: '4:5',
+      desktop: 'Use as a portrait field beside sourced architecture copy.',
+      narrow: 'Preserve the authored portrait composition without cropping critical elements.',
+      focalPoint: { x: 50, y: 50, unit: 'percent' },
+    },
+    provenance: {
+      truthStatus: 'generated-concept',
+      source: 'HardMagic generated editorial asset; 1122 × 1402 source file.',
+      owner: HARDMAGIC,
+      license: 'Owned HardMagic generated editorial asset, subject to workflow and reference-rights verification.',
+      restrictions: 'Conceptual use only; never infrastructure, architecture, security-boundary, or performance evidence.',
+    },
+    generated: {
+      isGenerated: true,
+      disclosure: 'AI-generated conceptual artwork. Model, workflow, references, seed, and human edits must be recorded before publication.',
+      promptIntent: 'Suggest local and remote compute as one resilient creative fabric without inventing hardware, providers, or interfaces.',
+      workflow: 'OpenAI ImageGen, August 12, 2026; direct generation with no reference image; human-selected and placed by HardMagic.',
+    },
+    reviewStatus: 'needs-editorial-review',
+    reuseRule: 'One lead or interlude assignment only; never substitute for the canonical technical architecture diagram.',
+  },
+  {
+    id: 'dream-media-specimen',
+    title: 'Dream media specimen conceptual slot',
+    filename: 'src/assets/editorial/dream-media-specimen.png',
+    type: 'generated-concept',
+    roles: ['campaign-art', 'editorial-interlude'],
+    routes: ['/insights/dream-in-reality/', '/products/studio/'],
+    alt: {
+      kind: 'pending',
+      text: null,
+      rationale: 'Final contextual alt text must be authored after editorial placement review.',
+    },
+    caption: {
+      kind: 'required',
+      text: 'AI-generated conceptual media specimen selected and art-directed by HardMagic.',
+      rationale: 'The caption identifies the image as authored generative work rather than documentary evidence.',
+    },
+    crop: {
+      preferredAspect: '2:1',
+      desktop: 'Use full-bleed with the specimen unobscured by body copy.',
+      narrow: 'Author a 4:5 crop around the specimen rather than center-cropping mechanically.',
+      focalPoint: { x: 52, y: 50, unit: 'percent' },
+    },
+    provenance: {
+      truthStatus: 'generated-concept',
+      source: 'HardMagic generated editorial asset; 1774 × 887 source file.',
+      owner: HARDMAGIC,
+      license: 'Owned HardMagic generated editorial asset, subject to workflow and reference-rights verification.',
+      restrictions: 'Conceptual/editorial use only; do not imply a customer deliverable or unedited product output.',
+    },
+    generated: {
+      isGenerated: true,
+      disclosure: 'AI-generated conceptual artwork. Model, workflow, references, seed, and human edits must be recorded before publication.',
+      promptIntent: 'Create an impossible but materially convincing media object for the Dream in Reality editorial series.',
+      workflow: 'OpenAI ImageGen, August 12, 2026; direct generation with no reference image; human-selected and placed by HardMagic.',
+    },
+    reviewStatus: 'needs-editorial-review',
+    reuseRule: 'Limited to the Dream in Reality series and one Studio editorial reference with disclosure.',
+  },
+  ...([
+    {
+      id: 'HM-P01',
+      title: 'The original raptor — restored archival master',
+      type: 'photography',
+      roles: ['hero', 'archive-proof'],
+      routes: ['/company/history/'],
+      alt: 'A restored archival view of the original HardMagic bird of prey in flight.',
+      caption: 'The enduring HardMagic raptor, restored from the company archive.',
+      aspect: '16:9',
+      desktop: 'Cinematic restoration preserving flight direction and original atmosphere.',
+      narrow: 'Author a 4:5 crop that keeps the full bird visible.',
+      focal: { x: 60, y: 50, unit: 'percent' as const },
+      source: 'Planned restoration derived from the existing legacy-raptor asset.',
+      restrictions: 'Restoration must not invent missing photographic detail or alter the historical subject.',
+      parentAssetId: 'legacy-raptor',
+      reuse: 'Company-history lead only; the original remains the sole home hero.',
+    },
+    {
+      id: 'HM-P02',
+      title: 'Founder at an editing surface',
+      type: 'photography',
+      roles: ['observation'],
+      routes: ['/company/founder/', '/company/'],
+      alt: 'Matt Hackney reviewing media at an editing surface; final wording requires capture review.',
+      caption: 'Identify the real working context, date, and what is being reviewed.',
+      aspect: '3:2',
+      desktop: 'Environmental side profile with the screen secondary and copy space opposite the gaze.',
+      narrow: 'Use an authored 4:5 crop with eye-line headroom.',
+      focal: { x: 42, y: 42, unit: 'percent' as const },
+      source: 'Planned HardMagic documentary commission.',
+      restrictions: 'Requires participant release; screen content must be real, owned, and sanitized.',
+      reuse: 'Founder profile lead; one supporting use on the company route only.',
+    },
+    {
+      id: 'HM-P03',
+      title: 'Hands directing a sequence',
+      type: 'photography',
+      roles: ['observation'],
+      routes: ['/capabilities/creative-direction/', '/methods/editorial-selection/'],
+      alt: 'Hands arranging printed frames and production notes; final wording requires capture review.',
+      caption: 'Explain the real sequence and the editorial decision being made.',
+      aspect: '4:3',
+      desktop: 'Overhead view of contact sheets, grease pencil, frames, and notes.',
+      narrow: 'Retain the active hands and at least three connected frames.',
+      focal: { x: 50, y: 52, unit: 'percent' as const },
+      source: 'Planned HardMagic documentary commission.',
+      restrictions: 'Use authentic project materials or clearly labeled internal demonstration material.',
+      reuse: 'Maximum two routes; the second use must be a detail crop serving a different editorial point.',
+    },
+    {
+      id: 'HM-P04',
+      title: 'Projection in a working room',
+      type: 'photography',
+      roles: ['hero', 'observation'],
+      routes: ['/capabilities/media-management/', '/insights/projected-worlds/'],
+      alt: 'Projected imagery falling across a real production room; final wording requires capture review.',
+      caption: 'Identify the projected material, environment, and production purpose.',
+      aspect: '2:1',
+      desktop: 'Expose for projected light; preserve equipment and spatial context.',
+      narrow: 'Author a 4:5 crop around the projection-subject relationship.',
+      focal: { x: 58, y: 48, unit: 'percent' as const },
+      source: 'Planned HardMagic documentary commission.',
+      restrictions: 'No generic conference-room staging; projected media must be owned or licensed.',
+      reuse: 'One hero assignment; one captioned insight detail is permitted.',
+    },
+    {
+      id: 'HM-P05',
+      title: 'The cable floor',
+      type: 'photography',
+      roles: ['observation', 'supporting-evidence'],
+      routes: ['/capabilities/production-operations/', '/insights/media-infrastructure/'],
+      alt: 'Power, signal, and labeled production cables crossing a working floor; final wording requires capture review.',
+      caption: 'Describe the real production system the visible connections support.',
+      aspect: '3:2',
+      desktop: 'Low angle with directional cable geometry and hard side light.',
+      narrow: 'Select a dense vertical path rather than shrinking the wide frame.',
+      focal: { x: 55, y: 60, unit: 'percent' as const },
+      source: 'Planned HardMagic documentary commission.',
+      restrictions: 'Do not expose credentials, asset labels, client names, or unsafe working practices.',
+      reuse: 'Maximum two routes with distinct observation and infrastructure roles.',
+    },
+    {
+      id: 'HM-P06',
+      title: 'Lens and sensor study',
+      type: 'photography',
+      roles: ['observation', 'editorial-interlude'],
+      routes: ['/capabilities/media-capture/', '/insights/seeing-machines/'],
+      alt: 'Optics, filters, and a calibration chart on a dark working surface; final wording requires capture review.',
+      caption: 'Identify the real optical components and the calibration task.',
+      aspect: '4:5',
+      desktop: 'Macro portrait with controlled highlights and visible working wear.',
+      narrow: 'Preserve the primary optical element and calibration reference.',
+      focal: { x: 48, y: 45, unit: 'percent' as const },
+      source: 'Planned HardMagic documentary commission.',
+      restrictions: 'No generic stock equipment; photograph HardMagic-owned or authorized tools.',
+      reuse: 'One capability lead and one different macro detail in the related insight.',
+    },
+    {
+      id: 'HM-P07',
+      title: 'WireMark working session',
+      type: 'product-capture',
+      roles: ['hero', 'lead-evidence'],
+      routes: ['/products/wiremark/', '/briefs/wiremark-visual-product-intelligence/'],
+      alt: 'A WireMark annotation connected to real source context; final wording requires capture review.',
+      caption: 'State the sanitized repository, product version, and feature being demonstrated.',
+      aspect: '16:10',
+      desktop: 'Capture one meaningful annotation with the relationship to source visible.',
+      narrow: 'Provide an authored detail crop rather than scaling the full interface below legibility.',
+      focal: { x: 55, y: 48, unit: 'percent' as const },
+      source: 'Planned sanitized capture from a real WireMark build.',
+      restrictions: 'No fabricated interface, private identifiers, credentials, or unsupported feature state.',
+      reuse: 'Product lead and its own technical brief only; capture a new state for other WireMark routes.',
+    },
+    {
+      id: 'HM-P08',
+      title: 'WireMark inspection detail',
+      type: 'product-capture',
+      roles: ['lead-evidence', 'technical-explanation'],
+      routes: ['/products/wiremark/evidence/', '/products/wiremark/provenance/'],
+      alt: 'A close view connecting a rendered element, spatial mark, evidence, and source; final wording requires capture review.',
+      caption: 'Explain which associations are captured product behavior and which annotations were added editorially.',
+      aspect: '3:2',
+      desktop: 'Tight interface crop with an optional separate annotated derivative.',
+      narrow: 'Stack the rendered element, mark, and source relationship in reading order.',
+      focal: { x: 50, y: 50, unit: 'percent' as const },
+      source: 'Planned sanitized capture from a real WireMark build.',
+      restrictions: 'Editorial annotation must remain visually distinguishable from the product UI.',
+      reuse: 'Limited to evidence and provenance routes; do not reuse as the main product hero.',
+    },
+    {
+      id: 'HM-P09',
+      title: 'Studio generation comparison',
+      type: 'editorial-composite',
+      roles: ['lead-evidence'],
+      routes: ['/products/studio/', '/briefs/directing-generative-variation/'],
+      alt: 'Four genuine outputs created from one documented creative intent; final wording requires production review.',
+      caption: 'Record the intent, model/workflow, date, human selection, edits, and rights context.',
+      aspect: '1:1',
+      desktop: 'A labeled two-by-two or one-by-four comparison plate.',
+      narrow: 'Stack outputs in deliberate comparison order with labels intact.',
+      focal: { x: 50, y: 50, unit: 'percent' as const },
+      source: 'Planned capture of real HardMagic Studio outputs.',
+      restrictions: 'All outputs must share one documented intent; no cherry-picked or unrelated synthetic filler.',
+      reuse: 'Studio lead and one methodology brief only; preserve the complete comparison context.',
+    },
+    {
+      id: 'HM-P10',
+      title: 'Studio across media',
+      type: 'editorial-composite',
+      roles: ['lead-evidence', 'technical-explanation'],
+      routes: ['/products/studio/multimodal/', '/briefs/hardmagic-studio-architecture/'],
+      alt: 'One real project represented by a still, frame sequence, waveform, and asset metadata; final wording requires production review.',
+      caption: 'Identify the project, each modality, product version, and any generated portions.',
+      aspect: '16:9',
+      desktop: 'Build a labeled plate with visibly distinct image, motion, audio, and metadata regions.',
+      narrow: 'Stack modalities in narrative order; keep labels and time references legible.',
+      focal: { x: 50, y: 50, unit: 'percent' as const },
+      source: 'Planned composite from a real HardMagic Studio project.',
+      restrictions: 'Every region must derive from the same documented project; no invented UI or metadata.',
+      reuse: 'Multimodal route and architecture brief only.',
+    },
+    {
+      id: 'HM-P11',
+      title: 'CLI in an authentic workflow',
+      type: 'product-capture',
+      roles: ['hero', 'lead-evidence'],
+      routes: ['/products/cli/', '/briefs/hardmagic-cli-automation/'],
+      alt: 'A real HardMagic CLI command, sanitized output, and resulting asset; final wording requires capture review.',
+      caption: 'Record CLI version, command purpose, output type, and all redactions.',
+      aspect: '3:2',
+      desktop: 'Show terminal and result together without fabricating performance values.',
+      narrow: 'Stack command, output, and result; preserve complete semantic lines.',
+      focal: { x: 48, y: 48, unit: 'percent' as const },
+      source: 'Planned sanitized capture from a real HardMagic CLI run.',
+      restrictions: 'Remove tokens, private URLs, personal paths, and client data; do not invent latency or IDs.',
+      reuse: 'CLI product lead and its automation brief only.',
+    },
+    {
+      id: 'HM-P12',
+      title: 'Web Magic evidence pair',
+      type: 'editorial-composite',
+      roles: ['hero', 'lead-evidence'],
+      routes: ['/products/web-magic/', '/briefs/web-quality-remediation/'],
+      alt: 'Before and after views of one verified web remediation; final wording must name the visible change.',
+      caption: 'Describe the exact defect, remediation, test method, and repository or demonstration source.',
+      aspect: '16:10',
+      desktop: 'Align the same page state before and after; label both views clearly.',
+      narrow: 'Stack before then after in reading order with the defect region enlarged.',
+      focal: { x: 50, y: 45, unit: 'percent' as const },
+      source: 'Planned evidence capture from a verified Web Magic remediation.',
+      restrictions: 'No aggregate score or claimed improvement without reproducible source data.',
+      reuse: 'Product lead and one matching technical brief only; preserve methodology wherever reused.',
+    },
+    {
+      id: 'HM-P13',
+      title: 'Photo Curator review surface',
+      type: 'product-capture',
+      roles: ['hero', 'lead-evidence'],
+      routes: ['/products/photo-curator/', '/briefs/photo-curation-at-scale/'],
+      alt: 'A real owned archive in Photo Curator with related frames, ratings, and a selection state; final wording requires capture review.',
+      caption: 'State archive ownership, product version, and what the selected state demonstrates.',
+      aspect: '16:10',
+      desktop: 'Show sufficient archive density to explain grouping and judgment.',
+      narrow: 'Use an authored detail of one group and its selection state.',
+      focal: { x: 55, y: 48, unit: 'percent' as const },
+      source: 'Planned sanitized capture from a real Photo Curator build using owned media.',
+      restrictions: 'No private libraries, unlicensed photos, faces without permission, or synthetic interface.',
+      reuse: 'Photo Curator lead and its own technical brief only.',
+    },
+    {
+      id: 'HM-P14',
+      title: 'The selects table',
+      type: 'photography',
+      roles: ['observation', 'supporting-evidence'],
+      routes: ['/methods/media-curation/', '/insights/the-art-of-the-select/'],
+      alt: 'A real editing sequence narrowed from many frames to a final selection; final wording requires capture review.',
+      caption: 'Explain the visible selection logic and identify the owned source material.',
+      aspect: '2:1',
+      desktop: 'Wide contact-sheet composition with selection marks and readable sequence.',
+      narrow: 'Convert to a two-column frame grid; maintain editorial order.',
+      focal: { x: 50, y: 50, unit: 'percent' as const },
+      source: 'Planned HardMagic documentary commission using owned media.',
+      restrictions: 'Selection marks must represent a real curation process, not decorative staging.',
+      reuse: 'Maximum two routes; reuse only with the complete selection context.',
+    },
+    {
+      id: 'HM-P15',
+      title: 'GPU workstation portrait',
+      type: 'photography',
+      roles: ['hero', 'observation'],
+      routes: ['/products/gpu-router/', '/capabilities/local-inference/'],
+      alt: 'A real GPU workstation shown as operating infrastructure; final wording requires capture review.',
+      caption: 'Identify only verified hardware and its actual role in the HardMagic environment.',
+      aspect: '4:5',
+      desktop: 'Straight architectural geometry with vents, cards, status lights, and cables visible.',
+      narrow: 'Preserve the machine silhouette and one operational detail.',
+      focal: { x: 50, y: 48, unit: 'percent' as const },
+      source: 'Planned HardMagic documentary commission.',
+      restrictions: 'Photograph actual authorized hardware; obscure serial numbers, labels, addresses, and security-sensitive details.',
+      reuse: 'GPU Router lead and one local-inference observation only.',
+    },
+    {
+      id: 'HM-P16',
+      title: 'Compute topology in place',
+      type: 'editorial-composite',
+      roles: ['observation', 'technical-explanation'],
+      routes: ['/products/gpu-router/hybrid-routing/', '/briefs/hybrid-inference/'],
+      alt: 'Three real infrastructure views representing local compute, a network boundary, and remote capacity; final wording requires capture review.',
+      caption: 'Identify what each photograph genuinely depicts and link to a separate sourced topology explanation.',
+      aspect: '3:1',
+      desktop: 'Triptych of three distinct photographs, not repeated crops.',
+      narrow: 'Stack local, boundary, and remote views in that order.',
+      focal: { x: 50, y: 50, unit: 'percent' as const },
+      source: 'Planned composite of authorized HardMagic infrastructure photography.',
+      restrictions: 'The photographs must not imply a provider, location, or topology they do not document.',
+      reuse: 'Hybrid-routing route and its technical brief only; never substitute for an architecture diagram.',
+    },
+    {
+      id: 'HM-P17',
+      title: 'Media storage and preservation',
+      type: 'photography',
+      roles: ['observation', 'supporting-evidence'],
+      routes: ['/capabilities/media-asset-management/', '/insights/portable-archives/'],
+      alt: 'Real media storage, catalog labels, and preservation hardware; final wording requires capture review.',
+      caption: 'Describe the actual archive practice without revealing client or security-sensitive labels.',
+      aspect: '3:2',
+      desktop: 'Use receding storage geometry and neutral documentary light.',
+      narrow: 'Focus on one labeled preservation unit and its surrounding context.',
+      focal: { x: 52, y: 50, unit: 'percent' as const },
+      source: 'Planned HardMagic documentary commission.',
+      restrictions: 'Sanitize labels, identifiers, client names, and locations.',
+      reuse: 'Maximum two routes with distinct asset-management and preservation roles.',
+    },
+    {
+      id: 'HM-P18',
+      title: 'Sound made visible',
+      type: 'editorial-composite',
+      roles: ['hero', 'observation'],
+      routes: ['/capabilities/audio/', '/products/studio/audio/'],
+      alt: 'A real recording source paired with its waveform; final wording requires capture review.',
+      caption: 'Identify the source, session, waveform segment, and whether any audio is generated.',
+      aspect: '4:5',
+      desktop: 'Environmental portrait paired with a narrow truthful waveform strip.',
+      narrow: 'Keep source and waveform adjacent; do not use a decorative unrelated waveform.',
+      focal: { x: 48, y: 42, unit: 'percent' as const },
+      source: 'Planned HardMagic documentary and media commission.',
+      restrictions: 'Requires participant and recording rights; waveform must derive from the pictured session.',
+      reuse: 'One audio capability lead and one Studio audio observation.',
+    },
+    {
+      id: 'HM-P19',
+      title: 'Motion study',
+      type: 'editorial-composite',
+      roles: ['observation', 'lead-evidence'],
+      routes: ['/capabilities/motion/', '/products/studio/video/'],
+      alt: 'Six real frames showing one motion or transition over time; final wording requires production review.',
+      caption: 'Identify the source sequence, frame interval, and whether any portion is generated.',
+      aspect: '3:1',
+      desktop: 'Horizontal six-frame filmstrip with frame numbers.',
+      narrow: 'Reflow to a two-by-three grid while preserving chronological order.',
+      focal: { x: 50, y: 50, unit: 'percent' as const },
+      source: 'Planned HardMagic motion commission or documented Studio output.',
+      restrictions: 'All frames must come from one owned or licensed sequence.',
+      reuse: 'Motion capability and one Studio video route only; preserve frame order.',
+    },
+    {
+      id: 'HM-P20',
+      title: 'Material-to-model study',
+      type: 'editorial-composite',
+      roles: ['lead-evidence', 'technical-explanation'],
+      routes: ['/methods/reference-led-generation/', '/insights/material-to-model/'],
+      alt: 'A physical material, its captured reference, and a generated interpretation shown in sequence; final wording requires production review.',
+      caption: 'Disclose the source material, capture method, model/workflow, date, selection, and edits.',
+      aspect: '3:1',
+      desktop: 'Three-stage source, process, and output plate with explicit labels.',
+      narrow: 'Stack source, process, and output in that order.',
+      focal: { x: 50, y: 50, unit: 'percent' as const },
+      source: 'Planned physical capture and generated interpretation commissioned by HardMagic.',
+      restrictions: 'The generated output must be visibly disclosed; reference rights must be verified.',
+      reuse: 'Methodology route and one related insight only; never separate the output from its source context.',
+    },
+    {
+      id: 'HM-P21',
+      title: 'The creative director’s desk at project close',
+      type: 'photography',
+      roles: ['hero', 'observation'],
+      routes: ['/capabilities/creative-direction/', '/services/creative-director/'],
+      alt: 'Marked proofs, rejected frames, decisions, and delivery media on a working desk; final wording requires capture review.',
+      caption: 'Explain the real decision trail and identify the project only when disclosure is authorized.',
+      aspect: '4:3',
+      desktop: 'Overhead composition showing judgment and process rather than decorative neatness.',
+      narrow: 'Crop around the strongest chain from rejected option to selected delivery.',
+      focal: { x: 52, y: 52, unit: 'percent' as const },
+      source: 'Planned HardMagic documentary commission.',
+      restrictions: 'Use owned or authorized materials; redact confidential project details.',
+      reuse: 'One creative-direction hero and one service observation only.',
+    },
+    {
+      id: 'HM-P22',
+      title: 'Brand-world archive',
+      type: 'archival-scan',
+      roles: ['archive-proof', 'observation'],
+      routes: ['/company/history/', '/company/experience/'],
+      alt: 'Authenticated historical HardMagic work presented as physical or scanned artifacts; final wording is artifact-specific.',
+      caption: 'Record project, date when substantiated, HardMagic role, source, rights, and any limitations.',
+      aspect: 'variable archival',
+      desktop: 'Preserve authentic artifact ratios on a neutral editorial field.',
+      narrow: 'Stack artifacts without cropping marks, dates, or relevant edges.',
+      focal: null,
+      source: 'Planned recovery and digitization of the HardMagic company archive.',
+      restrictions: 'Only authenticated, owned, or licensed artifacts; unknown dates remain explicitly undated.',
+      reuse: 'Each artifact receives its own sub-ID and may appear on at most two history routes.',
+    },
+    {
+      id: 'HM-P23',
+      title: 'Disney and ABC era contextual artifact',
+      type: 'archival-scan',
+      roles: ['archive-proof'],
+      routes: ['/company/experience/', '/company/history/'],
+      alt: 'An authenticated artifact from substantiated Disney or ABC work; final wording requires artifact review.',
+      caption: 'State the precise organization, project, date if known, HardMagic role, ownership, and non-endorsement context.',
+      aspect: 'variable archival',
+      desktop: 'Present the complete artifact with provenance notes; do not crop to a logo alone.',
+      narrow: 'Contain the complete artifact and move provenance into an adjacent text block.',
+      focal: null,
+      source: 'Planned recovery of an authenticated, authorized historical artifact.',
+      restrictions: 'No publication until role, rights, and non-endorsement language are approved; no logo wallpaper.',
+      reuse: 'Company experience and dated historical context only; never a generic credibility badge.',
+    },
+    {
+      id: 'HM-P24',
+      title: 'Human and machine handoff',
+      type: 'photography',
+      roles: ['hero', 'observation'],
+      routes: ['/methods/human-authorship/', '/insights/creative-ai-governance/'],
+      alt: 'A person making an identifiable editorial choice after generation; final wording requires capture review.',
+      caption: 'Describe the actual choice, available alternatives, and what remained under human control.',
+      aspect: '3:2',
+      desktop: 'Medium-distance documentary frame centered on gesture and selection, with the screen secondary.',
+      narrow: 'Preserve hand, selected artifact, and enough alternatives to make the decision legible.',
+      focal: { x: 52, y: 48, unit: 'percent' as const },
+      source: 'Planned HardMagic documentary commission.',
+      restrictions: 'No staged pointing scene, fake interface, or claim that the photograph proves governance outcomes.',
+      reuse: 'One methodology lead and one governance insight only.',
+    },
+    {
+      id: 'HM-P25',
+      title: 'Impossible media specimen',
+      type: 'generated-concept',
+      roles: ['campaign-art', 'editorial-interlude'],
+      routes: ['/products/studio/essays/', '/insights/impossible-media/'],
+      alt: 'Pending description of the selected conceptual specimen.',
+      caption: 'Disclose model, workflow, date, references, human selection, edits, and conceptual status.',
+      aspect: '16:9',
+      desktop: 'Full-bleed authored field with material detail and no fake interface text.',
+      narrow: 'Commission a paired 4:5 composition or author a deliberate specimen crop.',
+      focal: { x: 50, y: 50, unit: 'percent' as const },
+      source: 'Planned HardMagic generative editorial commission.',
+      restrictions: 'Conceptual art only; not product evidence, client work, or a claim of unedited output.',
+      reuse: 'One lead assignment; one captioned Studio essay reference is permitted.',
+    },
+    {
+      id: 'HM-P26',
+      title: 'Dream in Reality series',
+      type: 'generated-concept',
+      roles: ['campaign-art', 'editorial-interlude'],
+      routes: ['/insights/dream-in-reality/', '/insights/dream-in-reality/*'],
+      alt: 'Pending description authored separately for each selected series image.',
+      caption: 'Each image must disclose model, workflow, date, references, human selection, edits, and series context.',
+      aspect: 'mixed 3:2, 4:5, and 1:1',
+      desktop: 'Six to ten distinct subjects united by light and palette, not repeated compositions.',
+      narrow: 'Use commissioned portrait or square variants; never automatic center crops.',
+      focal: null,
+      source: 'Planned HardMagic generative editorial series.',
+      restrictions: 'Conceptual series only; no logos, fake interfaces, invented evidence, or unlicensed references.',
+      reuse: 'Limited to the named Dream in Reality series; each route receives a different subject.',
+    },
+  ] as const).map((commission) => ({
+    id: commission.id,
+    title: commission.title,
+    filename: null,
+    type: commission.type,
+    roles: commission.roles,
+    routes: commission.routes,
+    alt: {
+      kind: 'pending' as const,
+      text: commission.alt,
+      rationale: 'The wording is a commissioning draft and must be finalized against the captured or generated asset.',
+    },
+    caption: {
+      kind: 'pending' as const,
+      text: commission.caption,
+      rationale: 'The caption requirement is recorded now; final claims and provenance depend on the finished asset.',
+    },
+    crop: {
+      preferredAspect: commission.aspect,
+      desktop: commission.desktop,
+      narrow: commission.narrow,
+      focalPoint: commission.focal,
+    },
+    provenance: {
+      truthStatus: 'planned-uncaptured' as const,
+      source: commission.source,
+      owner: HARDMAGIC,
+      license: 'Planned HardMagic-owned commission; rights and releases must be verified before approval.',
+      restrictions: commission.restrictions,
+      ...('parentAssetId' in commission ? { parentAssetId: commission.parentAssetId } : {}),
+    },
+    generated: commission.type === 'generated-concept'
+      ? {
+          isGenerated: true,
+          disclosure: 'Planned generative commission. No asset exists yet; publication requires complete generation provenance and disclosure.',
+          promptIntent: commission.title,
+          workflow: null,
+        }
+      : plannedGeneration,
+    reviewStatus: 'planned' as const,
+    reuseRule: commission.reuse,
+  })),
+] as const satisfies readonly MediaAsset[];
+
+export type MediaId = (typeof mediaManifest)[number]['id'];
+
+export function getMediaById(id: MediaId): (typeof mediaManifest)[number] {
+  const asset = mediaManifest.find((item) => item.id === id);
+
+  if (!asset) {
+    throw new Error(`Unknown media asset: ${id}`);
+  }
+
+  return asset;
+}

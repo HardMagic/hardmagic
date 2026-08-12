@@ -1,0 +1,21 @@
+---
+interface Props {
+  family: string;
+  modes: readonly string[];
+  topics: readonly string[];
+}
+
+const { family, modes, topics } = Astro.props;
+---
+<figure class={`editorial-visual visual-${family}`} aria-label={`${family} systems diagram`}>
+  <div class="visual-field" aria-hidden="true">
+    <span class="visual-orbit orbit-one"></span>
+    <span class="visual-orbit orbit-two"></span>
+    <span class="visual-core">HM</span>
+    {topics.slice(0, 3).map((topic, index) => <i style={`--index:${index}`}>{topic}</i>)}
+  </div>
+  <figcaption>
+    <b>Page instruments</b>
+    {modes.slice(0, 4).map((mode, index) => <span><em>0{index + 1}</em>{mode}</span>)}
+  </figcaption>
+</figure>

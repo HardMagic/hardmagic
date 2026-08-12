@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { briefs, type TechnicalBrief } from '../../../data/briefs';
+export function getStaticPaths() { return briefs.map((brief) => ({ params: { slug: brief.slug }, props: { brief } })); }
+interface Props { brief: TechnicalBrief }
+const { brief } = Astro.props;
+---
+<BaseLayout title="Request confirmed" description={`Your request for ${brief.title} has been received.`}>
+  <section class="confirmation shell">
+    <p class="eyebrow dark">Request received / private delivery</p>
+    <span class="confirmation-mark">✓</span>
+    <h1>Check your work email.</h1>
+    <p>We received your request for <b>{brief.title}</b>. If the address is deliverable, a time-limited private link will arrive after automated validation. The PDF itself is not hosted on this public website.</p>
+    <ol><li><span>01</span>Open the message from HardMagic Briefs.</li><li><span>02</span>Use the private link before it expires.</li><li><span>03</span>Reply directly if the decision deserves a working session.</li></ol>
+    <a class="button dark-button" href={`../`}>Return to the public summary</a>
+  </section>
+</BaseLayout>

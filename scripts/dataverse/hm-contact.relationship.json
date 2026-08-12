@@ -1,0 +1,21 @@
+{
+  "@odata.type": "Microsoft.Dynamics.CRM.OneToManyRelationshipMetadata",
+  "SchemaName": "hm_contact_briefengagement",
+  "ReferencedEntity": "contact",
+  "ReferencingEntity": "hm_briefengagement",
+  "CascadeConfiguration": {
+    "Assign": "NoCascade",
+    "Delete": "RemoveLink",
+    "Merge": "NoCascade",
+    "Reparent": "NoCascade",
+    "Share": "NoCascade",
+    "Unshare": "NoCascade",
+    "RollupView": "NoCascade"
+  },
+  "Lookup": {
+    "SchemaName": "hm_Contact",
+    "DisplayName": { "LocalizedLabels": [{ "Label": "HardMagic Contact", "LanguageCode": 1033 }] },
+    "Description": { "LocalizedLabels": [{ "Label": "Contact resolved within the HardMagic corporate account boundary.", "LanguageCode": 1033 }] },
+    "RequiredLevel": { "Value": "None" }
+  }
+}

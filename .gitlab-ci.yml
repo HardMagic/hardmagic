@@ -1,3 +1,6 @@
+include:
+  - local: .gitlab/ci/brief-delivery.yml
+
 pages:
   stage: deploy
   image: harbor.focuscell.org/dockerhub-proxy/library/node:25-alpine

@@ -1,0 +1,137 @@
+stages:
+  - validate
+  - plan
+  - deploy
+
+.brief_delivery_changes: &brief_delivery_changes
+  changes:
+    - infra/brief-delivery/**/*
+    - .gitlab/ci/brief-delivery.yml
+    - scripts/generate-brief-pdfs.mjs
+    - src/data/briefs.ts
+    - package.json
+    - package-lock.json
+
+.azure_oidc:
+  image: mcr.microsoft.com/azure-cli:2.89.0
+  id_tokens:
+    AZURE_FEDERATED_TOKEN:
+      aud: api://AzureADTokenExchange
+  before_script:
+    - test -n "$AZURE_CLIENT_ID"
+    - test -n "$AZURE_TENANT_ID"
+    - test -n "$AZURE_SUBSCRIPTION_ID"
+    - test -n "$AZURE_FEDERATED_TOKEN"
+    - az login --service-principal --username "$AZURE_CLIENT_ID" --tenant "$AZURE_TENANT_ID" --federated-token "$AZURE_FEDERATED_TOKEN" --allow-no-subscriptions --output none
+    - az account set --subscription "$AZURE_SUBSCRIPTION_ID"
+
+brief_lock_function_test:
+  stage: validate
+  image: node:22-bookworm-slim
+  rules:
+    - <<: *brief_delivery_changes
+  script:
+    - cd infra/brief-delivery/function
+    - npm ci --ignore-scripts
+    - npm run check
+    - npm test
+    - npm run build
+
+brief_lock_package:
+  stage: validate
+  image: node:22-bookworm-slim
+  rules:
+    - <<: *brief_delivery_changes
+  script:
+    - apt-get update -qq
+    - apt-get install -y -qq --no-install-recommends zip
+    - cd infra/brief-delivery/function
+    - npm ci --ignore-scripts
+    - npm run build
+    - npm prune --omit=dev --ignore-scripts
+    - zip -q -r "$CI_PROJECT_DIR/hardmagic-brief-lock.zip" dist host.json package.json package-lock.json node_modules
+  artifacts:
+    name: hardmagic-brief-lock-$CI_COMMIT_SHA
+    expire_in: 7 days
+    paths:
+      - hardmagic-brief-lock.zip
+
+brief_lock_pdf_package:
+  stage: validate
+  image: mcr.microsoft.com/playwright:v1.62.1-noble
+  rules:
+    - <<: *brief_delivery_changes
+  script:
+    - npm ci --ignore-scripts
+    - npm run briefs:pdf
+  artifacts:
+    name: hardmagic-private-briefs-$CI_COMMIT_SHA
+    expire_in: 1 day
+    access: developer
+    paths:
+      - infra/brief-delivery/source-pdfs/*.pdf
+
+brief_lock_bicep_validate:
+  stage: validate
+  image: mcr.microsoft.com/azure-cli:2.89.0
+  rules:
+    - <<: *brief_delivery_changes
+  script:
+    - az bicep build --file infra/brief-delivery/main.bicep --stdout > /dev/null
+    - az bicep build --file infra/brief-delivery/edge.bicep --stdout > /dev/null
+
+brief_lock_what_if:
+  extends: .azure_oidc
+  stage: plan
+  needs: [brief_lock_bicep_validate]
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "demo" && $CI_COMMIT_REF_PROTECTED == "true"'
+      <<: *brief_delivery_changes
+      when: manual
+    - when: never
+  environment:
+    name: brief-lock/production
+    action: prepare
+  allow_failure: true
+  script:
+    - test -n "$BRIEF_FRONT_DOOR_ID"
+    - test -n "$BRIEF_DEPLOYMENT_PRINCIPAL_OBJECT_ID"
+    - test -n "$BRIEF_ALERT_ACTION_GROUP_RESOURCE_ID"
+    - test -n "$BRIEF_WAF_POLICY_ID"
+    - az deployment sub what-if --name "hm-brief-lock-$CI_PIPELINE_IID" --location eastus --template-file infra/brief-delivery/main.bicep --parameters infra/brief-delivery/parameters.example.json frontDoorId="$BRIEF_FRONT_DOOR_ID" deploymentPrincipalObjectId="$BRIEF_DEPLOYMENT_PRINCIPAL_OBJECT_ID" alertActionGroupResourceId="$BRIEF_ALERT_ACTION_GROUP_RESOURCE_ID" --result-format ResourceIdOnly
+
+brief_lock_deploy:
+  extends: .azure_oidc
+  stage: deploy
+  needs:
+    - brief_lock_function_test
+    - brief_lock_package
+    - brief_lock_pdf_package
+    - brief_lock_bicep_validate
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "demo" && $CI_COMMIT_REF_PROTECTED == "true"'
+      <<: *brief_delivery_changes
+      when: manual
+    - when: never
+  allow_failure: true
+  resource_group: hardmagic-brief-lock-production
+  environment:
+    name: brief-lock/production
+    deployment_tier: production
+  script:
+    - test "$BRIEF_CONFIRM" = "PROVISION-HARDMAGIC-BRIEFLOCK"
+    - test -n "$BRIEF_FRONT_DOOR_ID"
+    - test -n "$BRIEF_DEPLOYMENT_PRINCIPAL_OBJECT_ID"
+    - test -n "$BRIEF_ALERT_ACTION_GROUP_RESOURCE_ID"
+    - test -n "$BRIEF_WAF_POLICY_ID"
+    - DEPLOYMENT_OUTPUT="$(az deployment sub create --name "hm-brief-lock-$CI_PIPELINE_IID" --location eastus --template-file infra/brief-delivery/main.bicep --parameters infra/brief-delivery/parameters.example.json frontDoorId="$BRIEF_FRONT_DOOR_ID" deploymentPrincipalObjectId="$BRIEF_DEPLOYMENT_PRINCIPAL_OBJECT_ID" alertActionGroupResourceId="$BRIEF_ALERT_ACTION_GROUP_RESOURCE_ID" --query properties.outputs -o json)"
+    - FUNCTION_APP_NAME="$(printf '%s' "$DEPLOYMENT_OUTPUT" | jq -r '.functionAppName.value')"
+    - FUNCTION_ORIGIN_HOSTNAME="$(printf '%s' "$DEPLOYMENT_OUTPUT" | jq -r '.functionOriginHostname.value')"
+    - STORAGE_ACCOUNT_NAME="$(printf '%s' "$DEPLOYMENT_OUTPUT" | jq -r '.storageAccountName.value')"
+    - test -n "$FUNCTION_APP_NAME"
+    - test -n "$FUNCTION_ORIGIN_HOSTNAME"
+    - test -n "$STORAGE_ACCOUNT_NAME"
+    - az storage blob upload-batch --account-name "$STORAGE_ACCOUNT_NAME" --destination briefs --source infra/brief-delivery/source-pdfs --pattern '*.pdf' --auth-mode login --overwrite true --content-type application/pdf --output none
+    - az functionapp deployment source config-zip --resource-group rg-hardmagic-briefs --name "$FUNCTION_APP_NAME" --src hardmagic-brief-lock.zip --build-remote false --output none
+    - az functionapp show --resource-group rg-hardmagic-briefs --name "$FUNCTION_APP_NAME" --query '{name:name,state:state,httpsOnly:httpsOnly,defaultHostName:defaultHostName}' -o json
+    - az deployment group create --resource-group tli_interest --name "hm-brief-edge-$CI_PIPELINE_IID" --template-file infra/brief-delivery/edge.bicep --parameters functionOriginHostname="$FUNCTION_ORIGIN_HOSTNAME" wafPolicyId="$BRIEF_WAF_POLICY_ID" --output none

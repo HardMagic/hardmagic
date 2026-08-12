@@ -8,10 +8,10 @@ const { id, compact = false } = Astro.props;
   {id === 'cli' && <pre><code><span>$</span> hm generate image \
   --intent "impossible, precise"
 
-<b>✓</b> routed  z-image-turbo
-<b>✓</b> asset   hm://a/7f3c
-<i>ready in 2.8s</i></code></pre>}
-  {id === 'web-magic' && <><div class="score">98<small>/100</small></div><ul><li><b>A11Y</b><i>PASS</i></li><li><b>PERF</b><i>+24</i></li><li><b>SEO</b><i>PASS</i></li><li><b>TRUST</b><i>PASS</i></li></ul></>}
-  {id === 'photo-curator' && <><div class="contact-sheet">{Array.from({length: 9}).map((_,i) => <i style={`--i:${i}`}></i>)}</div><span class="selection">SELECTS · 14 / 268</span></>}
+<b>→</b> route by capability
+<b>→</b> return structured result
+<i>conceptual command flow</i></code></pre>}
+  {id === 'web-magic' && <><div class="score">WEB<small> / QUALITY</small></div><ul><li><b>ACCESS</b><i>INSPECT</i></li><li><b>SPEED</b><i>TRACE</i></li><li><b>SEARCH</b><i>STRUCTURE</i></li><li><b>TRUST</b><i>VERIFY</i></li></ul></>}
+  {id === 'photo-curator' && <><div class="contact-sheet">{Array.from({length: 9}).map((_,i) => <i style={`--i:${i}`}></i>)}</div><span class="selection">CONCEPT · HUMAN REVIEW</span></>}
   {id === 'gpu-router' && <><div class="router-core">HM</div><span class="route local">LOCAL GPU</span><span class="route cloud">CLOUD</span><span class="route edge">EDGE</span><i class="beam b1"></i><i class="beam b2"></i><i class="beam b3"></i></>}
 </div>

@@ -1,6 +1,14 @@
 import { access } from 'node:fs/promises';
+import { editorialRoutes } from '../src/data/editorial.ts';
+import { briefs } from '../src/data/briefs.ts';
 
-const routes = ['index.html','products/index.html','products/wiremark/index.html','products/studio/index.html','products/cli/index.html','products/web-magic/index.html','products/photo-curator/index.html','products/gpu-router/index.html','company/index.html','contact/index.html','privacy/index.html','404.html','sitemap-index.xml'];
+const editorial = editorialRoutes.map(({ path }) => path === '/' ? 'index.html' : `${path.replace(/^\//, '')}index.html`);
+const privateBriefs = briefs.flatMap(({ slug }) => [`briefs/${slug}/index.html`, `briefs/${slug}/thanks/index.html`]);
+const routes = [...new Set([...editorial, ...privateBriefs, '404.html', 'sitemap-index.xml'])];
+if (routes.length < 100) throw new Error(`Route ledger requires at least 100 outputs; received ${routes.length}.`);
+const knownPaths = new Set(editorialRoutes.map(({ path }) => path));
+const brokenRelations = editorialRoutes.flatMap((route) => route.relatedPaths.filter((path) => !knownPaths.has(path)).map((path) => `${route.path} -> ${path}`));
+if (brokenRelations.length) throw new Error(`Broken editorial relationships: ${brokenRelations.join(', ')}`);
 const missing = [];
 for (const route of routes) {
   try { await access(new URL(`../dist/${route}`, import.meta.url)); }

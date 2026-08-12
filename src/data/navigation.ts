@@ -1,0 +1,99 @@
+export interface NavLink { label: string; href: string; note?: string }
+export interface NavGroup { title: string; links: NavLink[] }
+export interface MegaMenu { label: string; href: string; feature: { eyebrow: string; title: string; href: string }; groups: NavGroup[] }
+
+export const megaMenus: MegaMenu[] = [
+  {
+    label: 'Products', href: 'products/',
+    feature: { eyebrow: 'The product constellation', title: 'One system from creative intent to verified delivery.', href: 'products/' },
+    groups: [
+      { title: 'Visual intelligence', links: [
+        { label: 'WireMark', href: 'products/wiremark/', note: 'Repository to canvas' },
+        { label: 'Canvas', href: 'products/wiremark/canvas/' }, { label: 'Source intelligence', href: 'products/wiremark/source-intelligence/' },
+        { label: 'Agent handoff', href: 'products/wiremark/agent-handoff/' }, { label: 'Privacy & provenance', href: 'products/wiremark/privacy-provenance/' },
+      ]},
+      { title: 'Generative production', links: [
+        { label: 'HardMagic Studio', href: 'products/studio/', note: 'Image · motion · sound · form' },
+        { label: 'Image', href: 'products/studio/image/' }, { label: 'Video', href: 'products/studio/video/' },
+        { label: 'Audio', href: 'products/studio/audio/' }, { label: 'Hybrid inference', href: 'products/studio/hybrid-inference/' },
+      ]},
+      { title: 'Developer infrastructure', links: [
+        { label: 'HardMagic CLI', href: 'products/cli/', note: 'The `hm` command' },
+        { label: 'Quickstart', href: 'products/cli/quickstart/' }, { label: 'Automation', href: 'products/cli/automation/' },
+        { label: 'Agent skills', href: 'products/cli/agent-skills/' }, { label: 'Security', href: 'products/cli/security/' },
+      ]},
+      { title: 'Media & delivery', links: [
+        { label: 'Photo Curator', href: 'products/photo-curator/' }, { label: 'GPU Router', href: 'products/gpu-router/' },
+        { label: 'Web Magic', href: 'products/web-magic/' }, { label: 'Product comparison', href: 'products/#compare' },
+      ]},
+    ],
+  },
+  {
+    label: 'Work with us', href: 'services/',
+    feature: { eyebrow: 'Independent senior practice', title: 'Bring us the decision that crosses creative, technical, and organizational boundaries.', href: 'contact/' },
+    groups: [
+      { title: 'Leadership', links: [
+        { label: 'Creative direction', href: 'services/creative-direction/' }, { label: 'Executive advisory', href: 'services/executive-advisory/' },
+        { label: 'Marketing consulting', href: 'services/marketing-consulting/' }, { label: 'Brand systems', href: 'services/brand-systems/' },
+      ]},
+      { title: 'Transformation', links: [
+        { label: 'GenAI strategy', href: 'services/genai-strategy/' }, { label: 'Creative technology', href: 'services/creative-technology/' },
+        { label: 'Media management', href: 'services/media-management/' }, { label: 'Content operations', href: 'services/content-operations/' },
+      ]},
+      { title: 'Engagements', links: [
+        { label: 'Transformation sprint', href: 'engagements/transformation-sprint/' }, { label: 'Fractional creative office', href: 'engagements/fractional-creative-office/' },
+        { label: 'GenAI lab', href: 'engagements/genai-lab/' }, { label: 'Managed media desk', href: 'engagements/managed-media-desk/' },
+        { label: 'Product launch room', href: 'engagements/product-launch-room/' },
+      ]},
+      { title: 'Industries', links: [
+        { label: 'Media & entertainment', href: 'industries/media-entertainment/' }, { label: 'Consumer brands', href: 'industries/consumer-brands/' },
+        { label: 'Sports & wellness', href: 'industries/sports-wellness/' }, { label: 'Software platforms', href: 'industries/software-platforms/' },
+        { label: 'All industry dossiers', href: 'industries/' },
+      ]},
+    ],
+  },
+  {
+    label: 'Ideas', href: 'insights/',
+    feature: { eyebrow: 'Current field guide', title: 'Creative direction becomes more valuable after the prompt.', href: 'briefs/creative-direction-after-the-prompt/' },
+    groups: [
+      { title: 'Intelligence', links: [
+        { label: 'Latest insights', href: 'insights/' }, { label: 'Technical briefs', href: 'briefs/' },
+        { label: 'Methods', href: 'methods/' }, { label: 'Editorial policy', href: 'editorial-policy/' },
+      ]},
+      { title: 'Creative systems', links: [
+        { label: 'Creative direction', href: 'insights/creative-direction-after-model-abundance/' }, { label: 'Brand memory', href: 'insights/brand-memory-in-generative-systems/' },
+        { label: 'Human + agent loop', href: 'methods/human-agent-creative-loop/' }, { label: 'Accessibility as editorial', href: 'methods/accessibility-as-editorial/' },
+      ]},
+      { title: 'Technical systems', links: [
+        { label: 'Hybrid inference', href: 'methods/hybrid-inference/' }, { label: 'Agent operations', href: 'insights/the-case-for-agent-readable-creative-operations/' },
+        { label: 'Provenance', href: 'insights/provenance-without-killing-creative-flow/' }, { label: 'Static publishing', href: 'insights/static-websites-as-durable-media/' },
+      ]},
+      { title: 'Media systems', links: [
+        { label: 'Media control room', href: 'insights/what-a-modern-media-control-room-needs/' }, { label: 'Archive intelligence', href: 'methods/archive-to-intelligence/' },
+        { label: 'GenAI production', href: 'insights/from-prompting-to-production-systems/' }, { label: '90-day activation', href: 'methods/30-60-90-activation/' },
+      ]},
+    ],
+  },
+  {
+    label: 'Company', href: 'company/',
+    feature: { eyebrow: 'Established 1999', title: 'A privately owned Delaware GenAI and media corporation built for the long horizon.', href: 'company/history/' },
+    groups: [
+      { title: 'HardMagic', links: [
+        { label: 'Corporation', href: 'company/' }, { label: 'History', href: 'company/history/' }, { label: 'Founder', href: 'company/founder/' },
+        { label: 'Selected experience', href: 'company/selected-experience/' },
+      ]},
+      { title: 'How we work', links: [
+        { label: 'Principles', href: 'company/principles/' }, { label: 'Operating model', href: 'company/operating-model/' },
+        { label: 'Partners', href: 'company/partners/' }, { label: 'Careers', href: 'company/careers/' },
+      ]},
+      { title: 'Trust', links: [
+        { label: 'Responsible AI', href: 'responsible-ai/' }, { label: 'Security', href: 'security/' },
+        { label: 'Accessibility', href: 'accessibility/' }, { label: 'Privacy', href: 'privacy/' },
+      ]},
+      { title: 'Talk to us', links: [
+        { label: 'Creative direction', href: 'contact/creative-direction/' }, { label: 'GenAI', href: 'contact/genai/' },
+        { label: 'Media management', href: 'contact/media-management/' }, { label: 'Start a conversation', href: 'contact/' },
+      ]},
+    ],
+  },
+];

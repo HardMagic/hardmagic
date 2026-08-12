@@ -1,0 +1,183 @@
+{
+  "@odata.type": "Microsoft.Dynamics.CRM.EntityMetadata",
+  "SchemaName": "hm_BriefEngagement",
+  "DisplayName": { "LocalizedLabels": [{ "Label": "HardMagic Brief Engagement", "LanguageCode": 1033 }] },
+  "DisplayCollectionName": { "LocalizedLabels": [{ "Label": "HardMagic Brief Engagements", "LanguageCode": 1033 }] },
+  "Description": { "LocalizedLabels": [{ "Label": "Account-scoped intake, private brief delivery, consent, and follow-up ledger for HardMagic Corporation.", "LanguageCode": 1033 }] },
+  "OwnershipType": "UserOwned",
+  "IsActivity": false,
+  "HasActivities": false,
+  "HasNotes": false,
+  "IsAuditEnabled": { "Value": true },
+  "Attributes": [
+    {
+      "@odata.type": "Microsoft.Dynamics.CRM.StringAttributeMetadata",
+      "SchemaName": "hm_Name",
+      "DisplayName": { "LocalizedLabels": [{ "Label": "Name", "LanguageCode": 1033 }] },
+      "Description": { "LocalizedLabels": [{ "Label": "Human-readable engagement name.", "LanguageCode": 1033 }] },
+      "IsPrimaryName": true,
+      "RequiredLevel": { "Value": "ApplicationRequired" },
+      "MaxLength": 200,
+      "FormatName": { "Value": "Text" }
+    },
+    {
+      "@odata.type": "Microsoft.Dynamics.CRM.StringAttributeMetadata",
+      "SchemaName": "hm_RequestId",
+      "DisplayName": { "LocalizedLabels": [{ "Label": "Request ID", "LanguageCode": 1033 }] },
+      "RequiredLevel": { "Value": "ApplicationRequired" },
+      "MaxLength": 100,
+      "FormatName": { "Value": "Text" }
+    },
+    {
+      "@odata.type": "Microsoft.Dynamics.CRM.StringAttributeMetadata",
+      "SchemaName": "hm_RequestType",
+      "DisplayName": { "LocalizedLabels": [{ "Label": "Request Type", "LanguageCode": 1033 }] },
+      "MaxLength": 80,
+      "FormatName": { "Value": "Text" }
+    },
+    {
+      "@odata.type": "Microsoft.Dynamics.CRM.StringAttributeMetadata",
+      "SchemaName": "hm_BriefKey",
+      "DisplayName": { "LocalizedLabels": [{ "Label": "Brief Key", "LanguageCode": 1033 }] },
+      "MaxLength": 160,
+      "FormatName": { "Value": "Text" }
+    },
+    {
+      "@odata.type": "Microsoft.Dynamics.CRM.StringAttributeMetadata",
+      "SchemaName": "hm_BriefTitle",
+      "DisplayName": { "LocalizedLabels": [{ "Label": "Brief Title", "LanguageCode": 1033 }] },
+      "MaxLength": 300,
+      "FormatName": { "Value": "Text" }
+    },
+    {
+      "@odata.type": "Microsoft.Dynamics.CRM.StringAttributeMetadata",
+      "SchemaName": "hm_EmailHash",
+      "DisplayName": { "LocalizedLabels": [{ "Label": "Email Hash", "LanguageCode": 1033 }] },
+      "MaxLength": 128,
+      "FormatName": { "Value": "Text" }
+    },
+    {
+      "@odata.type": "Microsoft.Dynamics.CRM.StringAttributeMetadata",
+      "SchemaName": "hm_Organization",
+      "DisplayName": { "LocalizedLabels": [{ "Label": "Organization", "LanguageCode": 1033 }] },
+      "MaxLength": 300,
+      "FormatName": { "Value": "Text" }
+    },
+    {
+      "@odata.type": "Microsoft.Dynamics.CRM.StringAttributeMetadata",
+      "SchemaName": "hm_Role",
+      "DisplayName": { "LocalizedLabels": [{ "Label": "Role", "LanguageCode": 1033 }] },
+      "MaxLength": 200,
+      "FormatName": { "Value": "Text" }
+    },
+    {
+      "@odata.type": "Microsoft.Dynamics.CRM.StringAttributeMetadata",
+      "SchemaName": "hm_Industry",
+      "DisplayName": { "LocalizedLabels": [{ "Label": "Industry", "LanguageCode": 1033 }] },
+      "MaxLength": 160,
+      "FormatName": { "Value": "Text" }
+    },
+    {
+      "@odata.type": "Microsoft.Dynamics.CRM.StringAttributeMetadata",
+      "SchemaName": "hm_OrganizationSize",
+      "DisplayName": { "LocalizedLabels": [{ "Label": "Organization Size", "LanguageCode": 1033 }] },
+      "MaxLength": 80,
+      "FormatName": { "Value": "Text" }
+    },
+    {
+      "@odata.type": "Microsoft.Dynamics.CRM.StringAttributeMetadata",
+      "SchemaName": "hm_DecisionStage",
+      "DisplayName": { "LocalizedLabels": [{ "Label": "Decision Stage", "LanguageCode": 1033 }] },
+      "MaxLength": 100,
+      "FormatName": { "Value": "Text" }
+    },
+    {
+      "@odata.type": "Microsoft.Dynamics.CRM.StringAttributeMetadata",
+      "SchemaName": "hm_DecisionHorizon",
+      "DisplayName": { "LocalizedLabels": [{ "Label": "Decision Horizon", "LanguageCode": 1033 }] },
+      "MaxLength": 100,
+      "FormatName": { "Value": "Text" }
+    },
+    {
+      "@odata.type": "Microsoft.Dynamics.CRM.StringAttributeMetadata",
+      "SchemaName": "hm_Interest",
+      "DisplayName": { "LocalizedLabels": [{ "Label": "Primary Need", "LanguageCode": 1033 }] },
+      "MaxLength": 160,
+      "FormatName": { "Value": "Text" }
+    },
+    {
+      "@odata.type": "Microsoft.Dynamics.CRM.StringAttributeMetadata",
+      "SchemaName": "hm_PrimaryChallenge",
+      "DisplayName": { "LocalizedLabels": [{ "Label": "Primary Challenge", "LanguageCode": 1033 }] },
+      "MaxLength": 4000,
+      "FormatName": { "Value": "TextArea" }
+    },
+    {
+      "@odata.type": "Microsoft.Dynamics.CRM.StringAttributeMetadata",
+      "SchemaName": "hm_PreferredNextStep",
+      "DisplayName": { "LocalizedLabels": [{ "Label": "Preferred Next Step", "LanguageCode": 1033 }] },
+      "MaxLength": 200,
+      "FormatName": { "Value": "Text" }
+    },
+    {
+      "@odata.type": "Microsoft.Dynamics.CRM.StringAttributeMetadata",
+      "SchemaName": "hm_SourceUrl",
+      "DisplayName": { "LocalizedLabels": [{ "Label": "Source URL", "LanguageCode": 1033 }] },
+      "MaxLength": 1000,
+      "FormatName": { "Value": "Url" }
+    },
+    {
+      "@odata.type": "Microsoft.Dynamics.CRM.StringAttributeMetadata",
+      "SchemaName": "hm_SourceCampaign",
+      "DisplayName": { "LocalizedLabels": [{ "Label": "Source Campaign", "LanguageCode": 1033 }] },
+      "MaxLength": 200,
+      "FormatName": { "Value": "Text" }
+    },
+    {
+      "@odata.type": "Microsoft.Dynamics.CRM.StringAttributeMetadata",
+      "SchemaName": "hm_ConsentScope",
+      "DisplayName": { "LocalizedLabels": [{ "Label": "Consent Scope", "LanguageCode": 1033 }] },
+      "MaxLength": 300,
+      "FormatName": { "Value": "Text" }
+    },
+    {
+      "@odata.type": "Microsoft.Dynamics.CRM.BooleanAttributeMetadata",
+      "SchemaName": "hm_MarketingConsent",
+      "DisplayName": { "LocalizedLabels": [{ "Label": "Marketing Consent", "LanguageCode": 1033 }] },
+      "DefaultValue": false,
+      "OptionSet": {
+        "TrueOption": { "Value": 1, "Label": { "LocalizedLabels": [{ "Label": "Yes", "LanguageCode": 1033 }] } },
+        "FalseOption": { "Value": 0, "Label": { "LocalizedLabels": [{ "Label": "No", "LanguageCode": 1033 }] } }
+      }
+    },
+    {
+      "@odata.type": "Microsoft.Dynamics.CRM.StringAttributeMetadata",
+      "SchemaName": "hm_DeliveryStatus",
+      "DisplayName": { "LocalizedLabels": [{ "Label": "Delivery Status", "LanguageCode": 1033 }] },
+      "MaxLength": 100,
+      "FormatName": { "Value": "Text" }
+    },
+    {
+      "@odata.type": "Microsoft.Dynamics.CRM.StringAttributeMetadata",
+      "SchemaName": "hm_SuppressionStatus",
+      "DisplayName": { "LocalizedLabels": [{ "Label": "Suppression Status", "LanguageCode": 1033 }] },
+      "MaxLength": 100,
+      "FormatName": { "Value": "Text" }
+    },
+    {
+      "@odata.type": "Microsoft.Dynamics.CRM.IntegerAttributeMetadata",
+      "SchemaName": "hm_NurtureStage",
+      "DisplayName": { "LocalizedLabels": [{ "Label": "Nurture Stage", "LanguageCode": 1033 }] },
+      "MinValue": 0,
+      "MaxValue": 30,
+      "Format": "None"
+    },
+    {
+      "@odata.type": "Microsoft.Dynamics.CRM.StringAttributeMetadata",
+      "SchemaName": "hm_Context",
+      "DisplayName": { "LocalizedLabels": [{ "Label": "Context", "LanguageCode": 1033 }] },
+      "MaxLength": 4000,
+      "FormatName": { "Value": "TextArea" }
+    }
+  ]
+}

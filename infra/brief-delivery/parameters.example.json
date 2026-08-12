@@ -1,0 +1,48 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "resourceGroupName": { "value": "rg-hardmagic-briefs" },
+    "location": { "value": "eastus" },
+    "environmentName": { "value": "production" },
+    "frontDoorId": { "value": "REPLACE_WITH_FRONT_DOOR_PROFILE_GUID" },
+    "deploymentPrincipalObjectId": { "value": "REPLACE_WITH_GITLAB_OIDC_PRINCIPAL_OBJECT_ID" },
+    "alertActionGroupResourceId": { "value": "/subscriptions/REPLACE/resourceGroups/REPLACE/providers/microsoft.insights/actionGroups/REPLACE" },
+    "serviceConfig": {
+      "value": {
+        "companyName": "HardMagic Corporation",
+        "companyDomain": "hardmagic.com",
+        "briefHost": "briefs.hardmagic.com",
+        "publicSiteUrl": "https://hardmagic.com",
+        "contactUrl": "https://hardmagic.com/contact/",
+        "contactEmail": "hello@hardmagic.com",
+        "replyTo": "hello@hardmagic.com",
+        "allowedOrigins": ["https://hardmagic.com", "https://www.hardmagic.com", "https://hardmagic.pages.developerdojo.org"],
+        "dataverseUrl": "https://dream.crm.dynamics.com",
+        "dataverseEntitySet": "hm_briefengagements",
+        "dataverseEntityLogicalName": "hm_briefengagement",
+        "dataverseRequestIdColumn": "hm_requestid"
+      }
+    },
+    "secretNames": {
+      "value": {
+        "acsSenderAddress": "acs-sender-address",
+        "turnstileSecret": "turnstile-secret",
+        "unsubscribeTokenKey": "unsubscribe-token-key",
+        "dataverseAccountId": "dataverse-account-id",
+        "dataverseBusinessUnitId": "dataverse-business-unit-id",
+        "dataverseOwnerTeamId": "dataverse-owner-team-id"
+      }
+    },
+    "policyConfig": {
+      "value": {
+        "ledgerRetentionDays": 395,
+        "deadLetterRetentionDays": 90,
+        "deploymentRetentionDays": 30,
+        "signedUrlHours": 48,
+        "rateLimitPerHour": 5,
+        "turnstileRequired": true
+      }
+    }
+  }
+}

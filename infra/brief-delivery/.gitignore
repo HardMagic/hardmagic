@@ -1,0 +1,4 @@
+# Generated release artifacts are uploaded privately by an authorized release job.
+# They are never part of the infrastructure source tree.
+source-pdfs/
+*.zip

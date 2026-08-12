@@ -1,14 +1,36 @@
 ---
 import Wordmark from './Wordmark.astro';
-import { navigation } from '../../data/site';
+import { megaMenus } from '../../data/navigation';
 const path = Astro.url.pathname;
 const isHome = path === import.meta.env.BASE_URL;
 ---
 <header class:list={['site-header', { 'on-light': !isHome }]}>
   <div class="shell header-inner">
     <Wordmark />
-    <nav aria-label="Primary navigation">
-      {navigation.map((item) => <a href={item.href} aria-current={path.includes(`/${item.href}`) ? 'page' : undefined}>{item.label}</a>)}
+    <nav class="mega-nav" aria-label="Primary navigation">
+      {megaMenus.map((menu) => (
+        <details class="mega-item">
+          <summary>{menu.label}</summary>
+          <div class="mega-panel">
+            <div class="shell mega-grid">
+              <a class="mega-feature" href={menu.feature.href}>
+                <span>{menu.feature.eyebrow}</span><strong>{menu.feature.title}</strong><b>Explore →</b>
+              </a>
+              {menu.groups.map((group) => <div class="mega-group"><h2>{group.title}</h2>{group.links.map((link) => <a href={link.href}><span>{link.label}</span>{link.note && <small>{link.note}</small>}</a>)}</div>)}
+              <a class="mega-all" href={menu.href}>View all {menu.label.toLowerCase()} →</a>
+            </div>
+          </div>
+        </details>
+      ))}
+      <a class="header-cta" href="contact/">Start something</a>
     </nav>
   </div>
 </header>
+<script>
+  const items = [...document.querySelectorAll<HTMLDetailsElement>('.mega-item')];
+  items.forEach((item) => item.addEventListener('toggle', () => {
+    if (item.open) items.forEach((other) => { if (other !== item) other.open = false; });
+  }));
+  document.addEventListener('keydown', (event) => { if (event.key === 'Escape') items.forEach((item) => item.open = false); });
+  document.addEventListener('pointerdown', (event) => { if (!(event.target as Element).closest('.mega-item')) items.forEach((item) => item.open = false); });
+</script>

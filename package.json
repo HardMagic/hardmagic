@@ -17,6 +17,7 @@
     "test:browser": "playwright test",
     "audit:routes": "node scripts/audit-routes.mjs",
     "audit:media": "node scripts/audit-media.mjs",
+    "briefs:pdf": "node scripts/generate-brief-pdfs.mjs",
     "verify": "npm run check && npm run typecheck:ts7 && npm run test && npm run build && npm run audit:routes && npm run audit:media && npm run test:browser"
   },
   "dependencies": {

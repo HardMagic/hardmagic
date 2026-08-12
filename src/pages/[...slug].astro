@@ -1,0 +1,19 @@
+---
+import EditorialPage from '../components/editorial/EditorialPage.astro';
+import { editorialRoutes, type EditorialRoute } from '../data/editorial';
+
+export function getStaticPaths() {
+  const reserved = new Set([
+    '/', '/products/', '/company/', '/contact/', '/privacy/',
+    '/products/wiremark/', '/products/studio/', '/products/cli/',
+    '/products/web-magic/', '/products/photo-curator/', '/products/gpu-router/',
+  ]);
+  return editorialRoutes
+    .filter((page) => !reserved.has(page.path) && page.family !== 'brief' && page.family !== 'brief-confirmation')
+    .map((page) => ({ params: { slug: page.path.replace(/^\//, '').replace(/\/$/, '') }, props: { page } }));
+}
+
+interface Props { page: EditorialRoute }
+const { page } = Astro.props;
+---
+<EditorialPage page={page} />
