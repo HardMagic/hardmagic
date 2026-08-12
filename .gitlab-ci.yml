@@ -10,4 +10,4 @@ pages:
       - public
   allow_failure: false
   rules:
-    - if: '$CI_COMMIT_BRANCH == "master"'
+    - if: '$CI_COMMIT_BRANCH == "demo"'

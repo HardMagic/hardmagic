@@ -1,13 +1,14 @@
 # HardMagic website
 
-This repository is the canonical source for [hardmagic.com](https://hardmagic.com).
+This repository is the internal source repository for HardMagic.
 
-- Source of truth: `git.developerdojo.org/HardMagic/hardmagic`
+- Internal source of truth: `git.developerdojo.org/HardMagic/hardmagic`
+- GitLab preview: the `demo` branch is published to team-only GitLab Pages
+- Official public deployment: GitHub `HardMagic/hardmagic`, `gh-pages` branch
+- Official domain: [hardmagic.com](https://hardmagic.com)
 - Published files: [`site/`](site/)
-- Deployment: GitLab Pages from the default branch
-- Custom domain: `hardmagic.com`
 
 The website was recovered from the last successful GitHub Pages deployment and
-preserved with its original commit history. The legacy `gh-pages` branch is
-kept as an import record; all future changes belong on the default branch in
-this GitLab project.
+preserved with its original commit history. GitLab Pages is intentionally only
+the internal `demo` preview; the public domain is served by GitHub Pages from
+the `gh-pages` branch.
