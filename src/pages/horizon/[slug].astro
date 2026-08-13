@@ -2,9 +2,9 @@
 import { Picture } from 'astro:assets';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { horizon2035Scenarios, type Horizon2035Scenario } from '../../data/horizon2035';
-import mediaAlchemy from '../../assets/editorial/media-alchemy-ritual.avif';
+import mediaAlchemy from '../../assets/editorial/media-alchemy-ritual-4k.avif';
 import archiveCathedral from '../../assets/editorial/archive-cathedral-2035.avif';
-import audienceDreamfield from '../../assets/editorial/audience-dreamfield-2035.avif';
+import audienceDreamfield from '../../assets/editorial/audience-dreamfield-2035-4k.avif';
 
 export function getStaticPaths() {
   return horizon2035Scenarios.map((scenario) => ({ params: { slug: scenario.slug }, props: { scenario } }));

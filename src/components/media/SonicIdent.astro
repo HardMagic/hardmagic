@@ -1,3 +1,6 @@
+---
+const base = import.meta.env.BASE_URL;
+---
 <section class="sonic-ident" aria-labelledby="sonic-title">
   <div>
     <p class="eyebrow">Sonic mark · original HardMagic composition</p>
@@ -5,7 +8,7 @@
     <p>A 20-second abstract tonal ident—low frequencies, harmonic pulse, no speech. Playback never starts without you.</p>
   </div>
   <audio controls preload="metadata">
-    <source src="/media/audio/hardmagic-signal.ogg" type="audio/ogg; codecs=opus" />
-    Your browser does not support the audio element. <a href="/media/audio/hardmagic-signal.ogg">Download the sonic ident</a>.
+    <source src={`${base}media/audio/hardmagic-signal.ogg`} type="audio/ogg; codecs=opus" />
+    Your browser does not support the audio element. <a href={`${base}media/audio/hardmagic-signal.ogg`}>Download the sonic ident</a>.
   </audio>
 </section>

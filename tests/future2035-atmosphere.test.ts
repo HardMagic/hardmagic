@@ -123,11 +123,15 @@ describe('future-facing editorial evidence', () => {
 
 describe('dark media atmosphere contract', () => {
   it('pairs every text-over-media shade with a full-cover contrast rule and raised copy', async () => {
-    const [home, css] = await Promise.all([
+    const [home, studioProof, globalCss, homeCss] = await Promise.all([
       readFile(new URL('../src/pages/index.astro', import.meta.url), 'utf8'),
+      readFile(new URL('../src/components/home/StudioSignal.astro', import.meta.url), 'utf8'),
       readFile(new URL('../src/styles/global.css', import.meta.url), 'utf8'),
+      readFile(new URL('../src/styles/home-current.css', import.meta.url), 'utf8'),
     ]);
-    const shadeClasses = [...home.matchAll(/class="([^"]*(?:shade|scrim|overlay)[^"]*)"/g)]
+    const source = `${home}\n${studioProof}`;
+    const css = `${globalCss}\n${homeCss}`;
+    const shadeClasses = [...source.matchAll(/class="([^"]*(?:shade|scrim|overlay)[^"]*)"/g)]
       .flatMap((match) => (match[1] ?? '').split(/\s+/))
       .filter((className) => /(?:shade|scrim|overlay)/.test(className));
 

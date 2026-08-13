@@ -30,31 +30,31 @@ export const megaMenus: MegaMenu[] = [
   },
   {
     label: 'Work', href: 'portfolio/',
-    feature: { eyebrow: 'The restored archive', title: 'Twenty-five years of image, identity, software, learning, place, and production.', href: 'portfolio/' },
+    feature: { eyebrow: 'Current systems in practice', title: 'People, agents, media, and software moving through one directed production system.', href: 'products/' },
     groups: [
-      { title: 'Featured cases', links: [
+      { title: 'Agentic workflows', links: [
+        { label: 'Human + agent loop', href: 'methods/human-agent-creative-loop/', note: 'Intent to evidence' },
+        { label: 'Agent handoff', href: 'products/wiremark/agent-handoff/' },
+        { label: 'Agent skills', href: 'products/cli/agent-skills/' },
+        { label: 'GenAI production', href: 'insights/from-prompting-to-production-systems/' },
+      ]},
+      { title: 'Product proof', links: [
+        { label: 'HardMagic Studio', href: 'products/studio/', note: 'Multimodal production' },
+        { label: 'WireMark', href: 'products/wiremark/', note: 'Canvas to source' },
+        { label: 'HardMagic CLI', href: 'products/cli/' },
+        { label: 'Web Magic', href: 'products/web-magic/' },
+      ]},
+      { title: 'Creative direction', links: [
         { label: 'State Parks', href: 'portfolio/state-parks/', note: 'Documentary · place' },
         { label: 'FashionX', href: 'portfolio/fashionx/', note: 'Art direction · production' },
         { label: 'Pranashama', href: 'portfolio/pranashama/', note: 'Brand · editorial commerce' },
         { label: 'Tao Cottage', href: 'portfolio/tao-cottage/', note: 'Experience · hospitality' },
       ]},
-      { title: 'Digital systems', links: [
+      { title: 'Selected case studies', links: [
         { label: 'FocusPass', href: 'portfolio/focuspass/' },
         { label: 'Pedadida', href: 'portfolio/pedadida/' },
-        { label: 'WireMark', href: 'products/wiremark/' },
-        { label: 'Web Magic', href: 'products/web-magic/' },
-      ]},
-      { title: 'Identity & culture', links: [
         { label: 'Airikai', href: 'portfolio/airikai/' },
         { label: 'Taolo', href: 'portfolio/taolo/' },
-        { label: 'Company experience', href: 'company/selected-experience/' },
-        { label: 'HardMagic history', href: 'company/history/' },
-      ]},
-      { title: 'Media archive', links: [
-        { label: 'HardMagic on film', href: 'portfolio/#video-archive-title', note: 'Verified YouTube archive' },
-        { label: 'Sonic identity', href: 'portfolio/#sonic-title' },
-        { label: 'HardMagic Studio', href: 'products/studio/' },
-        { label: 'Media management', href: 'services/media-management/' },
       ]},
     ],
   },
@@ -106,7 +106,7 @@ export const megaMenus: MegaMenu[] = [
   },
   {
     label: 'Company', href: 'company/',
-    feature: { eyebrow: 'Established 1999', title: 'A privately owned Delaware GenAI and media corporation built for the long horizon.', href: 'company/history/' },
+    feature: { eyebrow: 'Independent agentic media company', title: 'A privately owned Delaware corporation building for the long horizon.', href: 'company/' },
     groups: [
       { title: 'HardMagic', links: [
         { label: 'Corporation', href: 'company/' }, { label: 'History', href: 'company/history/' }, { label: 'Founder', href: 'company/founder/' },

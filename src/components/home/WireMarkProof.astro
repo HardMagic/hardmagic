@@ -1,0 +1,69 @@
+---
+const { base = '/' } = Astro.props;
+---
+
+<section class="wiremark-proof shell" aria-labelledby="wiremark-proof-title">
+  <header class="proof-heading">
+    <div>
+      <p class="eyebrow">WireMark · controlled demonstration</p>
+      <h2 id="wiremark-proof-title">Move the decision.<br /><em>Keep the evidence.</em></h2>
+    </div>
+    <p>Select the running experience, connect it to durable source, give an agent bounded intent, and verify what changed across viewports.</p>
+  </header>
+
+  <wiremark-compare class="wiremark-compare">
+    <div class="compare-stage" aria-label="Before and after demonstration of a visual website change">
+      <div class="demo-site demo-before">
+        <span class="demo-label">Before · running site</span>
+        <div class="demo-nav"><i></i><span>FIELD NOTES</span><b>MENU</b></div>
+        <div class="demo-copy"><small>Issue 08 / Afterlight</small><strong>Stories for the<br />living horizon.</strong><button>Enter the field</button></div>
+        <div class="demo-orb"></div>
+      </div>
+      <div class="demo-site demo-after" data-after>
+        <span class="demo-label">After · verified source state</span>
+        <div class="demo-nav"><i></i><span>FIELD NOTES</span><b>MENU</b></div>
+        <div class="demo-copy"><small>Issue 08 / Afterlight</small><strong>Stories for the<br />living horizon.</strong><button>Enter the field</button></div>
+        <div class="demo-orb"></div>
+        <div class="mark mark-one"><span>01</span><b>Increase title contrast</b><small>h1 → index.astro:28</small></div>
+        <div class="mark mark-two"><span>02</span><b>Promote action</b><small>--action-accent → tokens.css:14</small></div>
+        <svg class="markup-line" viewBox="0 0 1000 600" aria-hidden="true"><path d="M160 385 C260 325 420 345 548 292" /><circle cx="548" cy="292" r="7" /></svg>
+      </div>
+      <div class="compare-divider" data-divider aria-hidden="true"><i></i></div>
+    </div>
+    <label class="compare-control">
+      <span>Original</span>
+      <input type="range" min="0" max="100" value="52" aria-label="Reveal the WireMark before and after states" />
+      <span>WireMark evidence</span>
+    </label>
+  </wiremark-compare>
+
+  <div class="wiremark-evidence">
+    <figure>
+      <img src={`${base}media/wiremark/wiremark-studio-current.png`} width="1288" height="904" loading="lazy" alt="The current WireMark desktop workspace showing repository connections, visual canvas, agent controls, files, terminal, changes, and goals." />
+      <figcaption>Current WireMark desktop build · captured from the real Electron product test pipeline at commit <code>24dc564</code>.</figcaption>
+    </figure>
+    <div class="evidence-ledger">
+      <p class="eyebrow">Executable proof</p>
+      <h3>Rendered experience → source-aware change → responsive verification.</h3>
+      <ul>
+        <li><span>01</span><p><b>Select</b> a rendered element and capture its route, bounds, accessibility name, component, and source candidates.</p></li>
+        <li><span>02</span><p><b>Direct</b> people and agents with locked selectors, visual markup, comments, and exact acceptance criteria.</p></li>
+        <li><span>03</span><p><b>Verify</b> pixels, accessibility, runtime behavior, journeys, and responsive baselines before promotion.</p></li>
+      </ul>
+      <a class="button light" href="products/wiremark/">Enter WireMark</a>
+    </div>
+  </div>
+</section>
+
+<script>
+  class WireMarkCompare extends HTMLElement {
+    connectedCallback() {
+      const input = this.querySelector('input[type="range"]');
+      if (!(input instanceof HTMLInputElement)) return;
+      const update = () => this.style.setProperty('--reveal', `${input.value}%`);
+      input.addEventListener('input', update);
+      update();
+    }
+  }
+  if (!customElements.get('wiremark-compare')) customElements.define('wiremark-compare', WireMarkCompare);
+</script>

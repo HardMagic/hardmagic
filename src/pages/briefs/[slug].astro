@@ -4,8 +4,8 @@ import { Picture } from 'astro:assets';
 import EditorialVisual from '../../components/editorial/EditorialVisual.astro';
 import { briefs, type TechnicalBrief } from '../../data/briefs';
 import archiveCathedral from '../../assets/editorial/archive-cathedral-2035.avif';
-import mediaAlchemy from '../../assets/editorial/media-alchemy-ritual.avif';
-import audienceDreamfield from '../../assets/editorial/audience-dreamfield-2035.avif';
+import mediaAlchemy from '../../assets/editorial/media-alchemy-ritual-4k.avif';
+import audienceDreamfield from '../../assets/editorial/audience-dreamfield-2035-4k.avif';
 
 export function getStaticPaths() {
   return briefs.map((brief) => ({ params: { slug: brief.slug }, props: { brief } }));

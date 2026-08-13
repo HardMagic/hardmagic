@@ -1,5 +1,6 @@
 ---
 import { youtubeArchive } from '../../data/portfolio';
+const base = import.meta.env.BASE_URL;
 ---
 <section class="video-archive shell section-pad" aria-labelledby="video-archive-title">
   <header class="section-heading video-heading">
@@ -10,7 +11,7 @@ import { youtubeArchive } from '../../data/portfolio';
     {youtubeArchive.map((video) => (
       <article class="video-card" data-video-card>
         <div class="video-frame">
-          <img src={`/media/youtube/${video.id}.avif`} width="1280" height="720" loading="lazy" alt={`Video poster for ${video.title}`} />
+          <img src={`${base}media/youtube/${video.id}.avif`} width="1280" height="720" loading="lazy" alt={`Video poster for ${video.title}`} />
           <button type="button" data-video-id={video.id} aria-label={`Load ${video.title} from YouTube`}><span aria-hidden="true">▶</span> Watch</button>
         </div>
         <p class="eyebrow dark">{video.note}</p><h3>{video.title}</h3>

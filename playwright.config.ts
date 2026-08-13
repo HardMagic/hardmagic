@@ -1,6 +1,7 @@
 import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
+  timeout: 60_000,
   testDir: './tests/e2e',
   outputDir: './test-results',
   reporter: 'line',

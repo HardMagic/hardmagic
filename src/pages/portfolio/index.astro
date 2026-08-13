@@ -6,18 +6,18 @@ import VideoArchive from '../../components/media/VideoArchive.astro';
 import { caseStudies } from '../../data/portfolio';
 const disciplines = [...new Set(caseStudies.flatMap((study) => study.disciplines))];
 ---
-<BaseLayout title="Portfolio" description="HardMagic case studies across identity, media, software, learning, hospitality, and place—restored from the company archive and reframed for the future.">
+<BaseLayout title="Creative Direction Portfolio" description="HardMagic case studies in building coherent worlds across identity, media, software, learning, hospitality, and place.">
   <section class="portfolio-hero">
     <div class="portfolio-orbit" aria-hidden="true"><i></i><i></i><i></i></div>
-    <div class="shell portfolio-hero-copy"><p class="eyebrow">HardMagic work · 25+ years</p><h1>Artifacts from<br /><em>possible worlds.</em></h1><p>Eight restored case studies. Real surviving media. Clear boundaries between the archive, our interpretation, and what we can prove.</p></div>
+    <div class="shell portfolio-hero-copy"><p class="eyebrow">Creative direction in practice</p><h1>Build the world,<br /><em>not the surface.</em></h1><p>Eight case studies across identity, media, software, learning, hospitality, and place—examined through the decisions, artifacts, and systems that shaped them.</p><a class="button ghost" href="products/">See how this practice operates now</a></div>
   </section>
   <nav class="portfolio-filter shell" aria-label="Portfolio disciplines"><span>Explore:</span>{disciplines.map((item) => <a href={`#${item.toLowerCase().replaceAll(' ', '-')}`}>{item}</a>)}</nav>
   <section class="portfolio-grid shell" aria-label="Case studies">
     {caseStudies.map((study, index) => <CaseCard study={study} index={index} />)}
   </section>
   <section class="archive-doctrine shell">
-    <p class="eyebrow dark">Editorial doctrine</p><h2>The archive is evidence,<br />not mythology.</h2>
-    <div><p>We restored the work because continuity matters. We also removed unsupported scale and outcome claims from the old pages. Each study now tells you what survives, how we interpret it, and what remains unverified.</p><p>Historical relationships do not imply current affiliation or endorsement. Third-party marks belong to their respective owners.</p></div>
+    <p class="eyebrow dark">Evidence standard</p><h2>The work is shown.<br />The record stays clear.</h2>
+    <div><p>These studies document earlier work while drawing a direct line to the creative and systems capabilities HardMagic operates now. Dates, surviving evidence, limitations, and current relevance are identified inside each case.</p><p>Historical relationships do not imply current affiliation or endorsement. Third-party marks belong to their respective owners.</p></div>
   </section>
   <SonicIdent />
   <VideoArchive />

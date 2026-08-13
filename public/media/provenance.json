@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "published": "2026-08-13",
+  "assets": [
+    {
+      "path": "media/audio/hardmagic-working-signal.ogg",
+      "kind": "generated-audio",
+      "model": "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice",
+      "deployment": "HardMagic self-hosted inference",
+      "voice": "preset; no cloned identity",
+      "instructions": "Dark, assured, intimate narration with cinematic restraint, precise diction, natural pauses, and no sales-announcer affect.",
+      "format": "Ogg Opus, mono, 24 kHz",
+      "durationSeconds": 12.34,
+      "transcript": "This is a working signal. HardMagic turns creative intent into image, sound, software, and action — through one directed system.",
+      "rights": "Generated with an Apache-2.0 model lane cleared by the HardMagic deployment for commercial use."
+    },
+    {
+      "path": "media/wiremark/wiremark-studio-current.png",
+      "kind": "product-capture",
+      "product": "WireMark",
+      "repository": "HardMagic/overmark",
+      "commit": "24dc564",
+      "source": "Real Electron product test pipeline artifact",
+      "dimensions": "1288x904",
+      "disclosure": "Welcome-state product capture; not a website before-and-after capture."
+    },
+    {
+      "path": "src/assets/portfolio/*.avif",
+      "kind": "enhanced-owned-media",
+      "workflow": "Largest surviving owned source → HardMagic RealESRGAN x4plus → max 4096px long edge → AVIF",
+      "restrictions": "Photographic assets only. Raster interface and identity composites are not AI-upscaled to avoid invented text or UI detail."
+    },
+    {
+      "path": "src/assets/editorial/*-4k.avif",
+      "kind": "enhanced-generated-editorial-media",
+      "workflow": "Authored generated source → HardMagic RealESRGAN x4plus → 3840px long edge → AVIF",
+      "restrictions": "Conceptual art only. The original generation model and disclosure remain authoritative; enhancement is not presented as a new generation or documentary evidence."
+    }
+  ]
+}
