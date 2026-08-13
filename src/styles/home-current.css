@@ -10,3 +10,54 @@
 .demo-copy button{background:#b72836}
 .demo-after .demo-copy button{background:#5e3bd0}
 .creative-continuity .eyebrow.dark{color:#7e1031}
+
+/* 2026 studio stage: edge-to-edge composition with constrained reading measures */
+.current-hero-copy,.current-thesis{width:auto;margin-inline:var(--edge)}
+.current-hero-copy h1{max-width:1500px;font-size:clamp(5rem,10.8vw,12rem)}
+.current-hero-copy>p:not(.eyebrow){max-width:760px}
+.current-thesis{grid-template-columns:minmax(0,1.35fr) minmax(360px,.65fr)}
+.current-thesis h2{max-width:1180px;font-size:clamp(4rem,7.4vw,8rem)}
+.studio-signal-heading,.studio-signal-end,.proof-heading,.wiremark-evidence,.agent-loop-grid,.current-close>div{width:auto;margin-inline:var(--edge)}
+.studio-reel{width:100%;margin:0;gap:2px}
+.studio-frame{min-height:min(78vw,920px)}
+.studio-frame-tall{min-height:min(78vw,920px)}
+.studio-frame img{filter:saturate(1.08) contrast(1.04)}
+.capability-stage{background:#f2efeb;color:#100b0d}
+.capability-intro{display:grid;grid-template-columns:1.15fr .85fr;gap:5vw;align-items:end;padding:clamp(90px,10vw,160px) var(--edge) clamp(55px,6vw,90px)}
+.capability-intro .eyebrow{grid-column:1/-1;color:#7e1031}
+.capability-intro h2{margin:0;font-size:clamp(4.2rem,8.2vw,9rem)}
+.capability-intro h2 em{color:#7e1031;font-family:var(--font-serif,serif);font-weight:400}
+.capability-intro>p:last-child{max-width:620px;margin:0;color:#51474b;font-size:clamp(1.05rem,1.5vw,1.35rem)}
+.capability-index{border-top:1px solid #30262a}
+.capability-index a{display:grid;grid-template-columns:6vw 1fr auto;align-items:center;gap:2vw;padding:clamp(22px,3vw,48px) var(--edge);border-bottom:1px solid #30262a;text-decoration:none;transition:background .25s,color .25s,padding .25s}
+.capability-index a span{font-size:.65rem;letter-spacing:.14em;color:#7e1031}
+.capability-index a strong{font-size:clamp(2.4rem,6.4vw,7.2rem);line-height:.85;letter-spacing:-.06em}
+.capability-index a i{font-size:.65rem;font-style:normal;letter-spacing:.12em;text-transform:uppercase}
+.capability-index a:hover,.capability-index a:focus-visible{padding-inline:calc(var(--edge) + 1.2vw);background:#7e1031;color:#fff}
+.capability-index a:hover span,.capability-index a:focus-visible span{color:#fff}
+.agent-loop-grid{grid-template-columns:minmax(340px,.65fr) minmax(600px,1.35fr)}
+.current-products>.proof-heading,.current-products>.section-end{padding-inline:0}
+.current-system-map,.current-product-grid{width:100%;margin-inline:0}
+.current-system-map{border-inline:0}
+.current-product-grid{gap:1px}
+.proof-zone .wiremark-proof{width:100%;margin:0}
+.proof-zone .wiremark-proof>.proof-heading,.proof-zone .wiremark-evidence{margin-inline:var(--edge)}
+.wiremark-compare .compare-stage{border-inline:0;aspect-ratio:2.15/1}
+.wiremark-compare .compare-control{padding-inline:var(--edge)}
+.creative-continuity>.proof-heading,.creative-continuity>.section-end{margin-inline:var(--edge)}
+.creative-continuity .portfolio-grid{width:100%;padding-inline:2px;gap:2px}
+.creative-continuity .case-card{min-height:78svh}
+.creative-continuity .case-card img{filter:saturate(1.04) contrast(1.02)}
+.creative-continuity .case-card:hover img{filter:saturate(1.14) contrast(1.04)}
+.current-close>div{padding-inline:0}
+.current-close h2{max-width:1500px;font-size:clamp(4.8rem,10vw,11rem)}
+
+@media(max-width:900px){.current-thesis,.capability-intro,.agent-loop-grid{grid-template-columns:1fr}.current-hero-copy h1{font-size:clamp(4.4rem,16vw,8rem)}.studio-frame,.studio-frame-tall{min-height:72svh}.wiremark-compare .compare-stage{aspect-ratio:16/10}.creative-continuity .case-card{min-height:70svh}}
+@media(max-width:620px){.current-hero-copy h1{font-size:4.4rem}.capability-index a{grid-template-columns:38px 1fr}.capability-index a i{grid-column:2}.capability-index a strong{font-size:2.8rem}.studio-frame,.studio-frame-tall{min-height:68svh}.creative-continuity .portfolio-grid{display:block;padding-inline:0}.creative-continuity .case-card{min-height:72svh;margin:0 0 2px}.wiremark-compare .compare-stage{aspect-ratio:4/5}}
+@supports (animation-timeline:view()){
+  .studio-frame img,.creative-continuity .case-card img{animation:studio-image-arrival linear both;animation-timeline:view();animation-range:entry 0% cover 42%}
+  .capability-index a strong{animation:studio-type-arrival linear both;animation-timeline:view();animation-range:entry 0% entry 75%}
+  @keyframes studio-image-arrival{from{transform:scale(1.08);filter:saturate(.75) contrast(1.08)}to{transform:scale(1);filter:saturate(1.08) contrast(1.03)}}
+  @keyframes studio-type-arrival{from{transform:translateX(-3vw);opacity:.3}to{transform:none;opacity:1}}
+}
+@media(prefers-reduced-motion:reduce){.studio-frame img,.creative-continuity .case-card img,.capability-index a strong{animation:none!important}}

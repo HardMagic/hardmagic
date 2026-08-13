@@ -8,8 +8,10 @@ async function walk(path) {
 }
 const files = await walk(fileURLToPath(new URL('../dist', import.meta.url)));
 const images = files.filter((file) => /\.(avif|webp|png|jpe?g|svg)$/i.test(file));
+const generatedWebp = files.filter((file) => file.includes('/dist/_astro/') && /\.webp$/i.test(file));
 const oversized = [];
 for (const file of images) if ((await stat(file)).size > 650_000) oversized.push(file);
 if (!images.some((file) => /\.avif$/i.test(file))) throw new Error('Responsive AVIF hero output was not produced.');
+if (generatedWebp.length) throw new Error(`Generated WebP output is forbidden: ${generatedWebp.join(', ')}`);
 if (oversized.length) throw new Error(`Oversized media: ${oversized.join(', ')}`);
 console.log(`Media audit passed: ${images.length} assets, no file over 650 KB.`);

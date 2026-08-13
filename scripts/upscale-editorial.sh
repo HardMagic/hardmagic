@@ -12,9 +12,9 @@ restore() {
   local stem
   stem=$(basename "${destination%.*}")
   local inference_input="$work_root/${stem}-input.png"
-  local restored="$work_root/${stem}.webp"
+  local restored="$work_root/${stem}.png"
   local remote_input="/tmp/hardmagic-${stem}-input.png"
-  local remote_output="/tmp/hardmagic-${stem}-output.webp"
+  local remote_output="/tmp/hardmagic-${stem}-output.png"
 
   if [[ -f "$destination" ]] && (( $(identify -format '%w' "$destination") >= 3500 )); then
     echo "Keeping completed restoration $destination"
@@ -46,7 +46,7 @@ response.raise_for_status()
 payload = response.json()
 image = Image.open(io.BytesIO(base64.b64decode(payload['image_base64']))).convert('RGB')
 image.thumbnail((3840, 3840), Image.Resampling.LANCZOS)
-image.save(destination, format='WEBP', quality=78, method=1)
+image.save(destination, format='PNG', optimize=True)
 print(json.dumps({key: payload[key] for key in ('model', 'original_size', 'output_size', 'scale', 'processing_time_seconds')}))
 PY
   set +e
@@ -54,7 +54,7 @@ PY
   set -e
   identify "$restored" >/dev/null
   kubectl -n "$kube_namespace" exec "$inference_pod" -c inference -- rm -f -- "$remote_input" "$remote_output"
-  magick "$restored" -resize '3840x3840>' -define heic:speed=7 -quality 78 "$destination"
+  magick "$restored" -resize '3840x3840>' -unsharp 0x.65+0.7+0.015 -define heic:speed=7 -quality 82 "$destination"
 }
 
 restore 'src/assets/editorial/generative-operations.png' 'src/assets/editorial/generative-operations-4k.avif'

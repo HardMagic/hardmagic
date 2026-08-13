@@ -5,7 +5,7 @@ const { study, index } = Astro.props as { study: CaseStudy; index: number };
 ---
 <article class={`case-card case-card-${(index % 4) + 1}`} style={`--case-accent:${study.accent}`}>
   <a href={`portfolio/${study.slug}/`} aria-label={`Read the ${study.title} case study`}>
-    <Picture src={study.media[0].src} alt={study.media[0].alt} formats={['avif', 'webp']} fallbackFormat="webp" width={1200} widths={[480, 800, 1200]} sizes="(min-width: 900px) 48vw, 100vw" />
+    <Picture src={study.media[0].src} alt={study.media[0].alt} formats={[]} fallbackFormat="avif" width={1200} widths={[480, 800, 1200]} sizes="(min-width: 900px) 48vw, 100vw" />
     <span class="case-card-shade" aria-hidden="true"></span>
     <span class="case-card-copy">
       <span class="case-number">{String(index + 1).padStart(2, '0')} · {study.era}</span>

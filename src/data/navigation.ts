@@ -2,7 +2,7 @@ export interface NavLink { label: string; href: string; note?: string }
 export interface NavGroup { title: string; links: NavLink[] }
 export interface MegaMenu { label: string; href: string; feature: { eyebrow: string; title: string; href: string }; groups: NavGroup[] }
 
-export const megaMenus: MegaMenu[] = [
+const megaMenuCatalog: MegaMenu[] = [
   {
     label: 'Products', href: 'products/',
     feature: { eyebrow: 'The product constellation', title: 'One system from creative intent to verified delivery.', href: 'products/' },
@@ -30,7 +30,7 @@ export const megaMenus: MegaMenu[] = [
   },
   {
     label: 'Work', href: 'portfolio/',
-    feature: { eyebrow: 'Current systems in practice', title: 'People, agents, media, and software moving through one directed production system.', href: 'products/' },
+    feature: { eyebrow: 'Selected creative practice', title: 'Brands, campaigns, images, experiences, and intelligent media built to leave a mark.', href: 'portfolio/' },
     groups: [
       { title: 'Agentic workflows', links: [
         { label: 'Human + agent loop', href: 'methods/human-agent-creative-loop/', note: 'Intent to evidence' },
@@ -127,3 +127,6 @@ export const megaMenus: MegaMenu[] = [
     ],
   },
 ];
+
+const menuOrder = ['Work', 'Work with us', 'Ideas', 'Products', 'Company'];
+export const megaMenus = menuOrder.map((label) => megaMenuCatalog.find((menu) => menu.label === label)!) satisfies MegaMenu[];

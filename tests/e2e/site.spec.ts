@@ -25,16 +25,18 @@ for (const route of routes) {
 test('mega menu exposes deep navigation and behaves as one disclosure at a time', async ({ page }, testInfo) => {
   await page.goto('/');
   const menus = page.locator('.mega-item');
-  await menus.nth(0).locator('summary').click();
-  await expect(menus.nth(0)).toHaveAttribute('open', '');
+  const productsMenu = menus.filter({ has: page.locator('summary').filter({ hasText: /^Products$/ }) });
+  const workMenu = menus.filter({ has: page.locator('summary').filter({ hasText: /^Work$/ }) });
+  await productsMenu.locator('summary').click();
+  await expect(productsMenu).toHaveAttribute('open', '');
   await expect(page.getByRole('link', { name: 'Source intelligence' })).toBeVisible();
   if (testInfo.project.name === 'desktop') {
-    await menus.nth(1).locator('summary').click();
-    await expect(menus.nth(0)).not.toHaveAttribute('open', '');
-    await expect(menus.nth(1)).toHaveAttribute('open', '');
+    await workMenu.locator('summary').click();
+    await expect(productsMenu).not.toHaveAttribute('open', '');
+    await expect(workMenu).toHaveAttribute('open', '');
   } else {
     await page.keyboard.press('Escape');
-    await expect(menus.nth(0)).not.toHaveAttribute('open', '');
+    await expect(productsMenu).not.toHaveAttribute('open', '');
   }
 });
 

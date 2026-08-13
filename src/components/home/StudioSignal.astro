@@ -13,12 +13,12 @@ const { base = '/' } = Astro.props;
   </div>
   <div class="studio-reel shell">
     <figure class="studio-frame studio-frame-wide">
-      <Picture src={mediaAlchemy} alt="A creative director shapes a suspended field of crimson light inside a dark soundstage." formats={['avif', 'webp']} fallbackFormat="webp" width={1920} widths={[720, 1200, 1920]} sizes="(min-width: 900px) 64vw, 100vw" />
+      <Picture src={mediaAlchemy} alt="A creative director shapes a suspended field of crimson light inside a dark soundstage." formats={[]} fallbackFormat="avif" width={1920} widths={[720, 1200, 1920]} sizes="(min-width: 900px) 64vw, 100vw" />
       <span class="studio-frame-shade" aria-hidden="true"></span>
       <figcaption class="studio-frame-copy"><span>IMAGE / ART DIRECTION</span><b>Human authority inside machine-scale production.</b><small>OpenAI ImageGen · HardMagic-directed editorial concept · August 12, 2026</small></figcaption>
     </figure>
     <figure class="studio-frame studio-frame-tall">
-      <Picture src={audienceDreamfield} alt="An audience gathers at night as moving imagery passes through mist and suspended fabric." formats={['avif', 'webp']} fallbackFormat="webp" width={1000} widths={[480, 720, 1000]} sizes="(min-width: 900px) 32vw, 100vw" />
+      <Picture src={audienceDreamfield} alt="An audience gathers at night as moving imagery passes through mist and suspended fabric." formats={[]} fallbackFormat="avif" width={1000} widths={[480, 720, 1000]} sizes="(min-width: 900px) 32vw, 100vw" />
       <span class="studio-frame-shade" aria-hidden="true"></span>
       <figcaption class="studio-frame-copy"><span>SCENARIO / SPATIAL MEDIA</span><b>An audience inside the image.</b><small>OpenAI ImageGen · 2035 scenario artwork · not documentary evidence</small></figcaption>
     </figure>
@@ -27,12 +27,12 @@ const { base = '/' } = Astro.props;
       <div class="audio-copy">
         <p class="eyebrow">VOICE / DIRECTED SYNTHESIS</p>
         <h3>A working signal.</h3>
-        <p>Generated on HardMagic’s commercially cleared, self-hosted Qwen3-TTS lane. No cloned identity. No autoplay.</p>
+        <p>Generated on HardMagic’s self-hosted Fish Audio S2-Pro lane using text-only synthesis. No cloned identity. No autoplay.</p>
         <audio controls preload="metadata">
           <source src={`${base}media/audio/hardmagic-working-signal.ogg`} type="audio/ogg; codecs=opus" />
           Your browser does not support embedded audio.
         </audio>
-        <details><summary>Read transcript and provenance</summary><p>“This is a working signal. HardMagic turns creative intent into image, sound, software, and action—through one directed system.”</p><dl><div><dt>Model</dt><dd>Qwen3-TTS 1.7B CustomVoice</dd></div><div><dt>Voice</dt><dd>Preset; no cloned identity</dd></div><div><dt>Format</dt><dd>Opus · 24 kHz · 12.34 seconds</dd></div><div><dt>Generated</dt><dd>HardMagic self-hosted inference · August 13, 2026</dd></div></dl></details>
+        <details><summary>Read transcript and provenance</summary><p>“This is a working signal. HardMagic turns creative intent into image, sound, software, and action. One directed system. Infinite forms.”</p><dl><div><dt>Model</dt><dd>Fish Audio S2-Pro</dd></div><div><dt>Voice</dt><dd>Default text-only synthesis; no cloned identity</dd></div><div><dt>Format</dt><dd>Opus · 48 kHz · 11.05 seconds</dd></div><div><dt>Generated</dt><dd>HardMagic self-hosted inference · August 13, 2026</dd></div></dl></details>
       </div>
     </article>
   </div>

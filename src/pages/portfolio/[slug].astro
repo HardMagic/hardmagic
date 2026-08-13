@@ -22,7 +22,7 @@ const connection = currentConnections[study.slug]!;
 <BaseLayout title={`${study.title} case study`} description={study.opening}>
   <article class="case-study" style={`--case-accent:${study.accent}`}>
     <header class="case-hero">
-      <Picture src={study.media[0].src} alt={study.media[0].alt} formats={['avif', 'webp']} fallbackFormat="webp" width={1600} widths={[720, 1200, 1600]} sizes="100vw" loading="eager" />
+      <Picture src={study.media[0].src} alt={study.media[0].alt} formats={[]} fallbackFormat="avif" width={1600} widths={[720, 1200, 1600]} sizes="100vw" loading="eager" />
       <span class="case-hero-shade" aria-hidden="true"></span>
       <div class="case-hero-copy shell"><p class="eyebrow">Case study · {study.era}</p><h1>{study.title}</h1><p>{study.subtitle}</p></div>
     </header>
@@ -30,12 +30,12 @@ const connection = currentConnections[study.slug]!;
     <section class="case-opening shell"><p class="case-kicker">The project</p><h2>{study.opening}</h2></section>
     <section class="case-spread shell">
       <div class="case-copy"><p class="eyebrow dark">Context</p>{study.context.map((text) => <p>{text}</p>)}</div>
-      <figure><Picture src={study.media[1].src} alt={study.media[1].alt} formats={['avif', 'webp']} fallbackFormat="webp" width={1280} widths={[640, 960, 1280]} sizes="(min-width: 900px) 58vw, 100vw" /><figcaption>{study.media[1].caption}</figcaption></figure>
+      <figure><Picture src={study.media[1].src} alt={study.media[1].alt} formats={[]} fallbackFormat="avif" width={1280} widths={[640, 960, 1280]} sizes="(min-width: 900px) 58vw, 100vw" /><figcaption>{study.media[1].caption}</figcaption></figure>
     </section>
     <section class="case-response">
       <div class="shell"><div class="case-response-copy"><p class="eyebrow">Creative response</p><h2>Build the world,<br />not just the surface.</h2>{study.response.map((text) => <p>{text}</p>)}</div></div>
     </section>
-    {study.media[2] && <figure class="case-cinema"><Picture src={study.media[2].src} alt={study.media[2].alt} formats={['avif', 'webp']} fallbackFormat="webp" width={1600} widths={[720, 1200, 1600]} sizes="100vw" /><figcaption>{study.media[2].caption}</figcaption></figure>}
+    {study.media[2] && <figure class="case-cinema"><Picture src={study.media[2].src} alt={study.media[2].alt} formats={[]} fallbackFormat="avif" width={1600} widths={[720, 1200, 1600]} sizes="100vw" /><figcaption>{study.media[2].caption}</figcaption></figure>}
     <section class="case-lessons shell">
       <div><p class="eyebrow dark">Principles in operation</p><h2>Durable ideas,<br />actively applied.</h2></div>
       <ol>{study.survives.map((item, index) => <li><span>0{index + 1}</span>{item}</li>)}</ol>

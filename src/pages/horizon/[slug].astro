@@ -18,7 +18,7 @@ const leadImage = images[(scenario.number - 1) % images.length] ?? mediaAlchemy;
 <BaseLayout title={`${scenario.title} — Horizon 2035`} description={scenario.dek}>
   <article class="horizon-dispatch">
     <header class="horizon-dispatch-hero">
-      <Picture src={leadImage} alt="" formats={['avif','webp']} fallbackFormat="webp" widths={[720,1200,1920]} sizes="100vw" loading="eager" fetchpriority="high" />
+      <Picture src={leadImage} alt="" formats={[]} fallbackFormat="avif" widths={[720,1200,1920]} sizes="100vw" loading="eager" fetchpriority="high" />
       <div class="horizon-veil"></div>
       <div class="shell horizon-dispatch-copy">
         <p class="eyebrow">Dispatch {String(scenario.number).padStart(2,'0')} / Written from 2035</p>

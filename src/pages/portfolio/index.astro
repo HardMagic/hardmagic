@@ -12,7 +12,7 @@ const disciplines = [...new Set(caseStudies.flatMap((study) => study.disciplines
     <div class="shell portfolio-hero-copy"><p class="eyebrow">Creative direction in practice</p><h1>Build the world,<br /><em>not the surface.</em></h1><p>Eight case studies across identity, media, software, learning, hospitality, and place—examined through the decisions, artifacts, and systems that shaped them.</p><a class="button ghost" href="products/">See how this practice operates now</a></div>
   </section>
   <nav class="portfolio-filter shell" aria-label="Portfolio disciplines"><span>Explore:</span>{disciplines.map((item) => <a href={`#${item.toLowerCase().replaceAll(' ', '-')}`}>{item}</a>)}</nav>
-  <section class="portfolio-grid shell" aria-label="Case studies">
+  <section class="portfolio-grid" aria-label="Case studies">
     {caseStudies.map((study, index) => <CaseCard study={study} index={index} />)}
   </section>
   <section class="archive-doctrine shell">

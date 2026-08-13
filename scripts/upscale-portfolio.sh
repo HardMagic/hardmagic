@@ -22,10 +22,10 @@ upscale() {
   local source_rel=$1
   local destination=$2
   local scale=$3
-  local restored="$work_root/${destination%.avif}.webp"
+  local restored="$work_root/${destination%.avif}.png"
   local inference_input="$work_root/${destination%.avif}-input.png"
   local remote_input="/tmp/hardmagic-${destination%.avif}-input.png"
-  local remote_output="/tmp/hardmagic-${destination%.avif}-output.webp"
+  local remote_output="/tmp/hardmagic-${destination%.avif}-output.png"
 
   if [[ -f "$output_root/$destination" ]] && (( $(identify -format '%w' "$output_root/$destination") >= 3000 || $(identify -format '%h' "$output_root/$destination") >= 3000 )); then
     echo "Keeping completed restoration $destination"
@@ -60,7 +60,7 @@ response.raise_for_status()
 payload = response.json()
 image = Image.open(io.BytesIO(base64.b64decode(payload['image_base64']))).convert('RGB')
 image.thumbnail((3840, 3840), Image.Resampling.LANCZOS)
-image.save(destination, format='WEBP', quality=78, method=1)
+image.save(destination, format='PNG', optimize=True)
 print(json.dumps({key: payload[key] for key in ('model', 'original_size', 'output_size', 'scale', 'processing_time_seconds')}))
 PY
   set +e
@@ -68,7 +68,7 @@ PY
   set -e
   identify "$restored" >/dev/null
   kubectl -n "$kube_namespace" exec "$inference_pod" -c inference -- rm -f -- "$remote_input" "$remote_output"
-  magick "$restored" -resize '4096x4096>' -define heic:speed=7 -quality 76 "$output_root/$destination"
+  magick "$restored" -resize '4096x4096>' -unsharp 0x.65+0.7+0.015 -define heic:speed=7 -quality 82 "$output_root/$destination"
 }
 
 upscale '2017/08/tango_cover.jpg' 'airikai-editorial.avif' 4
