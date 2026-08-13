@@ -2,7 +2,7 @@ import type { ImageMetadata } from 'astro';
 
 import airikaiPortrait from '../assets/portfolio/airikai-portrait.avif';
 import airikaiMotion from '../assets/portfolio/airikai-motion.avif';
-import airikaiEditorial from '../assets/portfolio/airikai-editorial.avif';
+import airikaiEditorial from '../assets/portfolio/restored/airikai-editorial-8k-restored.avif';
 import fashionEditorial from '../assets/portfolio/fashionx-editorial.avif';
 import fashionSwim from '../assets/portfolio/fashionx-swim.avif';
 import fashionProcess from '../assets/portfolio/fashionx-process.avif';
@@ -54,7 +54,7 @@ export const caseStudies: CaseStudy[] = [
     media: [
       { src: airikaiPortrait, alt: 'Airikai portrait photography against a dark field.', caption: 'Portrait study · HardMagic creative direction' },
       { src: airikaiMotion, alt: 'A dancer extends through a high kick in a movement photograph.', caption: 'Movement as identity material' },
-      { src: airikaiEditorial, alt: 'An editorial cover from the Airikai visual system.', caption: 'Editorial system artifact' },
+      { src: airikaiEditorial, alt: 'An editorial portrait from the Airikai visual system: a shadowed figure in black with a vivid red tie.', caption: 'Editorial system artifact · 8K presentation master reconstructed with RealESRGAN; not a forensic original' },
     ],
   },
   {

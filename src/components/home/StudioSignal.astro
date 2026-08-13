@@ -26,13 +26,13 @@ const { base = '/' } = Astro.props;
       <div class="audio-wave" aria-hidden="true">{Array.from({ length: 52 }, (_, index) => <i style={`--h:${18 + ((index * 37) % 74)}%`}></i>)}</div>
       <div class="audio-copy">
         <p class="eyebrow">VOICE / DIRECTED SYNTHESIS</p>
-        <h3>A working signal.</h3>
-        <p>Generated on HardMagic’s self-hosted Fish Audio S2-Pro lane using text-only synthesis. No cloned identity. No autoplay.</p>
+        <h3>A future, felt.</h3>
+        <p>An emotionally directed performance generated on HardMagic’s self-hosted Fish Audio S2-Pro lane. Text-only synthesis. No cloned identity. No autoplay.</p>
         <audio controls preload="metadata">
           <source src={`${base}media/audio/hardmagic-working-signal.ogg`} type="audio/ogg; codecs=opus" />
           Your browser does not support embedded audio.
         </audio>
-        <details><summary>Read transcript and provenance</summary><p>“This is a working signal. HardMagic turns creative intent into image, sound, software, and action. One directed system. Infinite forms.”</p><dl><div><dt>Model</dt><dd>Fish Audio S2-Pro</dd></div><div><dt>Voice</dt><dd>Default text-only synthesis; no cloned identity</dd></div><div><dt>Format</dt><dd>Opus · 48 kHz · 11.05 seconds</dd></div><div><dt>Generated</dt><dd>HardMagic self-hosted inference · August 13, 2026</dd></div></dl></details>
+        <details><summary>Read transcript and provenance</summary><p>“The future does not arrive as a trend report. It arrives as a feeling, just before the world has words for it. A screen becomes a collaborator. A campaign becomes an organism. An audience becomes part of the story. And suddenly, the impossible feels inevitable. HardMagic is building that future now. Make what comes next.”</p><dl><div><dt>Model</dt><dd>Fish Audio S2-Pro</dd></div><div><dt>Direction</dt><dd>Soft → whispered → curious → moved → hopeful → confident</dd></div><div><dt>Voice</dt><dd>Default text-only synthesis; no cloned identity</dd></div><div><dt>Format</dt><dd>Opus · 48 kHz · 22.61 seconds</dd></div><div><dt>Generated</dt><dd>HardMagic self-hosted inference · August 13, 2026</dd></div></dl></details>
       </div>
     </article>
   </div>

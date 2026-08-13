@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-08-13",
+  "sourceCommit": "46b3c7c",
+  "sourcePolicy": "Use the earliest committed AVIF rendition as the stable surviving source. Preserve that source and every current site asset byte-for-byte; write a new archival derivative only.",
+  "selectionMethod": "Prioritize photographic, non-UI portfolio assets with very low surviving encoded bits per pixel, visible tonal or detail weakness, and meaningful case-study use. Text-heavy UI and identity composites are excluded because neural super-resolution can invent lettering.",
+  "pipeline": {
+    "decode": "ImageMagick 7, lossless 16-bit sRGB PNG transport at native source dimensions",
+    "reconstruction": "HardMagic GPU inference service, RealESRGAN x4plus, native source dimensions, internal 512-pixel tiling, 4x output",
+    "finishing": "Lanczos resample to a 7,680-pixel long edge with restrained unsharp compensation; no crop, denoise, recolor, face repair, inpaint, ControlNet, IPAdapter, or diffusion",
+    "encoding": "AVIF, 10-bit, YUV 4:4:4, quality 92",
+    "disclosure": "Generative reconstruction used. RealESRGAN is GAN-based super-resolution and infers plausible high-frequency detail; these derivatives are enhanced presentation masters, not forensic originals."
+  },
+  "assets": [
+    {
+      "id": "airikai-editorial-8k-restored",
+      "source": "src/assets/portfolio/airikai-editorial.avif",
+      "output": "src/assets/portfolio/restored/airikai-editorial-8k-restored.avif",
+      "selectionReason": "Lowest surviving information density among photographic portfolio assets and visibly crushed low-light detail.",
+      "metrics": {
+        "sourceDimensions": "880x917",
+        "outputDimensions": "7370x7680",
+        "outputBytes": 650415,
+        "reconstruction": "RealESRGAN x4plus to 3520x3668, then archival Lanczos finishing to a 7680-pixel long edge"
+      }
+    },
+    {
+      "id": "fashionx-editorial-8k-restored",
+      "source": "src/assets/portfolio/fashionx-editorial.avif",
+      "output": "src/assets/portfolio/restored/fashionx-editorial-8k-restored.avif",
+      "selectionReason": "Second-lowest surviving photographic information density with weak fine texture and compressed highlight transitions.",
+      "metrics": null
+    },
+    {
+      "id": "state-parks-sunset-8k-restored",
+      "source": "src/assets/portfolio/state-parks-sunset.avif",
+      "output": "src/assets/portfolio/restored/state-parks-sunset-8k-restored.avif",
+      "selectionReason": "Low-bitrate panoramic hero with visible edge softness and banding risk across a highly prominent tonal gradient.",
+      "metrics": null
+    }
+  ]
+}
