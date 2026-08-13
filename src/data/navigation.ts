@@ -29,6 +29,36 @@ export const megaMenus: MegaMenu[] = [
     ],
   },
   {
+    label: 'Work', href: 'portfolio/',
+    feature: { eyebrow: 'The restored archive', title: 'Twenty-five years of image, identity, software, learning, place, and production.', href: 'portfolio/' },
+    groups: [
+      { title: 'Featured cases', links: [
+        { label: 'State Parks', href: 'portfolio/state-parks/', note: 'Documentary · place' },
+        { label: 'FashionX', href: 'portfolio/fashionx/', note: 'Art direction · production' },
+        { label: 'Pranashama', href: 'portfolio/pranashama/', note: 'Brand · editorial commerce' },
+        { label: 'Tao Cottage', href: 'portfolio/tao-cottage/', note: 'Experience · hospitality' },
+      ]},
+      { title: 'Digital systems', links: [
+        { label: 'FocusPass', href: 'portfolio/focuspass/' },
+        { label: 'Pedadida', href: 'portfolio/pedadida/' },
+        { label: 'WireMark', href: 'products/wiremark/' },
+        { label: 'Web Magic', href: 'products/web-magic/' },
+      ]},
+      { title: 'Identity & culture', links: [
+        { label: 'Airikai', href: 'portfolio/airikai/' },
+        { label: 'Taolo', href: 'portfolio/taolo/' },
+        { label: 'Company experience', href: 'company/selected-experience/' },
+        { label: 'HardMagic history', href: 'company/history/' },
+      ]},
+      { title: 'Media archive', links: [
+        { label: 'HardMagic on film', href: 'portfolio/#video-archive-title', note: 'Verified YouTube archive' },
+        { label: 'Sonic identity', href: 'portfolio/#sonic-title' },
+        { label: 'HardMagic Studio', href: 'products/studio/' },
+        { label: 'Media management', href: 'services/media-management/' },
+      ]},
+    ],
+  },
+  {
     label: 'Work with us', href: 'services/',
     feature: { eyebrow: 'Independent senior practice', title: 'Bring us the decision that crosses creative, technical, and organizational boundaries.', href: 'contact/' },
     groups: [

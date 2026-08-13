@@ -9,6 +9,8 @@ const overflowRoutes = [
   '/insights/creative-direction-after-model-abundance/',
   '/horizon/',
   '/horizon/direction-after-infinite-production/',
+  '/portfolio/',
+  '/portfolio/state-parks/',
 ];
 
 for (const route of overflowRoutes) {

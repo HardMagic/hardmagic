@@ -151,8 +151,8 @@ export const mediaManifest = [
   },
   {
     id: 'legacy-wordmark',
-    title: 'Legacy royal HardMagic wordmark',
-    filename: 'src/assets/legacy/hardmagic-logo.png',
+    title: 'Restored HardMagic infinity wordmark',
+    filename: 'src/assets/brand/hardmagic-wordmark.svg',
     type: 'brand-mark',
     roles: ['identity', 'archive-proof'],
     routes: ['/company/', '/company/history/'],
@@ -163,8 +163,8 @@ export const mediaManifest = [
     },
     caption: {
       kind: 'required',
-      text: 'An earlier HardMagic wordmark, preserved as part of the company archive.',
-      rationale: 'The caption distinguishes this archival mark from the current identity.',
+      text: 'The HardMagic infinity wordmark, faithfully vectorized from the company archive.',
+      rationale: 'The caption records restoration provenance without treating the identity as obsolete.',
     },
     crop: {
       preferredAspect: '11:2',
@@ -177,16 +177,16 @@ export const mediaManifest = [
       source: 'Recovered from the 2015 HardMagic website archive.',
       owner: HARDMAGIC,
       license: 'Owned HardMagic brand asset.',
-      restrictions: 'Use as archival evidence, not as the primary current navigation mark.',
+      restrictions: 'Primary identity. Preserve path geometry, aspect ratio, and clear space.',
     },
     generated: notGenerated,
-    reviewStatus: 'approved-with-restrictions',
-    reuseRule: 'May recur only in identity-history contexts where its archival status is visible.',
+    reviewStatus: 'approved',
+    reuseRule: 'Use for primary HardMagic identity; do not redraw or typeset a substitute.',
   },
   {
     id: 'client-mark-disney',
     title: 'Disney historical experience mark',
-    filename: 'src/assets/legacy/disney.png',
+    filename: 'src/assets/brand/disney.svg',
     type: 'brand-mark',
     roles: ['archive-proof'],
     routes: ['/company/', '/company/experience/'],
@@ -208,7 +208,7 @@ export const mediaManifest = [
     },
     provenance: {
       truthStatus: 'third-party-mark',
-      source: 'Recovered from the HardMagic website archive.',
+      source: 'Vector extracted from The Walt Disney Company 2015 annual report; obtained through Wikimedia Commons on 2026-08-13.',
       owner: 'The Walt Disney Company or its applicable affiliate.',
       license: 'Third-party trademark used only to identify substantiated historical experience.',
       restrictions: 'No current affiliation, endorsement, decorative hero use, or unsupported project claim.',
@@ -220,7 +220,7 @@ export const mediaManifest = [
   {
     id: 'client-mark-zico',
     title: 'ZICO historical experience mark',
-    filename: 'src/assets/legacy/zico.png',
+    filename: 'src/assets/brand/zico.svg',
     type: 'brand-mark',
     roles: ['archive-proof'],
     routes: ['/company/', '/company/experience/'],
@@ -242,7 +242,7 @@ export const mediaManifest = [
     },
     provenance: {
       truthStatus: 'third-party-mark',
-      source: 'Recovered from the HardMagic website archive.',
+      source: 'Official vector served by zico.com; vendored on 2026-08-13.',
       owner: 'The applicable ZICO trademark owner.',
       license: 'Third-party trademark used only to identify substantiated historical experience.',
       restrictions: 'No current affiliation, endorsement, decorative hero use, or unsupported project claim.',
@@ -254,7 +254,7 @@ export const mediaManifest = [
   {
     id: 'client-mark-jamba-juice',
     title: 'Jamba Juice historical experience mark',
-    filename: 'src/assets/legacy/jamba-juice.png',
+    filename: 'src/assets/brand/jamba.svg',
     type: 'brand-mark',
     roles: ['archive-proof'],
     routes: ['/company/', '/company/experience/'],
@@ -276,7 +276,7 @@ export const mediaManifest = [
     },
     provenance: {
       truthStatus: 'third-party-mark',
-      source: 'Recovered from the HardMagic website archive.',
+      source: 'Official current vector served by Jamba’s content system; vendored on 2026-08-13.',
       owner: 'Jamba Juice Franchisor SPV LLC or its applicable affiliate.',
       license: 'Third-party trademark used only to identify substantiated historical experience.',
       restrictions: 'No current affiliation, endorsement, decorative hero use, or unsupported project claim.',
@@ -288,14 +288,14 @@ export const mediaManifest = [
   {
     id: 'client-mark-abc',
     title: 'ABC historical experience mark',
-    filename: null,
+    filename: 'src/assets/brand/abc.svg',
     type: 'brand-mark',
     roles: ['archive-proof'],
     routes: ['/company/', '/company/experience/'],
     alt: {
       kind: 'logo-label',
       text: 'ABC',
-      rationale: 'The code-native text treatment identifies the historical brand relationship.',
+      rationale: 'The official vector identifies the historical brand relationship.',
     },
     caption: {
       kind: 'required',
@@ -304,13 +304,13 @@ export const mediaManifest = [
     },
     crop: {
       preferredAspect: '1:1',
-      desktop: 'Render as a contained text mark; do not imitate protected artwork beyond identification.',
-      narrow: 'Render as a contained text mark.',
+      desktop: 'Contain with clear space around the mark.',
+      narrow: 'Contain with clear space around the mark.',
       focalPoint: { x: 50, y: 50, unit: 'percent' },
     },
     provenance: {
       truthStatus: 'third-party-mark',
-      source: 'Code-native identifying mark in src/pages/company.astro.',
+      source: 'Classic Paul Rand ABC vector with rights metadata; obtained through Wikimedia Commons on 2026-08-13.',
       owner: 'American Broadcasting Companies, Inc. or its applicable affiliate.',
       license: 'Third-party name used only to identify substantiated historical experience.',
       restrictions: 'No current affiliation, endorsement, decorative hero use, or unsupported project claim.',

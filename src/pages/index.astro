@@ -4,6 +4,8 @@ import { Picture } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProductCard from '../components/product/ProductCard.astro';
 import Marquee from '../components/sections/Marquee.astro';
+import CaseCard from '../components/portfolio/CaseCard.astro';
+import { caseStudies } from '../data/portfolio';
 import raptor from '../assets/legacy/raptor.jpg';
 import mediaAlchemy from '../assets/editorial/media-alchemy-ritual.avif';
 import audienceDreamfield from '../assets/editorial/audience-dreamfield-2035.avif';
@@ -38,6 +40,11 @@ const featured = products.filter((p) => p.data.featured);
     </div>
     <figcaption>AI-generated conceptual artwork, art-directed by HardMagic; an editorial metaphor, not product or client evidence.</figcaption>
   </figure>
+  <section class="home-work section-pad">
+    <header class="shell section-heading"><div><p class="eyebrow">Selected archive</p><h2>We have been making<br />worlds for decades.</h2></div><p>Restored case studies across documentary media, identity, software, and experiential place.</p></header>
+    <div class="portfolio-grid shell">{[caseStudies[5]!, caseStudies[1]!, caseStudies[2]!, caseStudies[6]!].map((study, index) => <CaseCard study={study} index={index} />)}</div>
+    <div class="shell section-end"><a class="button light" href="portfolio/">Explore all eight case studies</a></div>
+  </section>
   <section id="products" class="product-feature section-pad">
     <div class="shell section-heading"><div><p class="eyebrow">The HardMagic constellation</p><h2>Products for the<br />creative frontier.</h2></div><p>Separate instruments. One philosophy: make powerful systems legible, directed, and alive.</p></div>
     <div class="shell product-grid">{featured.map((product, index) => <ProductCard id={product.id} data={product.data} index={index} />)}</div>

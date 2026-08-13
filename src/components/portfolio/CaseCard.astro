@@ -1,0 +1,16 @@
+---
+import { Image } from 'astro:assets';
+import type { CaseStudy } from '../../data/portfolio';
+const { study, index } = Astro.props as { study: CaseStudy; index: number };
+---
+<article class={`case-card case-card-${(index % 4) + 1}`} style={`--case-accent:${study.accent}`}>
+  <a href={`portfolio/${study.slug}/`} aria-label={`Read the ${study.title} case study`}>
+    <Image src={study.media[0].src} alt={study.media[0].alt} widths={[640, 960, 1440]} sizes="(min-width: 900px) 48vw, 100vw" />
+    <span class="case-card-shade" aria-hidden="true"></span>
+    <span class="case-card-copy">
+      <span class="case-number">{String(index + 1).padStart(2, '0')} · {study.era}</span>
+      <strong>{study.title}</strong>
+      <span>{study.subtitle}</span>
+    </span>
+  </a>
+</article>

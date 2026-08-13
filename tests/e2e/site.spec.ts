@@ -5,7 +5,7 @@ const routes = [
   '/', '/products/', '/products/wiremark/', '/products/studio/', '/products/cli/', '/products/web-magic/', '/products/photo-curator/', '/products/gpu-router/',
   '/services/', '/services/creative-direction/', '/engagements/fractional-creative-office/', '/industries/media-entertainment/', '/methods/human-agent-creative-loop/',
   '/insights/creative-direction-after-model-abundance/', '/briefs/', '/briefs/generative-media-operating-system/', '/briefs/generative-media-operating-system/thanks/',
-  '/company/', '/company/history/', '/contact/', '/contact/genai/', '/responsible-ai/', '/privacy/', '/sitemap/',
+  '/company/', '/company/history/', '/portfolio/', '/portfolio/state-parks/', '/portfolio/focuspass/', '/contact/', '/contact/genai/', '/responsible-ai/', '/privacy/', '/sitemap/',
 ];
 for (const route of routes) {
   test(`${route} renders without automated accessibility defects`, async ({ page }, testInfo) => {
@@ -15,7 +15,7 @@ for (const route of routes) {
     await expect(page).toHaveTitle(/HardMagic/);
     const results = await new AxeBuilder({ page }).analyze();
     expect(results.violations).toEqual([]);
-    if (['/', '/services/creative-direction/', '/briefs/generative-media-operating-system/'].includes(route)) {
+    if (['/', '/portfolio/', '/portfolio/state-parks/', '/services/creative-direction/', '/briefs/generative-media-operating-system/'].includes(route)) {
       const name = route === '/' ? 'home' : route.split('/').filter(Boolean).at(-1);
       await page.screenshot({ path: `screenshots/${testInfo.project.name}/${name}.png`, fullPage: true });
     }
@@ -36,4 +36,15 @@ test('mega menu exposes deep navigation and behaves as one disclosure at a time'
     await page.keyboard.press('Escape');
     await expect(menus.nth(0)).not.toHaveAttribute('open', '');
   }
+});
+
+test('portfolio preserves old routes and defers YouTube until consent', async ({ page }) => {
+  const oldRoute = await page.goto('/portfolio-item/airikai/');
+  expect(oldRoute?.status()).toBe(200);
+  await expect(page).toHaveURL(/\/portfolio\/airikai\/$/);
+  await page.goto('/portfolio/');
+  await expect(page.locator('.video-frame iframe')).toHaveCount(0);
+  await page.getByRole('button', { name: /Load OpenBuk/ }).click();
+  await expect(page.locator('.video-frame iframe')).toHaveCount(1);
+  await expect(page.locator('.video-frame iframe')).toHaveAttribute('src', /youtube-nocookie\.com/);
 });

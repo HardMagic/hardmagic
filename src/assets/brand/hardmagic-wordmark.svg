@@ -1,12 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="HardMagic — Dream in reality">
-  <defs>
-    <radialGradient id="a"><stop stop-color="#8c183a"/><stop offset="1" stop-color="#100b0d"/></radialGradient>
-    <filter id="g"><feGaussianBlur stdDeviation="48"/></filter>
-  </defs>
-  <rect width="1200" height="630" fill="#100b0d"/>
-  <circle cx="1000" cy="50" r="410" fill="url(#a)" opacity=".8"/>
-  <circle cx="280" cy="710" r="420" fill="#3c1026" opacity=".7" filter="url(#g)"/>
-  <g transform="translate(90 208) scale(3.05)"><g transform="translate(0.000000,60.000000) scale(0.100000,-0.100000)"
+<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+ width="330" height="60" viewBox="0 0 330.000000 60.000000"
+ preserveAspectRatio="xMidYMid meet">
+
+<g transform="translate(0.000000,60.000000) scale(0.100000,-0.100000)"
 fill="#efe6ec" stroke="none">
 <path d="M770 451 c0 -5 7 -11 15 -15 22 -8 22 -238 -1 -260 -14 -15 -11 -16
 38 -15 29 1 45 3 36 6 -15 4 -18 16 -18 74 l0 69 80 0 80 0 0 -63 c0 -36 -5
@@ -57,7 +53,5 @@ m157 -24 c41 -21 64 -68 57 -118 -8 -59 -35 -81 -99 -82 l-53 0 -3 108 -3 107
 -11z"/>
 <path d="M635 285 c-11 -22 -33 -46 -49 -54 -25 -11 -35 -11 -88 7 -46 16 -57
 17 -47 6 38 -46 139 -59 177 -24 24 22 36 58 30 87 -3 13 -9 8 -23 -22z"/>
-</g></g>
-  <path d="M92 438h1016" stroke="#7b3148" stroke-width="1"/>
-  <text x="94" y="505" fill="#cdbfc8" font-family="Arial,sans-serif" font-size="25" letter-spacing="10">DREAM IN REALITY · EST. 1999</text>
+</g>
 </svg>

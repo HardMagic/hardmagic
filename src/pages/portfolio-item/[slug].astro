@@ -1,0 +1,5 @@
+---
+import { caseStudies } from '../../data/portfolio';
+export function getStaticPaths() { return caseStudies.map(({ slug }) => ({ params: { slug }, props: { slug } })); }
+return Astro.redirect(`/portfolio/${Astro.params.slug}/`, 301);
+---

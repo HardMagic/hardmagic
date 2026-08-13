@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CaseCard from '../../components/portfolio/CaseCard.astro';
+import SonicIdent from '../../components/media/SonicIdent.astro';
+import VideoArchive from '../../components/media/VideoArchive.astro';
+import { caseStudies } from '../../data/portfolio';
+const disciplines = [...new Set(caseStudies.flatMap((study) => study.disciplines))];
+---
+<BaseLayout title="Portfolio" description="HardMagic case studies across identity, media, software, learning, hospitality, and place—restored from the company archive and reframed for the future.">
+  <section class="portfolio-hero">
+    <div class="portfolio-orbit" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div class="shell portfolio-hero-copy"><p class="eyebrow">HardMagic work · 25+ years</p><h1>Artifacts from<br /><em>possible worlds.</em></h1><p>Eight restored case studies. Real surviving media. Clear boundaries between the archive, our interpretation, and what we can prove.</p></div>
+  </section>
+  <nav class="portfolio-filter shell" aria-label="Portfolio disciplines"><span>Explore:</span>{disciplines.map((item) => <a href={`#${item.toLowerCase().replaceAll(' ', '-')}`}>{item}</a>)}</nav>
+  <section class="portfolio-grid shell" aria-label="Case studies">
+    {caseStudies.map((study, index) => <CaseCard study={study} index={index} />)}
+  </section>
+  <section class="archive-doctrine shell">
+    <p class="eyebrow dark">Editorial doctrine</p><h2>The archive is evidence,<br />not mythology.</h2>
+    <div><p>We restored the work because continuity matters. We also removed unsupported scale and outcome claims from the old pages. Each study now tells you what survives, how we interpret it, and what remains unverified.</p><p>Historical relationships do not imply current affiliation or endorsement. Third-party marks belong to their respective owners.</p></div>
+  </section>
+  <SonicIdent />
+  <VideoArchive />
+</BaseLayout>

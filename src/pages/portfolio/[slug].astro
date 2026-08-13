@@ -1,0 +1,36 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { caseStudies, type CaseStudy } from '../../data/portfolio';
+
+export function getStaticPaths() { return caseStudies.map((study) => ({ params: { slug: study.slug }, props: { study } })); }
+const { study } = Astro.props as { study: CaseStudy };
+const current = caseStudies.findIndex((item) => item.slug === study.slug);
+const next = caseStudies[(current + 1) % caseStudies.length]!;
+---
+<BaseLayout title={`${study.title} case study`} description={study.opening}>
+  <article class="case-study" style={`--case-accent:${study.accent}`}>
+    <header class="case-hero">
+      <Image src={study.media[0].src} alt={study.media[0].alt} widths={[960, 1440, 2200]} sizes="100vw" loading="eager" />
+      <span class="case-hero-shade" aria-hidden="true"></span>
+      <div class="case-hero-copy shell"><p class="eyebrow">Case study · {study.era}</p><h1>{study.title}</h1><p>{study.subtitle}</p></div>
+    </header>
+    <div class="case-rail shell"><a href="portfolio/">← All work</a><span>{study.disciplines.join(' · ')}</span></div>
+    <section class="case-opening shell"><p class="case-kicker">The project</p><h2>{study.opening}</h2></section>
+    <section class="case-spread shell">
+      <div class="case-copy"><p class="eyebrow dark">Context</p>{study.context.map((text) => <p>{text}</p>)}</div>
+      <figure><Image src={study.media[1].src} alt={study.media[1].alt} widths={[640, 960, 1440]} sizes="(min-width: 900px) 58vw, 100vw" /><figcaption>{study.media[1].caption}</figcaption></figure>
+    </section>
+    <section class="case-response">
+      <div class="shell"><div class="case-response-copy"><p class="eyebrow">Creative response</p><h2>Build the world,<br />not just the surface.</h2>{study.response.map((text) => <p>{text}</p>)}</div></div>
+    </section>
+    {study.media[2] && <figure class="case-cinema"><Image src={study.media[2].src} alt={study.media[2].alt} widths={[960, 1440, 2200]} sizes="100vw" /><figcaption>{study.media[2].caption}</figcaption></figure>}
+    <section class="case-lessons shell">
+      <div><p class="eyebrow dark">What survives</p><h2>Durable ideas,<br />carried forward.</h2></div>
+      <ol>{study.survives.map((item, index) => <li><span>0{index + 1}</span>{item}</li>)}</ol>
+    </section>
+    <section class="case-now"><div class="shell"><p class="eyebrow">If we made it now</p><h2>{study.now}</h2></div></section>
+    <aside class="archive-caveat shell"><strong>Archive note</strong><p>{study.caveat}</p></aside>
+    <a class="next-case" href={`portfolio/${next.slug}/`}><span>Next case study</span><strong>{next.title}</strong><span aria-hidden="true">↗</span></a>
+  </article>
+</BaseLayout>

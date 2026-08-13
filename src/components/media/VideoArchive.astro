@@ -1,0 +1,37 @@
+---
+import { youtubeArchive } from '../../data/portfolio';
+---
+<section class="video-archive shell section-pad" aria-labelledby="video-archive-title">
+  <header class="section-heading video-heading">
+    <div><p class="eyebrow dark">HardMagic on film</p><h2 id="video-archive-title">The production archive,<br />back in motion.</h2></div>
+    <p>Six surviving releases from the verified <a href="https://www.youtube.com/@hardmagicproductions" rel="external">hardmagicproductions channel</a>. Posters are hosted here; YouTube loads only after you choose to watch.</p>
+  </header>
+  <div class="video-grid">
+    {youtubeArchive.map((video) => (
+      <article class="video-card" data-video-card>
+        <div class="video-frame">
+          <img src={`/media/youtube/${video.id}.avif`} width="1280" height="720" loading="lazy" alt={`Video poster for ${video.title}`} />
+          <button type="button" data-video-id={video.id} aria-label={`Load ${video.title} from YouTube`}><span aria-hidden="true">▶</span> Watch</button>
+        </div>
+        <p class="eyebrow dark">{video.note}</p><h3>{video.title}</h3>
+        <p class="video-note">Archival release. Spoken-word transcript review is pending; watch on YouTube for any available platform captions.</p>
+      </article>
+    ))}
+  </div>
+</section>
+<script>
+  document.querySelectorAll<HTMLButtonElement>('[data-video-id]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const id = button.dataset.videoId;
+      if (!id) return;
+      const frame = button.closest('.video-frame');
+      if (!frame) return;
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}?autoplay=1`;
+      iframe.title = button.getAttribute('aria-label')?.replace('Load ', '').replace(' from YouTube', '') ?? 'HardMagic video';
+      iframe.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share';
+      iframe.allowFullscreen = true;
+      frame.replaceChildren(iframe);
+    }, { once: true });
+  });
+</script>
