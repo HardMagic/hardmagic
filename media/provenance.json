@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "published": "2026-08-13",
+  "assets": [
+    {
+      "path": "media/audio/hardmagic-working-signal.ogg",
+      "kind": "generated-audio",
+      "model": "Fish Audio S2-Pro (router model id: fish_s2_pro)",
+      "deployment": "HardMagic self-hosted inference; Kubernetes service inference-fish-s2-pro; SGLang-Omni OpenAI-compatible /v1/audio/speech API",
+      "voice": "default text-only synthesis voice; no reference audio, voice profile, or cloned identity",
+      "instructions": "Dark, assured, intimate narration with cinematic restraint, precise diction, natural pauses, and no sales-announcer affect.",
+      "performanceCues": "[whispering], [confident], [soft tone]",
+      "generation": "Text-only synthesis; seed 250813; temperature 0.7; top_p 0.8; speed 1.0; language en; source WAV 16-bit mono 44.1 kHz",
+      "format": "Ogg Opus, mono, 48 kHz",
+      "durationSeconds": 11.05,
+      "transcript": "This is a working signal. HardMagic turns creative intent into image, sound, software, and action. One directed system. Infinite forms.",
+      "publicationAuthorization": "Published under the HardMagic operator's explicit authorization for this model output; no person's voice was cloned."
+    },
+    {
+      "path": "media/wiremark/wiremark-studio-current.png",
+      "kind": "product-capture",
+      "product": "WireMark",
+      "repository": "HardMagic/overmark",
+      "commit": "24dc564",
+      "source": "Real Electron product test pipeline artifact",
+      "dimensions": "1288x904",
+      "disclosure": "Welcome-state product capture; not a website before-and-after capture."
+    },
+    {
+      "path": "src/assets/portfolio/*.avif",
+      "kind": "enhanced-owned-media",
+      "workflow": "Largest surviving owned source → HardMagic RealESRGAN x4plus → PNG intermediate → restrained unsharp finishing pass → max 4096px long edge → AVIF only",
+      "displayTreatment": "Portfolio RealESRGAN masters are displayed without the prior desaturation or dark-suppression treatment.",
+      "restrictions": "Photographic assets only. Raster interface and identity composites are not AI-upscaled to avoid invented text or UI detail."
+    },
+    {
+      "path": "src/assets/editorial/*-4k.avif",
+      "kind": "enhanced-generated-editorial-media",
+      "workflow": "Authored generated source → HardMagic RealESRGAN x4plus → 3840px long edge → AVIF",
+      "restrictions": "Conceptual art only. The original generation model and disclosure remain authoritative; enhancement is not presented as a new generation or documentary evidence."
+    }
+  ]
+}
