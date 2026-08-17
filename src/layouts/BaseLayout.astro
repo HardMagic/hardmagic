@@ -38,9 +38,9 @@ const fullTitle = title === 'HardMagic' ? title : `${title} — HardMagic`;
     <title>{fullTitle}</title>
   </head>
   <body>
-    <a class="skip-link" href="#main">Skip to content</a>
+    <a class="skip-link" href="#main">Skip to main content</a>
     <Header />
-    <main id="main"><slot /></main>
+    <main id="main" tabindex="-1"><slot /></main>
     <Footer />
     <script is:inline src="scripts/corporate-email-validation.js"></script>
   </body>
